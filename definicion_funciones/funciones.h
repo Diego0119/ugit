@@ -1,3 +1,4 @@
+#include <stdio.h>
 void ugit_init();
 void ugit_add();
 void ugit_commit();
