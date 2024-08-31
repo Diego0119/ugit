@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "*.embeddedhtml": "html",
+        "funciones.h": "c",
+        "*.gitignore": "c",
+        "string.h": "c"
+    }
+}

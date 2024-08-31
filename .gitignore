@@ -1,5 +1,4 @@
 .exec
-.vscode
-*.out
-*.exe
-test
+    .vscode
+        *.out
+            *.exe test
