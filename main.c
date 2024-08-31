@@ -1,6 +1,7 @@
-#include "definicion_funciones/funciones.h"
+#include "src/definicion_funciones/funciones.h"
 
-int main()
+int main(void)
 {
-    printf("todo bien");
+    ugit_init();
+    return 0;
 }
