@@ -28,8 +28,17 @@ void flow_control(void)
         {
             ugit_version();
         }
-        else if(strncmp(prompt, "ugit add",8)==0){
+        else if (strncmp(prompt, "ugit add", 8) == 0)
+        {
             ugit_add(prompt);
+        }
+        else if (strncmp(prompt, "ugit commit", 11) == 0)
+        {
+            Commit commit;
+            commit = ugit_commit(prompt);
+            printf("El commit tiene los siguientes datos: \n");
+            printf("%s\n", commit.descripcion_commit);
+            printf("%ld\n", commit.commit_hash);
         }
     }
 }

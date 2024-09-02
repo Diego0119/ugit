@@ -5,11 +5,11 @@
 void ugit_init(void);
 void ugit_add(char *);
 void ugit_version(void);
-void ugit_commit(void);
 void ugit_log(void);
 void ugit_checkout(void);
 void commands_prompt(void);
 void flow_control(void);
+int hash(void);
 
 // un commit tiene una descripcion
 // un commit tiene un hash
@@ -18,6 +18,9 @@ struct commit
     char descripcion_commit[MAX_INPUT_SIZE];
     long commit_hash;
 };
+
+typedef struct commit Commit;
+Commit ugit_commit(char *);
 
 // una rama tiene un nombre
 // debe estar guardada en alguna parte
