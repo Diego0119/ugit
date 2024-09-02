@@ -3,6 +3,8 @@
 void flow_control(void)
 {
     char prompt[MAX_INPUT_SIZE];
+    int commit_count = 0;
+    Commit commits;
 
     while (strcmp(prompt, "exit") != 0)
     {
@@ -34,11 +36,12 @@ void flow_control(void)
         }
         else if (strncmp(prompt, "ugit commit", 11) == 0)
         {
-            Commit commit;
-            commit = ugit_commit(prompt);
-            printf("El commit tiene los siguientes datos: \n");
-            printf("%s\n", commit.descripcion_commit);
-            printf("%ld\n", commit.commit_hash);
+            commit_count++;
+            commits = ugit_commit(prompt, commit_count);
+        }
+        else if (strcmp(prompt, "ugit log") == 0)
+        {
+            ugit_log(&commits, commit_count);
         }
     }
 }

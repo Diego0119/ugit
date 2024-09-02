@@ -1,11 +1,12 @@
 #include <stdio.h>
-#define MAX_INPUT_SIZE 100
+#define MAX_INPUT_SIZE 10
+#define MAX_COMMITS 100
+#define COUNT 0
 #include <string.h>
 
 void ugit_init(void);
 void ugit_add(char *);
 void ugit_version(void);
-void ugit_log(void);
 void ugit_checkout(void);
 void commands_prompt(void);
 void flow_control(void);
@@ -20,7 +21,9 @@ struct commit
 };
 
 typedef struct commit Commit;
-Commit ugit_commit(char *);
+
+void ugit_log(Commit *, int);
+Commit ugit_commit(char *, int);
 
 // una rama tiene un nombre
 // debe estar guardada en alguna parte
