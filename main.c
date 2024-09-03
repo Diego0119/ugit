@@ -2,8 +2,6 @@
 
 int main(void)
 {
-
     flow_control();
-
     return 0;
 }

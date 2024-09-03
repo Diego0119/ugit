@@ -3,8 +3,8 @@
 void flow_control(void)
 {
     char prompt[MAX_INPUT_SIZE];
+    Commit *commits;
     int commit_count = 0;
-    Commit commits;
 
     while (strcmp(prompt, "exit") != 0)
     {
@@ -19,7 +19,6 @@ void flow_control(void)
         {
             prompt[len - 1] = '\0';
         }
-
         // aca puedo definir un arreglo de comandos soportados,
         // de modo que si no es ninguno de los comandos desconocidos diga que hay un error
         if (strcmp(prompt, "ugit init") == 0)
@@ -39,9 +38,9 @@ void flow_control(void)
             commit_count++;
             commits = ugit_commit(prompt, commit_count);
         }
-        else if (strcmp(prompt, "ugit log") == 0)
+        else if (strncmp(prompt, "ugit log", 8) == 0)
         {
-            ugit_log(&commits, commit_count);
+            ugit_log(commits, commit_count);
         }
     }
 }

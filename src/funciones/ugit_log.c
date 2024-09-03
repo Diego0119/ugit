@@ -2,10 +2,10 @@
 
 void ugit_log(Commit *commit, int commit_count)
 {
-    printf("entro a ugit_log");
-    for (int i = 0; i < commit_count; i++)
+    // entra pero aun no puede acceder correctamente a la informacion
+    for (int numero_commit = 0; numero_commit < commit_count; numero_commit++)
     {
-        printf("%ld\n", commit->commit_hash);
-        printf("%s\n", commit->descripcion_commit);
+        printf("%ld\n", commit[numero_commit].commit_hash);
+        printf("%s\n", commit[numero_commit].descripcion_commit);
     }
 }

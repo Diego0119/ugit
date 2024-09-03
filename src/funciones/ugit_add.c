@@ -6,6 +6,7 @@ void ugit_add(char *prompt)
     // lea el nombre del "archivo" para despues diga que
     // ese archivo fue añadido
     char *filename = prompt + 9;
+    printf("Nombre del archivo: %s\n", filename);
     if (strlen(filename) > 0)
     {
         printf("El archivo '%s' fue añadido.\n", filename);
