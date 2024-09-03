@@ -9,7 +9,7 @@ void ugit_version(void);
 void ugit_checkout(void);
 void commands_prompt(void);
 void flow_control(void);
-int hash(void);
+unsigned long hash(char *);
 
 // un commit tiene una descripcion
 // un commit tiene un hash
@@ -20,7 +20,7 @@ struct commit
 };
 
 typedef struct commit Commit;
-Commit *ugit_commit(char *, int);
+void ugit_commit(Commit *, char *, int);
 void ugit_log(Commit *, int);
 // una rama tiene un nombre
 // debe estar guardada en alguna parte

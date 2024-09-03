@@ -1,19 +1,11 @@
 #include "../definicion_funciones/funciones.h"
 
-Commit *ugit_commit(char *prompt, int commit_count)
+void ugit_commit(Commit *commits, char *prompt, int commit_count)
 {
+    // hay que verificar en el caso que de 2 prompts sean iguales, en ese caso
+    // se generarian hashes iguales y habria colision
     char *commit_message = prompt + 11;
-    if (strlen(commit_message) > 0)
-    {
-        printf("El mensaje si existe\n");
-    }
-    else
-    {
-        printf("El mensaje no existe");
-    }
-    // printf("mensaje del commit: %c\n", *commit_message);
-    Commit commit[MAX_COMMITS];
-    strcpy(commit[commit_count].descripcion_commit, commit_message);
-    commit[commit_count].commit_hash = 123;
-    return commit;
+    strncpy(commits[commit_count - 1].descripcion_commit, commit_message, MAX_INPUT_SIZE - 1);
+    commits[commit_count - 1].descripcion_commit[MAX_INPUT_SIZE - 1] = '\0';
+    commits[commit_count - 1].commit_hash = hash(prompt);
 }

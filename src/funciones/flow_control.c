@@ -3,7 +3,7 @@
 void flow_control(void)
 {
     char prompt[MAX_INPUT_SIZE];
-    Commit *commits;
+    Commit commits[MAX_COMMITS];
     int commit_count = 0;
 
     while (strcmp(prompt, "exit") != 0)
@@ -36,7 +36,7 @@ void flow_control(void)
         else if (strncmp(prompt, "ugit commit", 11) == 0)
         {
             commit_count++;
-            commits = ugit_commit(prompt, commit_count);
+            ugit_commit(commits, prompt, commit_count);
         }
         else if (strncmp(prompt, "ugit log", 8) == 0)
         {
