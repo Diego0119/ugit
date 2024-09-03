@@ -2,5 +2,5 @@
 
 void ugit_init(void)
 {
-    printf("Initialized empty uGit repository\n");
+    printf("Repositorio de uGit incializado\n");
 }

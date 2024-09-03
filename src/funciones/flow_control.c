@@ -42,5 +42,9 @@ void flow_control(void)
         {
             ugit_log(commits, commit_count);
         }
+        else if (strncmp(prompt, "ugit checkout", 13) == 0)
+        {
+            ugit_checkout(prompt);
+        }
     }
 }
