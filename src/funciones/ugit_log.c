@@ -2,7 +2,7 @@
 
 void ugit_log(Commit *commit, int commit_count)
 {
-    // entra pero aun no puede acceder correctamente a la informacion
+    printf("----------------------------------------------------\n");
     for (int numero_commit = 0; numero_commit < commit_count; numero_commit++)
     {
         printf("Author: Diego Sanhueza\n");

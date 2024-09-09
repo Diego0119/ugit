@@ -2,6 +2,14 @@
 
 void ugit_branch_control(char *prompt, char *initial_prompt)
 {
-    char *branch_name = prompt + 14;
+    char *branch_name;
+    if (strcmp(prompt, "main") == 0)
+    {
+        branch_name = "main";
+    }
+    else
+    {
+        branch_name = prompt + 14;
+    }
     snprintf(initial_prompt, MAX_INPUT_SIZE, "ugit(%s) ", branch_name);
 }

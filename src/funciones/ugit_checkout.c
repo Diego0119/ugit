@@ -9,7 +9,6 @@ int ugit_checkout(char *prompt, Branch *branches, int *branches_count)
     {
         if (strcmp(branch_name, branches[i].nombre_rama) == 0)
         {
-            printf("El nombre coincide con alguna rama: %s\n", branches[i].nombre_rama);
             return 1;
         }
     }

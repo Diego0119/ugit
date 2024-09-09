@@ -4,8 +4,6 @@
 #define MAX_BRANCHES 50
 #include <string.h>
 
-void ugit_init(void);
-void ugit_add(char *);
 void ugit_version(void);
 void commands_prompt(void);
 void flow_control(void);
@@ -16,6 +14,7 @@ void ugit_branch_control(char *, char *);
 // un commit tiene un hash
 struct commit
 {
+    char archivos_agregado[MAX_INPUT_SIZE];
     char descripcion_commit[MAX_INPUT_SIZE];
     long commit_hash;
 };
@@ -24,10 +23,13 @@ struct commit
 
 typedef struct branch Branch;
 typedef struct commit Commit;
+void ugit_add(char *, Branch *, int *);
 void ugit_commit(Commit *, char *, int);
 void ugit_log(Commit *, int);
-void ugit_branch(char *, Branch *, int *branches_count);
+void ugit_branch(char *, Branch *, int *);
 int ugit_checkout(char *, Branch *, int *);
+void ugit_init(Branch *, int *, char *);
+
 struct branch
 {
     char nombre_rama[MAX_INPUT_SIZE];

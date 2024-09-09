@@ -30,14 +30,14 @@ void flow_control(void)
         {
             if (repositorio_flag == 0)
             {
-                ugit_init();
-                strcpy(initial_prompt, "ugit(main) ");
+                ugit_init(branches, &branches_count, initial_prompt);
+                // strcpy(initial_prompt, "ugit(main) ");
                 // initial_prompt = "ugit(main) ";
                 repositorio_flag++;
             }
             else
             {
-                printf("El repositorio ya fue inicializado\n");
+                printf("El repositorio ya fue inicializado.\n");
             }
         }
         else if (strcmp(prompt, "ugit --version") == 0)
@@ -46,26 +46,61 @@ void flow_control(void)
         }
         else if (strncmp(prompt, "ugit add", 8) == 0)
         {
-            ugit_add(prompt);
+            if (repositorio_flag == 1)
+            {
+                ugit_add(prompt, branches, &branches_count);
+            }
+            else
+            {
+                printf("No hay un repositorio inicializado.\n");
+            }
         }
         else if (strncmp(prompt, "ugit commit", 11) == 0)
         {
-            commit_count++;
-            ugit_commit(commits, prompt, commit_count);
+            if (repositorio_flag == 1)
+            {
+                commit_count++;
+                ugit_commit(commits, prompt, commit_count);
+            }
+            else
+            {
+                printf("No hay un repositorio inicializado.\n");
+            }
         }
         else if (strncmp(prompt, "ugit log", 8) == 0)
         {
-            ugit_log(commits, commit_count);
+            if (repositorio_flag == 1)
+            {
+                ugit_log(commits, commit_count);
+            }
+            else
+            {
+                printf("No hay un log de commits, debido a que no se ha inicializado ningun repositorio.\n");
+            }
         }
         else if (strncmp(prompt, "ugit branch", 11) == 0)
         {
-            ugit_branch(prompt, branches, &branches_count);
+            if (repositorio_flag == 1)
+            {
+                ugit_branch(prompt, branches, &branches_count);
+            }
+            else
+            {
+                printf("Para poder crear una rama se debe primero inicializar un repositorio.\n");
+            }
         }
         else if (strncmp(prompt, "ugit checkout", 13) == 0)
         {
-            if (ugit_checkout(prompt, branches, &branches_count))
+            if (repositorio_flag == 1)
             {
-                ugit_branch_control(prompt, initial_prompt);
+                if (ugit_checkout(prompt, branches, &branches_count))
+                {
+                    ugit_branch_control(prompt, initial_prompt);
+                }
+            }
+            else
+            {
+                printf("No existe esa rama, debido a que no hay un repositorio inicializado.\n");
             }
         }
         else
