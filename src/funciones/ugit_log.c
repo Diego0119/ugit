@@ -1,13 +1,23 @@
 #include "../definicion_funciones/funciones.h"
 
-void ugit_log(Commit *commit, int commit_count)
+void ugit_log(Branch *branches, int commit_count, char *branch_name)
 {
+    commit_count = branches[hash(branch_name)].commit_count;
     printf("----------------------------------------------------\n");
-    for (int numero_commit = 0; numero_commit < commit_count; numero_commit++)
+    if (commit_count > 0)
     {
-        printf("Author: Diego Sanhueza\n");
-        printf("Commit: %ld\n", commit[numero_commit].commit_hash);
-        printf("Descripcion: %s\n", commit[numero_commit].descripcion_commit);
-        printf("----------------------------------------------------\n");
+        for (int i = 0; i < commit_count; i++)
+        {
+
+            printf("Author: Diego Sanhueza\n");
+            printf("Commit: %ld\n", branches[hash(branch_name)].commit[i].commit_hash);
+            printf("Descripcion: %s\n", branches[hash(branch_name)].commit[i].descripcion_commit);
+            printf("----------------------------------------------------\n");
+        }
+    }
+    else
+    {
+        printf("No hay commits\n");
+        return;
     }
 }

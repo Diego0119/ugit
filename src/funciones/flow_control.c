@@ -7,6 +7,8 @@ void flow_control(void)
     Branch branches[MAX_BRANCHES];
     int commit_count = 0;
     int branches_count = 0;
+    char branch_name[MAX_INPUT_SIZE];
+    strcpy(branch_name, "main");
     int repositorio_flag = 0;
     char initial_prompt[MAX_INPUT_SIZE];
     strcpy(initial_prompt, "Shell>");
@@ -48,7 +50,7 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                ugit_add(prompt, branches, &branches_count);
+                ugit_add(prompt, branches, branch_name);
             }
             else
             {
@@ -59,8 +61,8 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                commit_count++;
-                ugit_commit(commits, prompt, commit_count);
+                // commit_count++;
+                ugit_commit(commits, prompt, branch_name, branches);
             }
             else
             {
@@ -71,7 +73,7 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                ugit_log(commits, commit_count);
+                ugit_log(branches, commit_count, branch_name);
             }
             else
             {
@@ -82,7 +84,7 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                ugit_branch(prompt, branches, &branches_count);
+                *branch_name = ugit_branch(prompt, branches, &branches_count);
             }
             else
             {
@@ -93,7 +95,7 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                if (ugit_checkout(prompt, branches, &branches_count))
+                if (ugit_checkout(prompt, branches))
                 {
                     ugit_branch_control(prompt, initial_prompt);
                 }

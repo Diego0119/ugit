@@ -23,17 +23,18 @@ struct commit
 
 typedef struct branch Branch;
 typedef struct commit Commit;
-void ugit_add(char *, Branch *, int *);
-void ugit_commit(Commit *, char *, int);
-void ugit_log(Commit *, int);
-void ugit_branch(char *, Branch *, int *);
-int ugit_checkout(char *, Branch *, int *);
+void ugit_add(char *, Branch *, char *);
+void ugit_commit(Commit *, char *, char *, Branch *);
+void ugit_log(Branch *, int, char *);
+char ugit_branch(char *, Branch *, int *);
+int ugit_checkout(char *, Branch *);
 void ugit_init(Branch *, int *, char *);
 
 struct branch
 {
     char nombre_rama[MAX_INPUT_SIZE];
     Commit commit[MAX_COMMITS];
+    int commit_count;
 };
 
 // una rama tiene un nombre
