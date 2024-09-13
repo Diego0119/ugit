@@ -3,10 +3,11 @@
 void flow_control(void)
 {
     char prompt[MAX_INPUT_SIZE];
-    Commit commits[MAX_COMMITS];
     Branch branches[MAX_BRANCHES];
     int commit_count = 0;
     int branches_count = 0;
+    int files_count = 0;
+    int modificacion_flag = 0; // 0 falso, 1 verdadero
     char branch_name[MAX_INPUT_SIZE];
     strcpy(branch_name, "main");
     int repositorio_flag = 0;
@@ -30,27 +31,24 @@ void flow_control(void)
         // de modo que si no es ninguno de los comandos desconocidos diga que hay un error
         if (strcmp(prompt, "ugit init") == 0)
         {
-            if (repositorio_flag == 0)
-            {
-                ugit_init(branches, &branches_count, initial_prompt);
-                // strcpy(initial_prompt, "ugit(main) ");
-                // initial_prompt = "ugit(main) ";
-                repositorio_flag++;
-            }
-            else
-            {
-                printf("El repositorio ya fue inicializado.\n");
-            }
+            ugit_init(branches, &branches_count, initial_prompt, &repositorio_flag);
+            // strcpy(initial_prompt, "ugit(main) ");
+            // initial_prompt = "ugit(main) ";
         }
         else if (strcmp(prompt, "ugit --version") == 0)
         {
             ugit_version();
         }
+        else if (strncmp(prompt, "vi", 2) == 0)
+        {
+            // printf("Entro al vi con el prompt: %s\n", prompt);
+            manejar_archivos(prompt, branches, branch_name, &files_count, &modificacion_flag);
+        }
         else if (strncmp(prompt, "ugit add", 8) == 0)
         {
             if (repositorio_flag == 1)
             {
-                ugit_add(prompt, branches, branch_name);
+                ugit_add(prompt, branches, branch_name, &modificacion_flag);
             }
             else
             {
@@ -62,7 +60,7 @@ void flow_control(void)
             if (repositorio_flag == 1)
             {
                 // commit_count++;
-                ugit_commit(commits, prompt, branch_name, branches);
+                ugit_commit(prompt, branch_name, branches, &modificacion_flag);
             }
             else
             {
@@ -95,10 +93,14 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                if (ugit_checkout(prompt, branches))
-                {
-                    ugit_branch_control(prompt, initial_prompt);
-                }
+                *branch_name = *(prompt + 14);
+                branches[hash(branch_name)] = ugit_checkout(prompt, branches);
+
+                ugit_branch_control(prompt, initial_prompt);
+                // if (ugit_checkout(prompt, branches))
+                // {
+                //     ugit_branch_control(prompt, initial_prompt);
+                // }
             }
             else
             {

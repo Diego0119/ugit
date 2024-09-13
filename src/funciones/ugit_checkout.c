@@ -1,6 +1,6 @@
 #include "../definicion_funciones/funciones.h"
 
-int ugit_checkout(char *prompt, Branch *branches)
+Branch ugit_checkout(char *prompt, Branch *branches)
 {
     char *branch_name = prompt + 14;
     // *initial_prompt = branch_name;
@@ -8,9 +8,14 @@ int ugit_checkout(char *prompt, Branch *branches)
 
     if (strcmp(branch_name, branches[hash(branch_name)].nombre_rama) == 0)
     {
-        return 1;
+        return branches[hash(branch_name)];
     }
+    // else if (strcmp(numero_hash, branches[hash(branch_name)].commit->commit_hash) == 0)
+    // {
+    //     return branches[hash(branch_name)].commit;
+    // }
 
     printf("No existe una rama con ese nombre\n");
-    return 0;
+
+    return *branches;
 }
