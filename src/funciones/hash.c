@@ -1,9 +1,11 @@
 #include "../definicion_funciones/funciones.h"
 
+static int hashes_entregados[MAX_COMMITS];
+
+static int count = 0;
+
 unsigned long hash(char *str)
 {
-    int hashes_entregados[MAX_COMMITS];
-    int count = 0;
     int temp_hash = 0;
     int hash = 0;
     int aux;
@@ -15,12 +17,13 @@ unsigned long hash(char *str)
     hashes_entregados[count] = hash;
     count++;
 
-    for (int i = 0; i <= count; i++)
+    for (int i = 0; i < count; i++)
     {
-        if (hash == hashes_entregados[i])
+        if (hashes_entregados[i] == hash)
         {
             return hash + 1;
         }
     }
+
     return hash;
 }

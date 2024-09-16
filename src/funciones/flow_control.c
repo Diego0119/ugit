@@ -3,7 +3,7 @@
 void flow_control(void)
 {
     char prompt[MAX_INPUT_SIZE];
-    Branch branches[MAX_BRANCHES];
+    Branch branches[1000];
     int commit_count = 0;
     int branches_count = 0;
     int files_count = 0;
@@ -94,9 +94,9 @@ void flow_control(void)
             if (repositorio_flag == 1)
             {
                 *branch_name = *(prompt + 14);
-                branches[hash(branch_name)] = ugit_checkout(prompt, branches);
+                branches[hash(branch_name)] = ugit_checkout(prompt, branches, initial_prompt);
 
-                ugit_branch_control(prompt, initial_prompt);
+                // ugit_branch_control(prompt, initial_prompt);
                 // if (ugit_checkout(prompt, branches))
                 // {
                 //     ugit_branch_control(prompt, initial_prompt);

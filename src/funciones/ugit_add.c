@@ -24,6 +24,6 @@ void ugit_add(char *prompt, Branch *branches, char *branch_name, int *modificaci
     }
     else
     {
-        printf("El archivo %s no existe\n", filename);
+        printf("El archivo '%s' no existe\n", filename);
     }
 }
