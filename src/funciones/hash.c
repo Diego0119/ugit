@@ -15,12 +15,12 @@ unsigned long hash(char *str)
     hashes_entregados[count] = hash;
     count++;
 
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i <= count; i++)
     {
-        if (hashes_entregados[i] == hash)
+        if (hash == hashes_entregados[i])
         {
             return hash + 1;
         }
-        return hash;
     }
+    return hash;
 }

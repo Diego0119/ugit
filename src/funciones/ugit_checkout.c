@@ -17,5 +17,5 @@ Branch ugit_checkout(char *prompt, Branch *branches)
 
     printf("No existe una rama con ese nombre\n");
 
-    return *branches;
+    return branches[hash(branch_name)];
 }
