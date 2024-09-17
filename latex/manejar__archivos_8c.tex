@@ -1,0 +1,32 @@
+\doxysection{src/funciones/manejar\+\_\+archivos.c File Reference}
+\hypertarget{manejar__archivos_8c}{}\label{manejar__archivos_8c}\index{src/funciones/manejar\_archivos.c@{src/funciones/manejar\_archivos.c}}
+
+
+Esta funcion permite modificar y crear archivos desde la shell de ugit.  
+
+
+{\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{manejar__archivos_8c_a754ccd19a411918c7cfd4d417e81e76c}\label{manejar__archivos_8c_a754ccd19a411918c7cfd4d417e81e76c} 
+void {\bfseries manejar\+\_\+archivos} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{structbranch}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}branch\+\_\+name, int \texorpdfstring{$\ast$}{*}files\+\_\+count, int \texorpdfstring{$\ast$}{*}modificacion\+\_\+flag)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Esta funcion permite modificar y crear archivos desde la shell de ugit. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & se le debe pasar por parametro el prompt para obtener el nombre del archivo \\
+\hline
+{\em branches} & se le debe pasar la estructura de datos actual para guardar el archivo \\
+\hline
+{\em branch\+\_\+name} & se le debe pasar el nombre de la rama para poder realizar un hash con ese string \\
+\hline
+{\em files\+\_\+count} & se le debe para el numero de archivos acumulados \\
+\hline
+{\em modificacion\+\_\+flag} & este parametro es una flag que dependiendo de su valor (0 o 1) indica verdadero o falso, sirve para saber si hay modificaciones activas \\
+\hline
+\end{DoxyParams}

@@ -1,0 +1,37 @@
+\doxysection{src/funciones/commands\+\_\+prompt.c File Reference}
+\hypertarget{commands__prompt_8c}{}\label{commands__prompt_8c}\index{src/funciones/commands\_prompt.c@{src/funciones/commands\_prompt.c}}
+
+
+Esta funcion permite mostrar los comandos disponibles.  
+
+
+{\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{commands__prompt_8c_a6109b0a539ffbffa9bcc8199388ffcfd}\label{commands__prompt_8c_a6109b0a539ffbffa9bcc8199388ffcfd} 
+void {\bfseries commands\+\_\+prompt} (void)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Esta funcion permite mostrar los comandos disponibles. 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{void}\ commands\_prompt(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ printf(\textcolor{stringliteral}{"{}Comandos\ disponibles:\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ printf(\textcolor{stringliteral}{"{}\ \ init\ \ \ \ \ \ \ \ -\/\ Inicializa\ un\ nuevo\ repositorio.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ printf(\textcolor{stringliteral}{"{}\ \ add\ <file>\ \ -\/\ Añade\ un\ archivo\ al\ área\ de\ preparación.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ printf(\textcolor{stringliteral}{"{}\ \ commit\ <msg>\ -\/\ Realiza\ un\ commit\ con\ el\ mensaje\ especificado.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ printf(\textcolor{stringliteral}{"{}\ \ log\ \ \ \ \ \ \ \ \ -\/\ Muestra\ el\ historial\ de\ commits.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ printf(\textcolor{stringliteral}{"{}\ \ branch\ <name>\ -\/\ Crea\ una\ nueva\ rama\ con\ el\ nombre\ especificado.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ printf(\textcolor{stringliteral}{"{}\ \ checkout\ <name>\ -\/\ Cambia\ a\ la\ rama\ especificada.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ printf(\textcolor{stringliteral}{"{}\ \ -\/-\/version\ \ \ \ \ \ \ \ -\/\ Muestra\ la\ version\ de\ ugit.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ printf(\textcolor{stringliteral}{"{}\ \ help\ \ \ \ \ \ \ \ -\/\ Muestra\ esta\ ayuda.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \}}
+
+\end{DoxyCode}
+ 

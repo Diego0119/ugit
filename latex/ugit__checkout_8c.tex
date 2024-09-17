@@ -1,0 +1,31 @@
+\doxysection{src/funciones/ugit\+\_\+checkout.c File Reference}
+\hypertarget{ugit__checkout_8c}{}\label{ugit__checkout_8c}\index{src/funciones/ugit\_checkout.c@{src/funciones/ugit\_checkout.c}}
+
+
+Esta funcion permite cambiar de una rama a otra.  
+
+
+{\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9}\label{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9} 
+\mbox{\hyperlink{structbranch}{Branch}} {\bfseries ugit\+\_\+checkout} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{structbranch}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}initial\+\_\+prompt)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Esta funcion permite cambiar de una rama a otra. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & se le debe pasar el nombre de la rama a la cual se desea ir \\
+\hline
+{\em branches} & se le debe pasar la estrucutra de datos actual de la rama \\
+\hline
+{\em initial\+\_\+prompt} & se le debe el prompt actual para poder cambiarlo por el nuevo en el caso que la rama exista \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+retornara la estructura de datos de la rama a la cual se cambio 
+\end{DoxyReturn}

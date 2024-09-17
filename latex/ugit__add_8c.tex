@@ -1,0 +1,30 @@
+\doxysection{src/funciones/ugit\+\_\+add.c File Reference}
+\hypertarget{ugit__add_8c}{}\label{ugit__add_8c}\index{src/funciones/ugit\_add.c@{src/funciones/ugit\_add.c}}
+
+
+Esta funcion permite añadir un archivo al area de "{}stagin"{}.  
+
+
+{\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ugit__add_8c_a1fe6357c5879426b6bf9893c1398f3d1}\label{ugit__add_8c_a1fe6357c5879426b6bf9893c1398f3d1} 
+void {\bfseries ugit\+\_\+add} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{structbranch}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}branch\+\_\+name, int \texorpdfstring{$\ast$}{*}modificacion\+\_\+flag)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Esta funcion permite añadir un archivo al area de "{}stagin"{}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & se le debe pasar el prompt, el cual sera el nombre del archivo, esto para poder verificar si existe \\
+\hline
+{\em branches} & se debe pasar la estructura de datos actual para poder realizar modificaciones \\
+\hline
+{\em branch\+\_\+name} & se le debe pasar el nombre de la rama actual para realizar un hash y hacer el "{}add"{} donde se debe \\
+\hline
+{\em modificacion\+\_\+flag} & esta flag permite saber en que estado esta el repositorio (si hay modificaciones activas o si todo esta en "{}stagin"{}) \\
+\hline
+\end{DoxyParams}

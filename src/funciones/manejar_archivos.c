@@ -1,17 +1,26 @@
 #include "../definicion_funciones/funciones.h"
 
+/**
+ * @file manejar_archivos.c
+ * @brief Esta funcion permite modificar y crear archivos desde la shell de ugit
+ *
+ * @param prompt se le debe pasar por parametro el prompt para obtener el nombre del archivo
+ * @param branches se le debe pasar la estructura de datos actual para guardar el archivo
+ * @param branch_name se le debe pasar el nombre de la rama para poder realizar un hash con ese string
+ * @param files_count se le debe para el numero de archivos acumulados
+ * @param modificacion_flag este parametro es una flag que dependiendo de su valor (0 o 1) indica verdadero o falso, sirve para saber si hay modificaciones activas
+ */
 void manejar_archivos(char *prompt, Branch *branches, char *branch_name, int *files_count, int *modificacion_flag)
 {
     printf("Entro a la funcion manejar archivo\n");
     char *filename = prompt + 3;
     printf("Branch name: %s\n", branch_name);
     printf("El filename que llego fue: %s\n", filename);
-    int hash_value = hash(branch_name); // calcula el hash una vez
+    int hash_value = hash(branch_name);
     int commit_count = branches[hash_value].commit_count;
     printf("commit count: %d\n", commit_count);
     printf("nombre del archivo a buscar: %s\n", branches[hash_value].commit[commit_count].archivos_agregados);
 
-    // verificar si el archivo ya está registrado en el commit actual
     int archivo_encontrado = 0;
     for (int i = 0; i < *files_count; i++)
     {
@@ -20,7 +29,6 @@ void manejar_archivos(char *prompt, Branch *branches, char *branch_name, int *fi
         {
             archivo_encontrado = 1;
 
-            // abre el archivo en modo lectura y escritura
             printf("Llego a FILE* archivo = fopen(filename, r+\n");
             FILE *archivo = fopen(filename, "r+");
 
@@ -31,7 +39,7 @@ void manejar_archivos(char *prompt, Branch *branches, char *branch_name, int *fi
                 char buffer[256];
                 while (fgets(buffer, sizeof(buffer), archivo) != NULL)
                 {
-                    printf("%s", buffer); // muestra el contenido
+                    printf("%s", buffer);
                 }
 
                 printf("\nDesea agregar más contenido al archivo? (s/n): ");
@@ -41,7 +49,7 @@ void manejar_archivos(char *prompt, Branch *branches, char *branch_name, int *fi
                 if (opcion == 's' || opcion == 'S')
                 {
                     printf("Ingrese el contenido adicional:\n");
-                    fseek(archivo, 0, SEEK_END); // mueve el puntero al final del archivo
+                    fseek(archivo, 0, SEEK_END);
 
                     char nuevo_contenido[256];
                     fgets(nuevo_contenido, sizeof(nuevo_contenido), stdin);
@@ -57,16 +65,13 @@ void manejar_archivos(char *prompt, Branch *branches, char *branch_name, int *fi
                 printf("No se pudo abrir el archivo '%s'.\n", filename);
             }
 
-            break; // archivo encontrado, no es necesario continuar
+            break;
         }
     }
 
-    // el segmentation fault esta para aca abajo
-    // si el archivo no fue encontrado, crearlo
     if (!archivo_encontrado)
     {
         printf("Archivo no encontrado\n");
-        // asegurarse de no exceder el límite de archivos
         if (*files_count < MAX_FILES)
         {
             FILE *archivo = fopen(filename, "w");
@@ -82,9 +87,8 @@ void manejar_archivos(char *prompt, Branch *branches, char *branch_name, int *fi
                 fprintf(archivo, "%s", contenido_inicial);
                 fclose(archivo);
 
-                // registra el archivo en la estructura de commits
                 strncpy(branches[hash_value].commit[commit_count].archivos_agregados, filename, MAX_FILE_NAME - 1);
-                branches[hash_value].commit[commit_count].archivos_agregados[MAX_FILE_NAME - 1] = '\0'; // Asegura la terminación en \0
+                branches[hash_value].commit[commit_count].archivos_agregados[MAX_FILE_NAME - 1] = '\0';
                 (*files_count)++;
                 *modificacion_flag = 1;
             }

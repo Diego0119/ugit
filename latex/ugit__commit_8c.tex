@@ -1,0 +1,30 @@
+\doxysection{src/funciones/ugit\+\_\+commit.c File Reference}
+\hypertarget{ugit__commit_8c}{}\label{ugit__commit_8c}\index{src/funciones/ugit\_commit.c@{src/funciones/ugit\_commit.c}}
+
+
+Esta funcion permite realizar un commit para manejar el historial de versiones.  
+
+
+{\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{ugit__commit_8c_a1cb4a668c4533e67d4a9588f17a95f62}\label{ugit__commit_8c_a1cb4a668c4533e67d4a9588f17a95f62} 
+void {\bfseries ugit\+\_\+commit} (char \texorpdfstring{$\ast$}{*}prompt, char \texorpdfstring{$\ast$}{*}branch\+\_\+name, \mbox{\hyperlink{structbranch}{Branch}} \texorpdfstring{$\ast$}{*}branches, int \texorpdfstring{$\ast$}{*}modificacion\+\_\+flag)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Esta funcion permite realizar un commit para manejar el historial de versiones. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & se le debe pasar el prompt del commit (mensaje que este tendra) \\
+\hline
+{\em branch\+\_\+name} & se le debe pasar el nombre de la rama para poder hashearlo dependiendo del string \\
+\hline
+{\em branches} & se le debe pasar la estructura de datos de la rama actual \\
+\hline
+{\em modificacion\+\_\+flag} & esta bandera permite saber si hay modificaciones activas, es una verificacion \\
+\hline
+\end{DoxyParams}

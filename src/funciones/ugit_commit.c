@@ -1,4 +1,13 @@
 #include "../definicion_funciones/funciones.h"
+/**
+ * @file ugit_commit.c
+ * @brief Esta funcion permite realizar un commit para manejar el historial de versiones
+ *
+ * @param prompt se le debe pasar el prompt del commit (mensaje que este tendra)
+ * @param branch_name se le debe pasar el nombre de la rama para poder hashearlo dependiendo del string
+ * @param branches se le debe pasar la estructura de datos de la rama actual
+ * @param modificacion_flag esta bandera permite saber si hay modificaciones activas, es una verificacion
+ */
 
 void ugit_commit(char *prompt, char *branch_name, Branch *branches, int *modificacion_flag)
 {

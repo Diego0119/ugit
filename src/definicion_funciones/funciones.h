@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #define MAX_INPUT_SIZE 100
 #define MAX_COMMITS 100
 #define MAX_BRANCHES 50
 #define MAX_FILES 100
 #define MAX_CONTENT 512
 #define MAX_FILE_NAME 256
-#include <string.h>
 
 void ugit_version(void);
 void commands_prompt(void);
@@ -42,8 +43,8 @@ typedef struct branch Branch;
 
 void ugit_add(char *, Branch *, char *, int *);
 void ugit_commit(char *, char *, Branch *, int *);
-void ugit_log(Branch *, int, char *);
-char ugit_branch(char *, Branch *, int *);
+void ugit_log(Branch *, char *);
+char ugit_branch(char *, Branch *);
 Branch ugit_checkout(char *, Branch *, char *);
-void ugit_init(Branch *, int *, char *, int *);
+void ugit_init(Branch *, char *, int *);
 void manejar_archivos(char *, Branch *, char *, int *, int *);

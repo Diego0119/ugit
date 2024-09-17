@@ -1,5 +1,14 @@
 #include "../definicion_funciones/funciones.h"
-
+/**
+ * @file ugit_add.c
+ * @brief Esta funcion permite añadir un archivo al area de "stagin"
+ *
+ *
+ * @param prompt se le debe pasar el prompt, el cual sera el nombre del archivo, esto para poder verificar si existe
+ * @param branches se debe pasar la estructura de datos actual para poder realizar modificaciones
+ * @param branch_name se le debe pasar el nombre de la rama actual para realizar un hash y hacer el "add" donde se debe
+ * @param modificacion_flag esta flag permite saber en que estado esta el repositorio (si hay modificaciones activas o si todo esta en "stagin")
+ */
 void ugit_add(char *prompt, Branch *branches, char *branch_name, int *modificacion_flag)
 {
     char *filename = prompt + 9;

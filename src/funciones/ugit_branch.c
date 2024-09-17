@@ -1,6 +1,13 @@
 #include "../definicion_funciones/funciones.h"
-
-char ugit_branch(char *prompt, Branch *branches, int *branches_count)
+/**
+ * @file ugit_branch.c
+ * @brief Esta funcion permite crear nuevas ramas
+ *
+ * @param prompt se le debe pasar el prompt, que sera el nombre de la nueva rama que se desea
+ * @param branches se le debe pasar la estructura de datos actual
+ * @return retornara el nombre de la nueva rama
+ */
+char ugit_branch(char *prompt, Branch *branches)
 {
     char *branch_name;
     if (strcmp(prompt, "main") == 0)
@@ -16,11 +23,9 @@ char ugit_branch(char *prompt, Branch *branches, int *branches_count)
             return *branch_name;
         }
     }
-    // genera el indice de la rama segun el nombre
+
     strncpy(branches[hash(branch_name)].nombre_rama, branch_name, MAX_INPUT_SIZE - 1);
     branches[hash(branch_name)].nombre_rama[MAX_INPUT_SIZE - 1] = '\0';
-    (*branches_count)++;
     branches[hash(branch_name)].commit_count = 0;
-    // printf("Nombre de la rama creada: %s\n", branches[*branches_count - 1].nombre_rama);
     return *branch_name;
 }

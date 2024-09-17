@@ -1,16 +1,26 @@
 #include "../definicion_funciones/funciones.h"
-
+/**
+ *
+ * @file flow_control.c
+ * @brief Esta funcion permite al usuario interactuar con ugit
+ *
+ *
+ */
 void flow_control(void)
 {
     char prompt[MAX_INPUT_SIZE];
-    Branch branches[1000];
-    int commit_count = 0;
-    int branches_count = 0;
+    Branch *branches = (Branch *)malloc(1000 * sizeof(Branch));
+    if (branches == NULL)
+    {
+        printf("Error al asignar memoria para las ramas\n");
+        exit(1);
+    }
+
     int files_count = 0;
-    int modificacion_flag = 0; // 0 falso, 1 verdadero
+    int modificacion_flag = 0;
+    int repositorio_flag = 0;
     char branch_name[MAX_INPUT_SIZE];
     strcpy(branch_name, "main");
-    int repositorio_flag = 0;
     char initial_prompt[MAX_INPUT_SIZE];
     strcpy(initial_prompt, "Shell>");
 
@@ -27,13 +37,10 @@ void flow_control(void)
         {
             prompt[len - 1] = '\0';
         }
-        // aca puedo definir un arreglo de comandos soportados,
-        // de modo que si no es ninguno de los comandos desconocidos diga que hay un error
+
         if (strcmp(prompt, "ugit init") == 0)
         {
-            ugit_init(branches, &branches_count, initial_prompt, &repositorio_flag);
-            // strcpy(initial_prompt, "ugit(main) ");
-            // initial_prompt = "ugit(main) ";
+            ugit_init(branches, initial_prompt, &repositorio_flag);
         }
         else if (strcmp(prompt, "ugit --version") == 0)
         {
@@ -41,7 +48,6 @@ void flow_control(void)
         }
         else if (strncmp(prompt, "vi", 2) == 0)
         {
-            // printf("Entro al vi con el prompt: %s\n", prompt);
             manejar_archivos(prompt, branches, branch_name, &files_count, &modificacion_flag);
         }
         else if (strncmp(prompt, "ugit add", 8) == 0)
@@ -59,7 +65,6 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                // commit_count++;
                 ugit_commit(prompt, branch_name, branches, &modificacion_flag);
             }
             else
@@ -71,7 +76,7 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                ugit_log(branches, commit_count, branch_name);
+                ugit_log(branches, branch_name);
             }
             else
             {
@@ -82,7 +87,7 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                *branch_name = ugit_branch(prompt, branches, &branches_count);
+                *branch_name = ugit_branch(prompt, branches);
             }
             else
             {
@@ -95,21 +100,20 @@ void flow_control(void)
             {
                 *branch_name = *(prompt + 14);
                 branches[hash(branch_name)] = ugit_checkout(prompt, branches, initial_prompt);
-
-                // ugit_branch_control(prompt, initial_prompt);
-                // if (ugit_checkout(prompt, branches))
-                // {
-                //     ugit_branch_control(prompt, initial_prompt);
-                // }
             }
             else
             {
                 printf("No existe esa rama, debido a que no hay un repositorio inicializado.\n");
             }
         }
+        else if (strncmp(prompt, "ugit help", 9) == 0)
+        {
+            commands_prompt();
+        }
         else
         {
             printf("Comando desconocido\n");
         }
     }
+    free(branches);
 }
