@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['hash_0',['hash',['../funciones_8h.html#a09a3b27f7245a99f34b89e8f1b6cec35',1,'hash(char *input):&#160;hash.c'],['../hash_8c.html#a7c73956d697fa203201a8c585b90ad8a',1,'hash(char *prompt):&#160;hash.c']]],
+  ['hash_0',['hash',['../funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b',1,'hash(char *input):&#160;hash.c'],['../hash_8c.html#a03b2a76165f5aac286d559c9658615b8',1,'hash(char *prompt):&#160;hash.c']]],
   ['hash_2ec_1',['hash.c',['../hash_8c.html',1,'']]]
 ];

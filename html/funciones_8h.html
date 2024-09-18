@@ -125,7 +125,7 @@ Macros</h2></td></tr>
 <tr class="memdesc:a429037098558683ea94329597757cc94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número máximo de commits por rama. <br /></td></tr>
 <tr class="separator:a429037098558683ea94329597757cc94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33d4bf0118147ac61bf7338681ef2afa" id="r_a33d4bf0118147ac61bf7338681ef2afa"><td class="memItemLeft" align="right" valign="top"><a id="a33d4bf0118147ac61bf7338681ef2afa" name="a33d4bf0118147ac61bf7338681ef2afa"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_BRANCHES</b>&#160;&#160;&#160;50</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAX_BRANCHES</b>&#160;&#160;&#160;1000</td></tr>
 <tr class="memdesc:a33d4bf0118147ac61bf7338681ef2afa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Número máximo de ramas en el repositorio. <br /></td></tr>
 <tr class="separator:a33d4bf0118147ac61bf7338681ef2afa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c5eecb22513a88c24ae5831a3265e54" id="r_a2c5eecb22513a88c24ae5831a3265e54"><td class="memItemLeft" align="right" valign="top"><a id="a2c5eecb22513a88c24ae5831a3265e54" name="a2c5eecb22513a88c24ae5831a3265e54"></a>
@@ -163,12 +163,15 @@ Functions</h2></td></tr>
 <tr class="memitem:a2f6ef867410d69ecae853596d56e3417" id="r_a2f6ef867410d69ecae853596d56e3417"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f6ef867410d69ecae853596d56e3417">flow_control</a> (void)</td></tr>
 <tr class="memdesc:a2f6ef867410d69ecae853596d56e3417"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controla el flujo de operaciones en uGit.  <br /></td></tr>
 <tr class="separator:a2f6ef867410d69ecae853596d56e3417"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09a3b27f7245a99f34b89e8f1b6cec35" id="r_a09a3b27f7245a99f34b89e8f1b6cec35"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09a3b27f7245a99f34b89e8f1b6cec35">hash</a> (char *input)</td></tr>
-<tr class="memdesc:a09a3b27f7245a99f34b89e8f1b6cec35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula el hash de una cadena de caracteres.  <br /></td></tr>
-<tr class="separator:a09a3b27f7245a99f34b89e8f1b6cec35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fa4739a855fbdd94d39373374c4a23b" id="r_a4fa4739a855fbdd94d39373374c4a23b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a> (char *input)</td></tr>
+<tr class="memdesc:a4fa4739a855fbdd94d39373374c4a23b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcula el hash de una cadena de caracteres.  <br /></td></tr>
+<tr class="separator:a4fa4739a855fbdd94d39373374c4a23b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06830cd767546a72401df9df60d02fb4" id="r_a06830cd767546a72401df9df60d02fb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a06830cd767546a72401df9df60d02fb4">ugit_branch_control</a> (char *branch_name, char *action)</td></tr>
 <tr class="memdesc:a06830cd767546a72401df9df60d02fb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controla las operaciones relacionadas con ramas.  <br /></td></tr>
 <tr class="separator:a06830cd767546a72401df9df60d02fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aedf02cc3f92d1d8075f18b48e9c1c712" id="r_aedf02cc3f92d1d8075f18b48e9c1c712"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aedf02cc3f92d1d8075f18b48e9c1c712">ugit_branch</a> (char *prompt, <a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *branches)</td></tr>
+<tr class="memdesc:aedf02cc3f92d1d8075f18b48e9c1c712"><td class="mdescLeft">&#160;</td><td class="mdescRight">Controla la creación de nuevas ramas.  <br /></td></tr>
+<tr class="separator:aedf02cc3f92d1d8075f18b48e9c1c712"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9cc744ebda3a8d2f63e0db84a0c443b" id="r_aa9cc744ebda3a8d2f63e0db84a0c443b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa9cc744ebda3a8d2f63e0db84a0c443b">ugit_add</a> (char *file_name, <a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *<a class="el" href="structbranch.html">branch</a>, char *file_content, int *file_size)</td></tr>
 <tr class="memdesc:aa9cc744ebda3a8d2f63e0db84a0c443b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Agrega un archivo al repositorio.  <br /></td></tr>
 <tr class="separator:aa9cc744ebda3a8d2f63e0db84a0c443b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -249,14 +252,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a09a3b27f7245a99f34b89e8f1b6cec35" name="a09a3b27f7245a99f34b89e8f1b6cec35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09a3b27f7245a99f34b89e8f1b6cec35">&#9670;&#160;</a></span>hash()</h2>
+<a id="a4fa4739a855fbdd94d39373374c4a23b" name="a4fa4739a855fbdd94d39373374c4a23b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fa4739a855fbdd94d39373374c4a23b">&#9670;&#160;</a></span>hash()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned long hash </td>
+          <td class="memname">int hash </td>
           <td>(</td>
           <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>prompt</em></span></td><td>)</td>
           <td></td>
@@ -415,6 +418,54 @@ Functions</h2></td></tr>
 <li>Si el comando es para añadir todos los archivos (especificado como "."), marca todos los archivos como añadidos.</li>
 </ul>
 <dl class="section note"><dt>Note</dt><dd>La función asume que el nombre del archivo está en una posición fija dentro del comando (<code>prompt + 9</code>). Asegúrese de que los comandos sean válidos y estén correctamente formateados. </dd></dl>
+
+</div>
+</div>
+<a id="aedf02cc3f92d1d8075f18b48e9c1c712" name="aedf02cc3f92d1d8075f18b48e9c1c712"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aedf02cc3f92d1d8075f18b48e9c1c712">&#9670;&#160;</a></span>ugit_branch()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ugit_branch </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>prompt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *</td>          <td class="paramname"><span class="paramname"><em>branches</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Controla la creación de nuevas ramas. </p>
+<p>Esta funcion permite crear una nueva rama.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prompt</td><td>Nombre de la nueva rama que se desa crear. </td></tr>
+    <tr><td class="paramname">branches</td><td>Puntero a la estructura, para crear una nueva rama.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Controla la creación de nuevas ramas.</p>
+<p>La función <code>ugit_branch</code> agrega una nueva rama a la estructura de datos <code>branches</code>. La función verifica si el nombre de la rama es "main", y si no, toma el nombre de la rama del comando <code>prompt</code>. Si el nombre de la rama es vacío, se muestra un mensaje de error y la función termina.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prompt</td><td>Cadena de caracteres que contiene el comando para crear una nueva rama. El nombre de la rama se extrae de esta cadena. Si el nombre de la rama es vacío, se muestra un mensaje de error. </td></tr>
+    <tr><td class="paramname">branches</td><td>Estructura de datos que contiene todas las ramas y commits. La nueva rama se agrega a esta estructura.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>No retorna ningún valor. La nueva rama se agrega directamente a la estructura <code>branches</code>.</dd></dl>
+<p>La función:</p><ul>
+<li>Compara el nombre de la rama con "main" y, si coincide, usa "main" como nombre de la rama.</li>
+<li>Si el nombre de la rama no es "main", extrae el nombre de la rama del comando <code>prompt</code> y verifica que no esté vacío.</li>
+<li>Usa <code>strncpy</code> para copiar el nombre de la nueva rama en la estructura de datos <code>branches</code>.</li>
+<li>Inicializa el contador de commits de la nueva rama en cero.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre de la rama comienza en la posición <code>prompt + 12</code> para comandos distintos a "main". Asegúrese de que los comandos sean válidos y correctamente formateados. </dd></dl>
 
 </div>
 </div>

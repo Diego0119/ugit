@@ -3,7 +3,7 @@ var searchData=
   ['ugit_0',['Tarea 1 estructura de datos (UGIT)',['../index.html',1,'']]],
   ['ugit_5fadd_1',['ugit_add',['../funciones_8h.html#aa9cc744ebda3a8d2f63e0db84a0c443b',1,'ugit_add(char *file_name, Branch *branch, char *file_content, int *file_size):&#160;ugit_add.c'],['../ugit__add_8c.html#a1fe6357c5879426b6bf9893c1398f3d1',1,'ugit_add(char *prompt, Branch *branches, char *branch_name, int *modificacion_flag):&#160;ugit_add.c']]],
   ['ugit_5fadd_2ec_2',['ugit_add.c',['../ugit__add_8c.html',1,'']]],
-  ['ugit_5fbranch_3',['ugit_branch',['../ugit__branch_8c.html#aedf02cc3f92d1d8075f18b48e9c1c712',1,'ugit_branch.c']]],
+  ['ugit_5fbranch_3',['ugit_branch',['../funciones_8h.html#aedf02cc3f92d1d8075f18b48e9c1c712',1,'ugit_branch(char *prompt, Branch *branches):&#160;ugit_branch.c'],['../ugit__branch_8c.html#aedf02cc3f92d1d8075f18b48e9c1c712',1,'ugit_branch(char *prompt, Branch *branches):&#160;ugit_branch.c']]],
   ['ugit_5fbranch_2ec_4',['ugit_branch.c',['../ugit__branch_8c.html',1,'']]],
   ['ugit_5fbranch_5fcontrol_5',['ugit_branch_control',['../funciones_8h.html#a06830cd767546a72401df9df60d02fb4',1,'ugit_branch_control(char *branch_name, char *action):&#160;ugit_branch_control.c'],['../ugit__branch__control_8c.html#a201af9ea5981f985088e946ecc1ed6f2',1,'ugit_branch_control(char *prompt, char *actual_prompt):&#160;ugit_branch_control.c']]],
   ['ugit_5fbranch_5fcontrol_2ec_6',['ugit_branch_control.c',['../ugit__branch__control_8c.html',1,'']]],
