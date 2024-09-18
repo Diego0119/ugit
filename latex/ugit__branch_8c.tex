@@ -2,28 +2,61 @@
 \hypertarget{ugit__branch_8c}{}\label{ugit__branch_8c}\index{src/funciones/ugit\_branch.c@{src/funciones/ugit\_branch.c}}
 
 
-Esta funcion permite crear nuevas ramas.  
+Permite crear nuevas ramas en el sistema de control de versiones.  
 
 
 {\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{ugit__branch_8c_a713f6f0fe38469f37170894b82522eb5}\label{ugit__branch_8c_a713f6f0fe38469f37170894b82522eb5} 
-char {\bfseries ugit\+\_\+branch} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{structbranch}{Branch}} \texorpdfstring{$\ast$}{*}branches)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{ugit__branch_8c_aedf02cc3f92d1d8075f18b48e9c1c712}{ugit\+\_\+branch}} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}branches)
+\begin{DoxyCompactList}\small\item\em Crea una nueva rama en el sistema de control de versiones. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Esta funcion permite crear nuevas ramas. 
+Permite crear nuevas ramas en el sistema de control de versiones. 
+
+Esta función se encarga de crear una nueva rama en el sistema, utilizando el nombre proporcionado en el comando {\ttfamily prompt}. Si el nombre de la rama es vacío, se muestra un mensaje de error. La nueva rama se inicializa con un contador de commits en cero.
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/09-\/17 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ugit__branch_8c_aedf02cc3f92d1d8075f18b48e9c1c712}\index{ugit\_branch.c@{ugit\_branch.c}!ugit\_branch@{ugit\_branch}}
+\index{ugit\_branch@{ugit\_branch}!ugit\_branch.c@{ugit\_branch.c}}
+\doxysubsubsection{\texorpdfstring{ugit\_branch()}{ugit\_branch()}}
+{\footnotesize\ttfamily \label{ugit__branch_8c_aedf02cc3f92d1d8075f18b48e9c1c712} 
+void ugit\+\_\+branch (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{}\end{DoxyParamCaption})}
+
+
+
+Crea una nueva rama en el sistema de control de versiones. 
+
+La función {\ttfamily ugit\+\_\+branch} agrega una nueva rama a la estructura de datos {\ttfamily branches}. La función verifica si el nombre de la rama es "{}main"{}, y si no, toma el nombre de la rama del comando {\ttfamily prompt}. Si el nombre de la rama es vacío, se muestra un mensaje de error y la función termina.
 
 
 \begin{DoxyParams}{Parameters}
-{\em prompt} & se le debe pasar el prompt, que sera el nombre de la nueva rama que se desea \\
+{\em prompt} & Cadena de caracteres que contiene el comando para crear una nueva rama. El nombre de la rama se extrae de esta cadena. Si el nombre de la rama es vacío, se muestra un mensaje de error. \\
 \hline
-{\em branches} & se le debe pasar la estructura de datos actual \\
+{\em branches} & Estructura de datos que contiene todas las ramas y commits. La nueva rama se agrega a esta estructura.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-retornara el nombre de la nueva rama 
+No retorna ningún valor. La nueva rama se agrega directamente a la estructura {\ttfamily branches}.
 \end{DoxyReturn}
+La función\+:
+\begin{DoxyItemize}
+\item Compara el nombre de la rama con "{}main"{} y, si coincide, usa "{}main"{} como nombre de la rama.
+\item Si el nombre de la rama no es "{}main"{}, extrae el nombre de la rama del comando {\ttfamily prompt} y verifica que no esté vacío.
+\item Usa {\ttfamily strncpy} para copiar el nombre de la nueva rama en la estructura de datos {\ttfamily branches}.
+\item Inicializa el contador de commits de la nueva rama en cero.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+La función asume que el nombre de la rama comienza en la posición {\ttfamily prompt + 12} para comandos distintos a "{}main"{}. Asegúrese de que los comandos sean válidos y correctamente formateados. 
+\end{DoxyNote}

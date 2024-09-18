@@ -2,30 +2,65 @@
 \hypertarget{ugit__checkout_8c}{}\label{ugit__checkout_8c}\index{src/funciones/ugit\_checkout.c@{src/funciones/ugit\_checkout.c}}
 
 
-Esta funcion permite cambiar de una rama a otra.  
+Permite cambiar de una rama a otra en el sistema de control de versiones.  
 
 
 {\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9}\label{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9} 
-\mbox{\hyperlink{structbranch}{Branch}} {\bfseries ugit\+\_\+checkout} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{structbranch}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}initial\+\_\+prompt)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \mbox{\hyperlink{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9}{ugit\+\_\+checkout}} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}initial\+\_\+prompt)
+\begin{DoxyCompactList}\small\item\em Cambia la rama actual a la rama especificada en el comando {\ttfamily prompt}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Esta funcion permite cambiar de una rama a otra. 
+Permite cambiar de una rama a otra en el sistema de control de versiones. 
+
+Esta función cambia la rama actual a la rama especificada en el comando {\ttfamily prompt}. Si la rama existe, actualiza el prompt actual para reflejar el cambio. Si la rama no existe, muestra un mensaje de error.
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/09-\/17 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9}\index{ugit\_checkout.c@{ugit\_checkout.c}!ugit\_checkout@{ugit\_checkout}}
+\index{ugit\_checkout@{ugit\_checkout}!ugit\_checkout.c@{ugit\_checkout.c}}
+\doxysubsubsection{\texorpdfstring{ugit\_checkout()}{ugit\_checkout()}}
+{\footnotesize\ttfamily \label{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9} 
+\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} ugit\+\_\+checkout (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{initial\+\_\+prompt}{}\end{DoxyParamCaption})}
+
+
+
+Cambia la rama actual a la rama especificada en el comando {\ttfamily prompt}. 
+
+Cambia a una rama específica.
+
+La función {\ttfamily ugit\+\_\+checkout} verifica si la rama especificada existe en la estructura de datos {\ttfamily branches}. Si existe, actualiza el {\ttfamily initial\+\_\+prompt} para reflejar la nueva rama y retorna la estructura de datos de la rama seleccionada. Si la rama no existe, muestra un mensaje de error y retorna la estructura de datos de la rama actual.
 
 
 \begin{DoxyParams}{Parameters}
-{\em prompt} & se le debe pasar el nombre de la rama a la cual se desea ir \\
+{\em prompt} & Cadena de caracteres que contiene el nombre de la rama a la que se desea cambiar. El nombre de la rama se extrae del comando {\ttfamily prompt}, comenzando desde el índice 14. \\
 \hline
-{\em branches} & se le debe pasar la estrucutra de datos actual de la rama \\
+{\em branches} & Estructura de datos que contiene todas las ramas. La función busca en esta estructura para verificar si la rama especificada existe. \\
 \hline
-{\em initial\+\_\+prompt} & se le debe el prompt actual para poder cambiarlo por el nuevo en el caso que la rama exista \\
+{\em initial\+\_\+prompt} & Cadena de caracteres que representa el prompt actual de la shell. Este prompt se actualiza para reflejar el nombre de la nueva rama si la rama existe.\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-retornara la estructura de datos de la rama a la cual se cambio 
+Retorna la estructura de datos de la rama a la cual se cambió. Si la rama no existe, retorna la estructura de datos de la rama actual.
 \end{DoxyReturn}
+La función realiza las siguientes operaciones\+:
+\begin{DoxyItemize}
+\item Extrae el nombre de la rama del comando {\ttfamily prompt} (comenzando en {\ttfamily prompt + 14}).
+\item Compara el nombre de la rama extraído con las ramas existentes en la estructura de datos {\ttfamily branches}.
+\item Si el nombre de la rama coincide con una rama existente, actualiza {\ttfamily initial\+\_\+prompt} con el nuevo nombre de la rama y retorna la estructura de datos correspondiente a esa rama.
+\item Si el nombre de la rama no coincide con ninguna rama existente, muestra un mensaje de error y retorna la estructura de datos de la rama actual.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Asegúrese de que el comando {\ttfamily prompt} esté correctamente formateado y contenga el nombre de la rama en la posición correcta (a partir de {\ttfamily prompt + 14}). 
+\end{DoxyNote}

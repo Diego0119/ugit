@@ -94,28 +94,69 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Esta funcion permite cambiar de una rama a otra.  
+<p>Permite cambiar de una rama a otra en el sistema de control de versiones.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;../definicion_funciones/funciones.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="funciones_8h_source.html">../definicion_funciones/funciones.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4d2476cb833f822aa73fc8eaacc4d4a9" id="r_a4d2476cb833f822aa73fc8eaacc4d4a9"><td class="memItemLeft" align="right" valign="top"><a id="a4d2476cb833f822aa73fc8eaacc4d4a9" name="a4d2476cb833f822aa73fc8eaacc4d4a9"></a>
-<a class="el" href="structbranch.html">Branch</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ugit_checkout</b> (char *prompt, <a class="el" href="structbranch.html">Branch</a> *branches, char *initial_prompt)</td></tr>
+<tr class="memitem:a4d2476cb833f822aa73fc8eaacc4d4a9" id="r_a4d2476cb833f822aa73fc8eaacc4d4a9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d2476cb833f822aa73fc8eaacc4d4a9">ugit_checkout</a> (char *prompt, <a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a> *branches, char *initial_prompt)</td></tr>
+<tr class="memdesc:a4d2476cb833f822aa73fc8eaacc4d4a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia la rama actual a la rama especificada en el comando <code>prompt</code>.  <br /></td></tr>
 <tr class="separator:a4d2476cb833f822aa73fc8eaacc4d4a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Esta funcion permite cambiar de una rama a otra. </p>
+<div class="textblock"><p>Permite cambiar de una rama a otra en el sistema de control de versiones. </p>
+<p>Esta función cambia la rama actual a la rama especificada en el comando <code>prompt</code>. Si la rama existe, actualiza el prompt actual para reflejar el cambio. Si la rama no existe, muestra un mensaje de error.</p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024-09-17 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a4d2476cb833f822aa73fc8eaacc4d4a9" name="a4d2476cb833f822aa73fc8eaacc4d4a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d2476cb833f822aa73fc8eaacc4d4a9">&#9670;&#160;</a></span>ugit_checkout()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a> ugit_checkout </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>prompt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a> *</td>          <td class="paramname"><span class="paramname"><em>branches</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>initial_prompt</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Cambia la rama actual a la rama especificada en el comando <code>prompt</code>. </p>
+<p>Cambia a una rama específica.</p>
+<p>La función <code>ugit_checkout</code> verifica si la rama especificada existe en la estructura de datos <code>branches</code>. Si existe, actualiza el <code>initial_prompt</code> para reflejar la nueva rama y retorna la estructura de datos de la rama seleccionada. Si la rama no existe, muestra un mensaje de error y retorna la estructura de datos de la rama actual.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">prompt</td><td>se le debe pasar el nombre de la rama a la cual se desea ir </td></tr>
-    <tr><td class="paramname">branches</td><td>se le debe pasar la estrucutra de datos actual de la rama </td></tr>
-    <tr><td class="paramname">initial_prompt</td><td>se le debe el prompt actual para poder cambiarlo por el nuevo en el caso que la rama exista </td></tr>
+    <tr><td class="paramname">prompt</td><td>Cadena de caracteres que contiene el nombre de la rama a la que se desea cambiar. El nombre de la rama se extrae del comando <code>prompt</code>, comenzando desde el índice 14. </td></tr>
+    <tr><td class="paramname">branches</td><td>Estructura de datos que contiene todas las ramas. La función busca en esta estructura para verificar si la rama especificada existe. </td></tr>
+    <tr><td class="paramname">initial_prompt</td><td>Cadena de caracteres que representa el prompt actual de la shell. Este prompt se actualiza para reflejar el nombre de la nueva rama si la rama existe.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>retornara la estructura de datos de la rama a la cual se cambio </dd></dl>
-</div></div><!-- contents -->
+<dl class="section return"><dt>Returns</dt><dd>Retorna la estructura de datos de la rama a la cual se cambió. Si la rama no existe, retorna la estructura de datos de la rama actual.</dd></dl>
+<p>La función realiza las siguientes operaciones:</p><ul>
+<li>Extrae el nombre de la rama del comando <code>prompt</code> (comenzando en <code>prompt + 14</code>).</li>
+<li>Compara el nombre de la rama extraído con las ramas existentes en la estructura de datos <code>branches</code>.</li>
+<li>Si el nombre de la rama coincide con una rama existente, actualiza <code>initial_prompt</code> con el nuevo nombre de la rama y retorna la estructura de datos correspondiente a esa rama.</li>
+<li>Si el nombre de la rama no coincide con ninguna rama existente, muestra un mensaje de error y retorna la estructura de datos de la rama actual.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Asegúrese de que el comando <code>prompt</code> esté correctamente formateado y contenga el nombre de la rama en la posición correcta (a partir de <code>prompt + 14</code>). </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0

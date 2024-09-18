@@ -1,0 +1,54 @@
+\doxysection{src/funciones/hash.c File Reference}
+\hypertarget{hash_8c}{}\label{hash_8c}\index{src/funciones/hash.c@{src/funciones/hash.c}}
+
+
+Implementación de la función de hashing para el sistema u\+Git.  
+
+
+{\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned long \mbox{\hyperlink{hash_8c_a7c73956d697fa203201a8c585b90ad8a}{hash}} (char \texorpdfstring{$\ast$}{*}prompt)
+\begin{DoxyCompactList}\small\item\em Calcula un valor de hash para una cadena de caracteres. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementación de la función de hashing para el sistema u\+Git. 
+
+Este archivo contiene la implementación de la función {\ttfamily hash}, que calcula un valor de hash para un string dado. El valor de hash se utiliza para identificar de manera única elementos como commits en el sistema de control de versiones u\+Git. La función también asegura que el hash generado sea único dentro de un rango limitado, ajustándolo si es necesario.
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/09-\/17 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{hash_8c_a7c73956d697fa203201a8c585b90ad8a}\index{hash.c@{hash.c}!hash@{hash}}
+\index{hash@{hash}!hash.c@{hash.c}}
+\doxysubsubsection{\texorpdfstring{hash()}{hash()}}
+{\footnotesize\ttfamily \label{hash_8c_a7c73956d697fa203201a8c585b90ad8a} 
+unsigned long hash (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{}\end{DoxyParamCaption})}
+
+
+
+Calcula un valor de hash para una cadena de caracteres. 
+
+Calcula el hash de una cadena de caracteres.
+
+La función {\ttfamily hash} toma una cadena de caracteres como entrada y calcula un valor de hash utilizando la suma de los valores ASCII de los caracteres de la cadena, seguida de una operación de módulo para limitar el rango del hash. Si el hash generado ya ha sido entregado, se ajusta el valor de hash incrementándolo en uno para asegurar la unicidad.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & Cadena de caracteres para la cual se calculará el valor de hash. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Un valor de hash único basado en la entrada proporcionada.
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+La función mantiene un registro de los hashes generados en el array {\ttfamily hashes\+\_\+entregados} para evitar duplicados dentro de un rango limitado de hashes. 
+\end{DoxyNote}

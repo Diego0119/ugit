@@ -2,29 +2,68 @@
 \hypertarget{ugit__commit_8c}{}\label{ugit__commit_8c}\index{src/funciones/ugit\_commit.c@{src/funciones/ugit\_commit.c}}
 
 
-Esta funcion permite realizar un commit para manejar el historial de versiones.  
+Permite realizar un commit para manejar el historial de versiones en el sistema de control de versiones.  
 
 
 {\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{ugit__commit_8c_a1cb4a668c4533e67d4a9588f17a95f62}\label{ugit__commit_8c_a1cb4a668c4533e67d4a9588f17a95f62} 
-void {\bfseries ugit\+\_\+commit} (char \texorpdfstring{$\ast$}{*}prompt, char \texorpdfstring{$\ast$}{*}branch\+\_\+name, \mbox{\hyperlink{structbranch}{Branch}} \texorpdfstring{$\ast$}{*}branches, int \texorpdfstring{$\ast$}{*}modificacion\+\_\+flag)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{ugit__commit_8c_a1cb4a668c4533e67d4a9588f17a95f62}{ugit\+\_\+commit}} (char \texorpdfstring{$\ast$}{*}prompt, char \texorpdfstring{$\ast$}{*}branch\+\_\+name, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}branches, int \texorpdfstring{$\ast$}{*}modificacion\+\_\+flag)
+\begin{DoxyCompactList}\small\item\em Realiza un commit para manejar el historial de versiones. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Esta funcion permite realizar un commit para manejar el historial de versiones. 
+Permite realizar un commit para manejar el historial de versiones en el sistema de control de versiones. 
+
+Esta función realiza un commit en la rama actual del sistema de control de versiones. Un commit registra los cambios en el historial de versiones con un mensaje descriptivo. La función verifica que se hayan añadido archivos y que el mensaje de commit no esté vacío antes de proceder con el commit.
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/09-\/17 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ugit__commit_8c_a1cb4a668c4533e67d4a9588f17a95f62}\index{ugit\_commit.c@{ugit\_commit.c}!ugit\_commit@{ugit\_commit}}
+\index{ugit\_commit@{ugit\_commit}!ugit\_commit.c@{ugit\_commit.c}}
+\doxysubsubsection{\texorpdfstring{ugit\_commit()}{ugit\_commit()}}
+{\footnotesize\ttfamily \label{ugit__commit_8c_a1cb4a668c4533e67d4a9588f17a95f62} 
+void ugit\+\_\+commit (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{branch\+\_\+name}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{modificacion\+\_\+flag}{}\end{DoxyParamCaption})}
+
+
+
+Realiza un commit para manejar el historial de versiones. 
+
+Crea un nuevo commit.
+
+La función {\ttfamily ugit\+\_\+commit} agrega un nuevo commit al historial de versiones en la rama especificada. Verifica que se hayan añadido archivos y que el mensaje de commit no esté vacío antes de proceder. Si todo es correcto, se actualiza el historial de commits de la rama actual y se restablece la bandera de modificaciones.
 
 
 \begin{DoxyParams}{Parameters}
-{\em prompt} & se le debe pasar el prompt del commit (mensaje que este tendra) \\
+{\em prompt} & Cadena de caracteres que contiene el mensaje del commit. El mensaje se extrae del comando {\ttfamily prompt}, comenzando desde el índice 11. \\
 \hline
-{\em branch\+\_\+name} & se le debe pasar el nombre de la rama para poder hashearlo dependiendo del string \\
+{\em branch\+\_\+name} & Cadena de caracteres que representa el nombre de la rama en la que se realiza el commit. \\
 \hline
-{\em branches} & se le debe pasar la estructura de datos de la rama actual \\
+{\em branches} & Estructura de datos que contiene todas las ramas y sus respectivos historiales de commits. La función actualiza el historial de commits de la rama especificada. \\
 \hline
-{\em modificacion\+\_\+flag} & esta bandera permite saber si hay modificaciones activas, es una verificacion \\
+{\em modificacion\+\_\+flag} & Bandera que indica si hay cambios no añadidos. La función verifica esta bandera para asegurarse de que todos los cambios se hayan añadido antes de realizar el commit.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+No retorna ningún valor.
+\end{DoxyReturn}
+La función realiza las siguientes operaciones\+:
+\begin{DoxyItemize}
+\item Extrae el mensaje del commit del comando {\ttfamily prompt} (comenzando en {\ttfamily prompt + 11}).
+\item Verifica si hay archivos añadidos y si el mensaje del commit no está vacío.
+\item Verifica si la bandera de modificaciones está activada (indicando que hay cambios no añadidos).
+\item Si todas las condiciones son correctas, actualiza el historial de commits de la rama actual con el mensaje del commit y el hash generado para el commit.
+\item Incrementa el contador de commits en la rama actual y restablece la bandera de modificaciones a 0.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Asegúrese de que el comando {\ttfamily prompt} esté correctamente formateado y contenga el mensaje del commit en la posición correcta (a partir de {\ttfamily prompt + 11}). 
+\end{DoxyNote}

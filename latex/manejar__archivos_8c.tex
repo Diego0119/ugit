@@ -2,31 +2,67 @@
 \hypertarget{manejar__archivos_8c}{}\label{manejar__archivos_8c}\index{src/funciones/manejar\_archivos.c@{src/funciones/manejar\_archivos.c}}
 
 
-Esta funcion permite modificar y crear archivos desde la shell de ugit.  
+Permite modificar y crear archivos desde la shell de u\+Git.  
 
 
 {\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{manejar__archivos_8c_a754ccd19a411918c7cfd4d417e81e76c}\label{manejar__archivos_8c_a754ccd19a411918c7cfd4d417e81e76c} 
-void {\bfseries manejar\+\_\+archivos} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{structbranch}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}branch\+\_\+name, int \texorpdfstring{$\ast$}{*}files\+\_\+count, int \texorpdfstring{$\ast$}{*}modificacion\+\_\+flag)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{manejar__archivos_8c_a754ccd19a411918c7cfd4d417e81e76c}{manejar\+\_\+archivos}} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}branch\+\_\+name, int \texorpdfstring{$\ast$}{*}files\+\_\+count, int \texorpdfstring{$\ast$}{*}modificacion\+\_\+flag)
+\begin{DoxyCompactList}\small\item\em Modifica o crea un archivo basado en el comando proporcionado. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Esta funcion permite modificar y crear archivos desde la shell de ugit. 
+Permite modificar y crear archivos desde la shell de u\+Git. 
+
+Este archivo contiene la implementación de la función {\ttfamily manejar\+\_\+archivos}, que gestiona la creación y modificación de archivos dentro del sistema de control de versiones u\+Git. Dependiendo del comando proporcionado, la función puede agregar contenido a un archivo existente o crear un nuevo archivo si no existe.
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/09-\/17 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{manejar__archivos_8c_a754ccd19a411918c7cfd4d417e81e76c}\index{manejar\_archivos.c@{manejar\_archivos.c}!manejar\_archivos@{manejar\_archivos}}
+\index{manejar\_archivos@{manejar\_archivos}!manejar\_archivos.c@{manejar\_archivos.c}}
+\doxysubsubsection{\texorpdfstring{manejar\_archivos()}{manejar\_archivos()}}
+{\footnotesize\ttfamily \label{manejar__archivos_8c_a754ccd19a411918c7cfd4d417e81e76c} 
+void manejar\+\_\+archivos (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{branch\+\_\+name}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{files\+\_\+count}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{modificacion\+\_\+flag}{}\end{DoxyParamCaption})}
+
+
+
+Modifica o crea un archivo basado en el comando proporcionado. 
+
+Maneja archivos en el repositorio.
+
+La función {\ttfamily manejar\+\_\+archivos} procesa un comando para manejar archivos dentro del repositorio. Si el archivo especificado en el comando ya existe, la función permite agregar contenido adicional al archivo o modificar el existente. Si el archivo no existe, se crea un nuevo archivo y se le agrega el contenido inicial proporcionado por el usuario.
 
 
 \begin{DoxyParams}{Parameters}
-{\em prompt} & se le debe pasar por parametro el prompt para obtener el nombre del archivo \\
+{\em prompt} & Cadena de caracteres que contiene el comando, incluyendo el nombre del archivo a manejar. \\
 \hline
-{\em branches} & se le debe pasar la estructura de datos actual para guardar el archivo \\
+{\em branches} & Array de estructuras {\ttfamily Branch} que representa el estado actual de las ramas y commits. \\
 \hline
-{\em branch\+\_\+name} & se le debe pasar el nombre de la rama para poder realizar un hash con ese string \\
+{\em branch\+\_\+name} & Nombre de la rama actual, usado para calcular el hash del archivo y verificar en qué commit está. \\
 \hline
-{\em files\+\_\+count} & se le debe para el numero de archivos acumulados \\
+{\em files\+\_\+count} & Puntero a un entero que lleva el conteo de archivos acumulados en el repositorio. \\
 \hline
-{\em modificacion\+\_\+flag} & este parametro es una flag que dependiendo de su valor (0 o 1) indica verdadero o falso, sirve para saber si hay modificaciones activas \\
+{\em modificacion\+\_\+flag} & Puntero a un entero que indica si hay modificaciones activas (1) o no (0).\\
 \hline
 \end{DoxyParams}
+La función\+:
+\begin{DoxyItemize}
+\item Asigna memoria para el nombre del archivo basado en el comando proporcionado.
+\item Verifica si el archivo ya existe en el repositorio.
+\item Si el archivo existe, permite al usuario agregar contenido adicional o modificar el existente.
+\item Si el archivo no existe, lo crea y agrega el contenido inicial proporcionado por el usuario.
+\item Actualiza la estructura de datos del commit y la bandera de modificación según corresponda.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+La función utiliza memoria dinámica para almacenar el nombre del archivo y el contenido. Asegúrese de liberar esta memoria después de su uso para evitar fugas de memoria. 
+\end{DoxyNote}

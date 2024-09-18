@@ -2,25 +2,71 @@
 \hypertarget{ugit__log_8c}{}\label{ugit__log_8c}\index{src/funciones/ugit\_log.c@{src/funciones/ugit\_log.c}}
 
 
-Esta funcion permite ver el log de commits realizados en la rama.  
+Permite visualizar el historial de commits realizados en una rama específica.  
 
 
 {\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{ugit__log_8c_ab91fbec0da55bb100ef8f7c80c64a93b}\label{ugit__log_8c_ab91fbec0da55bb100ef8f7c80c64a93b} 
-void {\bfseries ugit\+\_\+log} (\mbox{\hyperlink{structbranch}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}branch\+\_\+name)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{ugit__log_8c_a6e92e55b7b84fdb4e2c3b39c7a4bf07f}{ugit\+\_\+log}} (\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}branch\+\_\+name, char \texorpdfstring{$\ast$}{*}user\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Muestra el historial de commits de una rama. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
-Esta funcion permite ver el log de commits realizados en la rama. 
+Permite visualizar el historial de commits realizados en una rama específica. 
+
+Esta función muestra el historial de commits realizados en la rama actual del sistema de control de versiones {\ttfamily u\+Git}. Imprime detalles de cada commit, incluyendo el autor, el hash del commit y la descripción asociada.
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/09-\/17 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ugit__log_8c_a6e92e55b7b84fdb4e2c3b39c7a4bf07f}\index{ugit\_log.c@{ugit\_log.c}!ugit\_log@{ugit\_log}}
+\index{ugit\_log@{ugit\_log}!ugit\_log.c@{ugit\_log.c}}
+\doxysubsubsection{\texorpdfstring{ugit\_log()}{ugit\_log()}}
+{\footnotesize\ttfamily \label{ugit__log_8c_a6e92e55b7b84fdb4e2c3b39c7a4bf07f} 
+void ugit\+\_\+log (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{branch\+\_\+name}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{user\+\_\+name}{}\end{DoxyParamCaption})}
+
+
+
+Muestra el historial de commits de una rama. 
+
+Muestra el historial de commits.
+
+La función {\ttfamily ugit\+\_\+log} imprime el historial de commits de la rama especificada. Muestra información sobre cada commit, incluyendo el autor (nombre del usuario), el hash del commit y la descripción del commit.
 
 
 \begin{DoxyParams}{Parameters}
-{\em branches} & se le debe pasar la estructura de datos actual de la rama \\
+{\em branches} & Estructura de datos que contiene todas las ramas del repositorio. La función accede a la rama especificada por {\ttfamily branch\+\_\+name} para obtener el historial de commits. \\
 \hline
-{\em branch\+\_\+name} & se le debe pasar el nombre de la rama actual para obtener el hash y buscarlo \\
+{\em branch\+\_\+name} & Cadena de caracteres que representa el nombre de la rama actual para la cual se desea ver el historial de commits. La función utiliza este nombre para buscar los commits en la estructura de datos. \\
+\hline
+{\em user\+\_\+name} & Cadena de caracteres que representa el nombre del autor de los commits. Este nombre se imprime junto con los detalles de cada commit.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+No devuelve ningún valor. La función imprime el historial de commits en la salida estándar.
+\end{DoxyReturn}
+La función realiza las siguientes operaciones\+:
+\begin{DoxyItemize}
+\item Obtiene el número total de commits en la rama especificada utilizando el contador de commits en la estructura de datos {\ttfamily branches}.
+\item Imprime una línea separadora para mejorar la legibilidad de la salida.
+\item Si hay commits disponibles ({\ttfamily commit\+\_\+count \texorpdfstring{$>$}{>} 0}), itera a través de cada commit e imprime\+:
+\begin{DoxyItemize}
+\item El nombre del autor del commit ({\ttfamily user\+\_\+name}).
+\item El hash del commit.
+\item La descripción del commit.
+\item Una línea separadora después de cada commit para facilitar la lectura.
+\end{DoxyItemize}
+\item Si no hay commits disponibles, imprime un mensaje indicando que no hay commits.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+Asegúrese de que el nombre del usuario ({\ttfamily user\+\_\+name}) esté correctamente inicializado antes de llamar a esta función. La salida de la función está en formato de texto y es adecuada para la visualización en la consola. 
+\end{DoxyNote}

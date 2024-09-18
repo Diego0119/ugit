@@ -1,56 +1,57 @@
 \doxysection{funciones.\+h}
 \hypertarget{funciones_8h_source}{}\label{funciones_8h_source}\index{src/definicion\_funciones/funciones.h@{src/definicion\_funciones/funciones.h}}
-
+\mbox{\hyperlink{funciones_8h}{Go to the documentation of this file.}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
-\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string.h>}}
-\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
-\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#define\ MAX\_INPUT\_SIZE\ 100}}
-\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#define\ MAX\_COMMITS\ 100}}
-\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ MAX\_BRANCHES\ 50}}
-\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#define\ MAX\_FILES\ 100}}
-\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ MAX\_CONTENT\ 512}}
-\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ MAX\_FILE\_NAME\ 256}}
-\DoxyCodeLine{00010\ }
-\DoxyCodeLine{00011\ \textcolor{keywordtype}{void}\ ugit\_version(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00012\ \textcolor{keywordtype}{void}\ commands\_prompt(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00013\ \textcolor{keywordtype}{void}\ flow\_control(\textcolor{keywordtype}{void});}
-\DoxyCodeLine{00014\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ hash(\textcolor{keywordtype}{char}\ *);}
-\DoxyCodeLine{00015\ \textcolor{keywordtype}{void}\ ugit\_branch\_control(\textcolor{keywordtype}{char}\ *,\ \textcolor{keywordtype}{char}\ *);}
-\DoxyCodeLine{00016\ }
-\DoxyCodeLine{00017\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfile}{file}}}
-\DoxyCodeLine{00018\ \{}
-\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keywordtype}{char}\ nombre\_archivo[MAX\_FILE\_NAME];}
-\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{int}\ hash\_archivo;}
-\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{char}\ contenido[MAX\_CONTENT];}
-\DoxyCodeLine{00022\ \};}
-\DoxyCodeLine{00023\ }
-\DoxyCodeLine{00024\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structfile}{file}}\ \mbox{\hyperlink{structfile}{File}};}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ MAX\_INPUT\_SIZE\ 100\ }}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#define\ MAX\_COMMITS\ 100\ \ \ \ }}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#define\ MAX\_BRANCHES\ 50\ \ \ \ }}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ MAX\_FILES\ 100\ \ \ \ \ \ }}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ MAX\_CONTENT\ 512\ \ \ \ }}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ MAX\_FILE\_NAME\ 256\ \ }}
 \DoxyCodeLine{00025\ }
-\DoxyCodeLine{00026\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcommit}{commit}}}
-\DoxyCodeLine{00027\ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{char}\ descripcion\_commit[MAX\_INPUT\_SIZE];}
-\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{long}\ commit\_hash;}
-\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{char}\ archivos\_agregados[MAX\_FILE\_NAME];}
-\DoxyCodeLine{00031\ \};}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcommit}{commit}}\ \mbox{\hyperlink{structcommit}{Commit}};}
-\DoxyCodeLine{00034\ }
-\DoxyCodeLine{00035\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbranch}{branch}}}
-\DoxyCodeLine{00036\ \{}
-\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{char}\ nombre\_rama[MAX\_INPUT\_SIZE];}
-\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{structcommit}{Commit}}\ \mbox{\hyperlink{structcommit}{commit}}[MAX\_COMMITS];}
-\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ commit\_count;}
-\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00033\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcommit}{commit}}}
+\DoxyCodeLine{00034\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structcommit_ad3770dc7fbf0647feb252563e865c47a}{descripcion\_commit}}[\mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}];\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{structcommit_a001b1af1be04cab68e73d6a2845edd75}{commit\_hash}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structcommit_a5565fadc9f19e80ca68789255939d1e3}{archivos\_agregados}}[\mbox{\hyperlink{funciones_8h_af43dedece15d018ffad8970492870bac}{MAX\_FILE\_NAME}}];\ \ }
+\DoxyCodeLine{00038\ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structcommit}{commit}}\ \mbox{\hyperlink{structcommit}{Commit}};\ }
 \DoxyCodeLine{00041\ }
-\DoxyCodeLine{00042\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbranch}{branch}}\ \mbox{\hyperlink{structbranch}{Branch}};}
-\DoxyCodeLine{00043\ }
-\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ ugit\_add(\textcolor{keywordtype}{char}\ *,\ \mbox{\hyperlink{structbranch}{Branch}}\ *,\ \textcolor{keywordtype}{char}\ *,\ \textcolor{keywordtype}{int}\ *);}
-\DoxyCodeLine{00045\ \textcolor{keywordtype}{void}\ ugit\_commit(\textcolor{keywordtype}{char}\ *,\ \textcolor{keywordtype}{char}\ *,\ \mbox{\hyperlink{structbranch}{Branch}}\ *,\ \textcolor{keywordtype}{int}\ *);}
-\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ ugit\_log(\mbox{\hyperlink{structbranch}{Branch}}\ *,\ \textcolor{keywordtype}{char}\ *);}
-\DoxyCodeLine{00047\ \textcolor{keywordtype}{char}\ ugit\_branch(\textcolor{keywordtype}{char}\ *,\ \mbox{\hyperlink{structbranch}{Branch}}\ *);}
-\DoxyCodeLine{00048\ \mbox{\hyperlink{structbranch}{Branch}}\ ugit\_checkout(\textcolor{keywordtype}{char}\ *,\ \mbox{\hyperlink{structbranch}{Branch}}\ *,\ \textcolor{keywordtype}{char}\ *);}
-\DoxyCodeLine{00049\ \textcolor{keywordtype}{void}\ ugit\_init(\mbox{\hyperlink{structbranch}{Branch}}\ *,\ \textcolor{keywordtype}{char}\ *,\ \textcolor{keywordtype}{int}\ *);}
-\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ manejar\_archivos(\textcolor{keywordtype}{char}\ *,\ \mbox{\hyperlink{structbranch}{Branch}}\ *,\ \textcolor{keywordtype}{char}\ *,\ \textcolor{keywordtype}{int}\ *,\ \textcolor{keywordtype}{int}\ *);}
+\DoxyCodeLine{00049\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbranch}{branch}}}
+\DoxyCodeLine{00050\ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structbranch_a3cd787da48830c5cc398350d6d694577}{nombre\_rama}}[\mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}];\ }
+\DoxyCodeLine{00052\ \ \ \ \ \mbox{\hyperlink{structcommit}{Commit}}\ \mbox{\hyperlink{structcommit}{commit}}[\mbox{\hyperlink{funciones_8h_a429037098558683ea94329597757cc94}{MAX\_COMMITS}}];\ \ \ \ \ \ \ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00054\ \};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structbranch}{branch}}\ \mbox{\hyperlink{structbranch}{Branch}};\ }
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a820d6168e675a87bd1ab4c7ecd2e03d3}{ugit\_version}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00070\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a6109b0a539ffbffa9bcc8199388ffcfd}{commands\_prompt}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00078\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a2f6ef867410d69ecae853596d56e3417}{flow\_control}}(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00089\ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{long}\ \mbox{\hyperlink{funciones_8h_a09a3b27f7245a99f34b89e8f1b6cec35}{hash}}(\textcolor{keywordtype}{char}\ *input);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00099\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a06830cd767546a72401df9df60d02fb4}{ugit\_branch\_control}}(\textcolor{keywordtype}{char}\ *branch\_name,\ \textcolor{keywordtype}{char}\ *action);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00112\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_aa9cc744ebda3a8d2f63e0db84a0c443b}{ugit\_add}}(\textcolor{keywordtype}{char}\ *file\_name,\ \mbox{\hyperlink{structbranch}{Branch}}\ *\mbox{\hyperlink{structbranch}{branch}},\ \textcolor{keywordtype}{char}\ *file\_content,\ \textcolor{keywordtype}{int}\ *file\_size);}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00125\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a5bf5993921eb5ddfe7c322e3c163ab9d}{ugit\_commit}}(\textcolor{keywordtype}{char}\ *message,\ \textcolor{keywordtype}{char}\ *author,\ \mbox{\hyperlink{structbranch}{Branch}}\ *\mbox{\hyperlink{structbranch}{branch}},\ \textcolor{keywordtype}{int}\ *\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}});}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00136\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a281fc471db5bf4a7d9061a4f1f5dd2fd}{ugit\_log}}(\mbox{\hyperlink{structbranch}{Branch}}\ *\mbox{\hyperlink{structbranch}{branch}},\ \textcolor{keywordtype}{char}\ *start\_date,\ \textcolor{keywordtype}{char}\ *end\_date);}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00148\ \mbox{\hyperlink{structbranch}{Branch}}\ \mbox{\hyperlink{funciones_8h_ab944edd958bf224e11ab96b8b3cfb164}{ugit\_checkout}}(\textcolor{keywordtype}{char}\ *branch\_name,\ \mbox{\hyperlink{structbranch}{Branch}}\ *\mbox{\hyperlink{structbranch}{branch}},\ \textcolor{keywordtype}{char}\ *action);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00161\ \textcolor{keywordtype}{char}\ *\mbox{\hyperlink{funciones_8h_a09ccf8afffab02354c1e2d40060f638b}{ugit\_init}}(\mbox{\hyperlink{structbranch}{Branch}}\ *\mbox{\hyperlink{structbranch}{branch}},\ \textcolor{keywordtype}{char}\ *repo\_path,\ \textcolor{keywordtype}{int}\ *branch\_count);}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00176\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a2f501f30e352ed2bcecac7ccf87e9f4a}{manejar\_archivos}}(\textcolor{keywordtype}{char}\ *file\_name,\ \mbox{\hyperlink{structbranch}{Branch}}\ *\mbox{\hyperlink{structbranch}{branch}},\ \textcolor{keywordtype}{char}\ *file\_content,\ \textcolor{keywordtype}{int}\ *file\_size,\ \textcolor{keywordtype}{int}\ *action);}
 
 \end{DoxyCode}

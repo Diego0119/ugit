@@ -94,28 +94,76 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Esta funcion permite realizar un commit para manejar el historial de versiones.  
+<p>Permite realizar un commit para manejar el historial de versiones en el sistema de control de versiones.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;../definicion_funciones/funciones.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="funciones_8h_source.html">../definicion_funciones/funciones.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1cb4a668c4533e67d4a9588f17a95f62" id="r_a1cb4a668c4533e67d4a9588f17a95f62"><td class="memItemLeft" align="right" valign="top"><a id="a1cb4a668c4533e67d4a9588f17a95f62" name="a1cb4a668c4533e67d4a9588f17a95f62"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ugit_commit</b> (char *prompt, char *branch_name, <a class="el" href="structbranch.html">Branch</a> *branches, int *modificacion_flag)</td></tr>
+<tr class="memitem:a1cb4a668c4533e67d4a9588f17a95f62" id="r_a1cb4a668c4533e67d4a9588f17a95f62"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1cb4a668c4533e67d4a9588f17a95f62">ugit_commit</a> (char *prompt, char *branch_name, <a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a> *branches, int *modificacion_flag)</td></tr>
+<tr class="memdesc:a1cb4a668c4533e67d4a9588f17a95f62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Realiza un commit para manejar el historial de versiones.  <br /></td></tr>
 <tr class="separator:a1cb4a668c4533e67d4a9588f17a95f62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Esta funcion permite realizar un commit para manejar el historial de versiones. </p>
+<div class="textblock"><p>Permite realizar un commit para manejar el historial de versiones en el sistema de control de versiones. </p>
+<p>Esta función realiza un commit en la rama actual del sistema de control de versiones. Un commit registra los cambios en el historial de versiones con un mensaje descriptivo. La función verifica que se hayan añadido archivos y que el mensaje de commit no esté vacío antes de proceder con el commit.</p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024-09-17 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a1cb4a668c4533e67d4a9588f17a95f62" name="a1cb4a668c4533e67d4a9588f17a95f62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1cb4a668c4533e67d4a9588f17a95f62">&#9670;&#160;</a></span>ugit_commit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ugit_commit </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>prompt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>branch_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a> *</td>          <td class="paramname"><span class="paramname"><em>branches</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>modificacion_flag</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Realiza un commit para manejar el historial de versiones. </p>
+<p>Crea un nuevo commit.</p>
+<p>La función <code>ugit_commit</code> agrega un nuevo commit al historial de versiones en la rama especificada. Verifica que se hayan añadido archivos y que el mensaje de commit no esté vacío antes de proceder. Si todo es correcto, se actualiza el historial de commits de la rama actual y se restablece la bandera de modificaciones.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">prompt</td><td>se le debe pasar el prompt del commit (mensaje que este tendra) </td></tr>
-    <tr><td class="paramname">branch_name</td><td>se le debe pasar el nombre de la rama para poder hashearlo dependiendo del string </td></tr>
-    <tr><td class="paramname">branches</td><td>se le debe pasar la estructura de datos de la rama actual </td></tr>
-    <tr><td class="paramname">modificacion_flag</td><td>esta bandera permite saber si hay modificaciones activas, es una verificacion </td></tr>
+    <tr><td class="paramname">prompt</td><td>Cadena de caracteres que contiene el mensaje del commit. El mensaje se extrae del comando <code>prompt</code>, comenzando desde el índice 11. </td></tr>
+    <tr><td class="paramname">branch_name</td><td>Cadena de caracteres que representa el nombre de la rama en la que se realiza el commit. </td></tr>
+    <tr><td class="paramname">branches</td><td>Estructura de datos que contiene todas las ramas y sus respectivos historiales de commits. La función actualiza el historial de commits de la rama especificada. </td></tr>
+    <tr><td class="paramname">modificacion_flag</td><td>Bandera que indica si hay cambios no añadidos. La función verifica esta bandera para asegurarse de que todos los cambios se hayan añadido antes de realizar el commit.</td></tr>
   </table>
   </dd>
 </dl>
-</div></div><!-- contents -->
+<dl class="section return"><dt>Returns</dt><dd>No retorna ningún valor.</dd></dl>
+<p>La función realiza las siguientes operaciones:</p><ul>
+<li>Extrae el mensaje del commit del comando <code>prompt</code> (comenzando en <code>prompt + 11</code>).</li>
+<li>Verifica si hay archivos añadidos y si el mensaje del commit no está vacío.</li>
+<li>Verifica si la bandera de modificaciones está activada (indicando que hay cambios no añadidos).</li>
+<li>Si todas las condiciones son correctas, actualiza el historial de commits de la rama actual con el mensaje del commit y el hash generado para el commit.</li>
+<li>Incrementa el contador de commits en la rama actual y restablece la bandera de modificaciones a 0.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Asegúrese de que el comando <code>prompt</code> esté correctamente formateado y contenga el mensaje del commit en la posición correcta (a partir de <code>prompt + 11</code>). </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0

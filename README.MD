@@ -1,6 +1,6 @@
-mGit (ugit) 🛠️
+uGit (ugit) 🛠️
 
-mGit (ugit) es un simulador de un sistema de control de versiones que emula funcionalidades básicas de Git. Este proyecto está diseñado para proporcionar una experiencia práctica en la manipulación de estructuras de datos como arreglos y tablas hash en el lenguaje C.
+uGit (ugit) es un simulador de un sistema de control de versiones que emula funcionalidades básicas de Git. Este proyecto está diseñado para proporcionar una experiencia práctica en la manipulación de estructuras de datos como arreglos y tablas hash en el lenguaje C.
 
 Objetivos 🎯
 
@@ -11,7 +11,7 @@ Objetivos 🎯
 
 Descripción del Proyecto 📚
 
-mGit permite realizar operaciones básicas de control de versiones como:
+uGit permite realizar operaciones básicas de control de versiones como:
 - Agregar archivos
 - Crear commits
 - Ver el historial de versiones

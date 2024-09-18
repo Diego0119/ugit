@@ -94,28 +94,75 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Esta funcion permite añadir un archivo al area de "stagin".  
+<p>Permite añadir un archivo al área de "staging" de uGit.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;../definicion_funciones/funciones.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="funciones_8h_source.html">../definicion_funciones/funciones.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1fe6357c5879426b6bf9893c1398f3d1" id="r_a1fe6357c5879426b6bf9893c1398f3d1"><td class="memItemLeft" align="right" valign="top"><a id="a1fe6357c5879426b6bf9893c1398f3d1" name="a1fe6357c5879426b6bf9893c1398f3d1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ugit_add</b> (char *prompt, <a class="el" href="structbranch.html">Branch</a> *branches, char *branch_name, int *modificacion_flag)</td></tr>
+<tr class="memitem:a1fe6357c5879426b6bf9893c1398f3d1" id="r_a1fe6357c5879426b6bf9893c1398f3d1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1fe6357c5879426b6bf9893c1398f3d1">ugit_add</a> (char *prompt, <a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a> *branches, char *branch_name, int *modificacion_flag)</td></tr>
+<tr class="memdesc:a1fe6357c5879426b6bf9893c1398f3d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Añade un archivo al área de "staging" o maneja el comando para añadir todos los archivos.  <br /></td></tr>
 <tr class="separator:a1fe6357c5879426b6bf9893c1398f3d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Esta funcion permite añadir un archivo al area de "stagin". </p>
+<div class="textblock"><p>Permite añadir un archivo al área de "staging" de uGit. </p>
+<p>Esta función maneja la adición de archivos al área de "staging" en el sistema de control de versiones uGit. Dependiendo del comando proporcionado, la función puede añadir un archivo específico al área de "staging" o añadir todos los archivos si se usa el comando correspondiente.</p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024-09-17 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a1fe6357c5879426b6bf9893c1398f3d1" name="a1fe6357c5879426b6bf9893c1398f3d1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1fe6357c5879426b6bf9893c1398f3d1">&#9670;&#160;</a></span>ugit_add()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ugit_add </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>prompt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a> *</td>          <td class="paramname"><span class="paramname"><em>branches</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>branch_name</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>modificacion_flag</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Añade un archivo al área de "staging" o maneja el comando para añadir todos los archivos. </p>
+<p>Agrega un archivo al repositorio.</p>
+<p>La función <code>ugit_add</code> procesa un comando para añadir archivos al área de "staging". Si el archivo especificado en el comando está presente en la estructura de datos de commits, el archivo se marca como añadido. También maneja el caso especial donde el comando solicita añadir todos los archivos.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">prompt</td><td>se le debe pasar el prompt, el cual sera el nombre del archivo, esto para poder verificar si existe </td></tr>
-    <tr><td class="paramname">branches</td><td>se debe pasar la estructura de datos actual para poder realizar modificaciones </td></tr>
-    <tr><td class="paramname">branch_name</td><td>se le debe pasar el nombre de la rama actual para realizar un hash y hacer el "add" donde se debe </td></tr>
-    <tr><td class="paramname">modificacion_flag</td><td>esta flag permite saber en que estado esta el repositorio (si hay modificaciones activas o si todo esta en "stagin") </td></tr>
+    <tr><td class="paramname">prompt</td><td>Cadena de caracteres que contiene el comando, incluyendo el nombre del archivo a añadir. </td></tr>
+    <tr><td class="paramname">branches</td><td>Array de estructuras <code>Branch</code> que representa el estado actual de las ramas y commits. </td></tr>
+    <tr><td class="paramname">branch_name</td><td>Nombre de la rama actual, utilizado para calcular el hash y determinar el commit correspondiente. </td></tr>
+    <tr><td class="paramname">modificacion_flag</td><td>Puntero a un entero que indica si hay modificaciones activas (1) o si todo está en "staging" (0).</td></tr>
   </table>
   </dd>
 </dl>
-</div></div><!-- contents -->
+<p>La función:</p><ul>
+<li>Extrae el nombre del archivo del comando proporcionado.</li>
+<li>Verifica si el archivo existe en el área de "staging".</li>
+<li>Si el archivo existe, actualiza el flag de modificaciones para indicar que los cambios han sido añadidos.</li>
+<li>Si el archivo no existe, muestra un mensaje de error.</li>
+<li>Si el comando es para añadir todos los archivos (especificado como "."), marca todos los archivos como añadidos.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre del archivo está en una posición fija dentro del comando (<code>prompt + 9</code>). Asegúrese de que los comandos sean válidos y estén correctamente formateados. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0

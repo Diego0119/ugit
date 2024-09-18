@@ -1,20 +1,22 @@
 #include "../definicion_funciones/funciones.h"
 /**
- *
  * @file flow_control.c
- * @brief Esta funcion permite al usuario interactuar con ugit
+ * @brief Implementación de la función de control de flujo para la interacción del usuario con uGit.
  *
+ * Este archivo contiene la implementación de la función `flow_control`, que permite al usuario
+ * interactuar con el sistema de control de versiones uGit a través de una interfaz de línea de comandos.
+ * La función lee comandos del usuario, los interpreta y ejecuta las funciones correspondientes según
+ * el comando ingresado. También maneja la inicialización del repositorio, la creación de ramas,
+ * la adición de archivos, y la realización de commits, entre otros.
  *
+ * @version 0.1
+ * @date 2024-09-17
  */
+
 void flow_control(void)
 {
     char prompt[MAX_INPUT_SIZE];
-    Branch *branches = (Branch *)malloc(1000 * sizeof(Branch));
-    if (branches == NULL)
-    {
-        printf("Error al asignar memoria para las ramas\n");
-        exit(1);
-    }
+    Branch branches[MAX_BRANCHES];
 
     int files_count = 0;
     int modificacion_flag = 0;
@@ -22,6 +24,7 @@ void flow_control(void)
     char branch_name[MAX_INPUT_SIZE];
     strcpy(branch_name, "main");
     char initial_prompt[MAX_INPUT_SIZE];
+    char *user_name;
     strcpy(initial_prompt, "Shell>");
 
     while (strcmp(prompt, "exit") != 0)
@@ -40,7 +43,7 @@ void flow_control(void)
 
         if (strcmp(prompt, "ugit init") == 0)
         {
-            ugit_init(branches, initial_prompt, &repositorio_flag);
+            user_name = ugit_init(branches, initial_prompt, &repositorio_flag);
         }
         else if (strcmp(prompt, "ugit --version") == 0)
         {
@@ -76,7 +79,7 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                ugit_log(branches, branch_name);
+                ugit_log(branches, branch_name, user_name);
             }
             else
             {
@@ -87,7 +90,7 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
-                *branch_name = ugit_branch(prompt, branches);
+                ugit_branch(prompt, branches);
             }
             else
             {
@@ -115,5 +118,4 @@ void flow_control(void)
             printf("Comando desconocido\n");
         }
     }
-    free(branches);
 }

@@ -94,27 +94,74 @@ $(function(){ initResizable(false); });
 </div><!--header-->
 <div class="contents">
 
-<p>Esta funcion permite inicializar el repositorio.  
+<p>Permite inicializar el repositorio del sistema de control de versiones.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;../definicion_funciones/funciones.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="funciones_8h_source.html">../definicion_funciones/funciones.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:afaf6c4b7382d00e0c3cc80fe078e1630" id="r_afaf6c4b7382d00e0c3cc80fe078e1630"><td class="memItemLeft" align="right" valign="top"><a id="afaf6c4b7382d00e0c3cc80fe078e1630" name="afaf6c4b7382d00e0c3cc80fe078e1630"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>ugit_init</b> (<a class="el" href="structbranch.html">Branch</a> *branches, char *initial_prompt, int *repositorio_flag)</td></tr>
-<tr class="separator:afaf6c4b7382d00e0c3cc80fe078e1630"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab110bd50612a36d611ef712e70f7678a" id="r_ab110bd50612a36d611ef712e70f7678a"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab110bd50612a36d611ef712e70f7678a">ugit_init</a> (<a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a> *branches, char *initial_prompt, int *repositorio_flag)</td></tr>
+<tr class="memdesc:ab110bd50612a36d611ef712e70f7678a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa el repositorio del sistema <code>uGit</code>.  <br /></td></tr>
+<tr class="separator:ab110bd50612a36d611ef712e70f7678a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Esta funcion permite inicializar el repositorio. </p>
+<div class="textblock"><p>Permite inicializar el repositorio del sistema de control de versiones. </p>
+<p>Esta función se encarga de inicializar un nuevo repositorio para el sistema de control de versiones <code>uGit</code>. Si el repositorio no ha sido inicializado previamente, solicita el nombre del usuario y configura la rama principal (<code>main</code>) junto con el prompt inicial. También establece la bandera de repositorio como inicializada.</p>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>2024-09-17 </dd></dl>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ab110bd50612a36d611ef712e70f7678a" name="ab110bd50612a36d611ef712e70f7678a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab110bd50612a36d611ef712e70f7678a">&#9670;&#160;</a></span>ugit_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char * ugit_init </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="funciones_8h.html#a14904de83c569b98fe99d48f8ad552db">Branch</a> *</td>          <td class="paramname"><span class="paramname"><em>branches</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>initial_prompt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *</td>          <td class="paramname"><span class="paramname"><em>repositorio_flag</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Inicializa el repositorio del sistema <code>uGit</code>. </p>
+<p>Inicializa un nuevo repositorio.</p>
+<p>La función <code>ugit_init</code> configura el repositorio inicial del sistema de control de versiones <code>uGit</code>. Si el repositorio no ha sido inicializado previamente, solicita el nombre del usuario y crea la rama principal (<code>main</code>). También ajusta el prompt inicial y marca el repositorio como inicializado.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">branches</td><td>se le debe pasar la estructura de datos actual de la rama </td></tr>
-    <tr><td class="paramname">initial_prompt</td><td>el programa identificara el prompt inicial al hacer el "ugit init" </td></tr>
-    <tr><td class="paramname">repositorio_flag</td><td>esta bandera sirve para saber si ya ha sido inicializado el repositorio </td></tr>
+    <tr><td class="paramname">branches</td><td>Estructura de datos que contiene todas las ramas del repositorio. La función inicializa la rama principal (<code>main</code>) en esta estructura. </td></tr>
+    <tr><td class="paramname">initial_prompt</td><td>Cadena de caracteres que representa el prompt inicial del sistema <code>uGit</code>. La función actualiza este prompt para reflejar la rama principal (<code>main</code>) después de la inicialización. </td></tr>
+    <tr><td class="paramname">repositorio_flag</td><td>Bandera que indica si el repositorio ha sido inicializado. La función verifica este flag para evitar la inicialización repetida del repositorio.</td></tr>
   </table>
   </dd>
 </dl>
-</div></div><!-- contents -->
+<dl class="section return"><dt>Returns</dt><dd>Cadena de caracteres que contiene el nombre del usuario ingresado. Retorna <code>NULL</code> si el repositorio ya ha sido inicializado previamente.</dd></dl>
+<p>La función realiza las siguientes operaciones:</p><ul>
+<li>Verifica si el repositorio ha sido inicializado previamente usando la bandera <code>repositorio_flag</code>.</li>
+<li>Si el repositorio no está inicializado (<code>repositorio_flag == 0</code>), solicita el nombre del usuario y lo almacena en la variable <code>user_name</code>.</li>
+<li>Elimina el salto de línea final del nombre del usuario, si existe.</li>
+<li>Imprime un mensaje indicando que el repositorio ha sido inicializado.</li>
+<li>Llama a la función <code>ugit_branch</code> para crear la rama principal (<code>main</code>).</li>
+<li>Llama a la función <code>ugit_branch_control</code> para ajustar el prompt inicial al de la rama principal (<code>main</code>).</li>
+<li>Establece la bandera <code>repositorio_flag</code> a 1 para indicar que el repositorio ha sido inicializado.</li>
+<li>Retorna el nombre del usuario ingresado.</li>
+<li>Si el repositorio ya ha sido inicializado, imprime un mensaje y retorna <code>NULL</code>.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>Asegúrese de que el nombre del usuario ingresado no exceda el límite de 255 caracteres. La función utiliza <code>fgets</code> para leer la entrada del usuario y maneja el posible salto de línea al final de la cadena. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
