@@ -10,17 +10,17 @@ Para generar la documentación del proyecto, sigue estos pasos:
 
 2. Clona el repositorio:
 
--git clone https://github.com/Diego0119/ugit.git
+  - git clone https://github.com/Diego0119/ugit.git
 
--cd ugit
+  - cd ugit
 
 3. Ejecuta doxygen usando el archivo de configuración:
 
--doxygen Doxyfile
+  - doxygen Doxyfile
 
 4. Abre el archivo principal
 
--open html/index.html
+  - open html/index.html
 
 
 Objetivos 🎯
