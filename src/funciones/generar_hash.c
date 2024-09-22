@@ -1,5 +1,8 @@
 #include "../definicion_funciones/funciones.h"
 
+static int hashes_entregados[MAX_COMMITS];
+static int count = 0;
+
 /**
  * @file generar_hash.c
  * @brief Implementación de la función de generación de hash única.
@@ -24,14 +27,51 @@
  *
  * @param prompt Cadena de caracteres de la cual se calculará el hash.
  *
+ * @code
+ * static int hashes_entregados[MAX_COMMITS];
+ * static int count = 0;
+ *
+ * int generar_hash(char *prompt)
+ * {
+ *     int temp_hash = 0;
+ *     int hash = 0;
+ *     int aux;
+ *
+ *     while ((aux = *prompt++))
+ *     {
+ *         temp_hash += aux;
+ *     }
+ *
+ *     hash = temp_hash % 100;
+ *
+ *     int unique = 0;
+ *     while (!unique)
+ *     {
+ *         unique = 1;
+ *
+ *         for (int i = 0; i < count; i++)
+ *         {
+ *             if (hashes_entregados[i] == hash)
+ *             {
+ *                 hash = (hash + 1) % 100;
+ *                 unique = 0;
+ *                 break;
+ *             }
+ *         }
+ *     }
+ *
+ *     hashes_entregados[count] = hash;
+ *     count++;
+ *
+ *     return hash;
+ * }
+ * @endcode
+ *
  * @return Un valor de hash único basado en la entrada proporcionada.
  *
  * @note La función garantiza que el hash sea único comparándolo con los
  * valores previamente generados y almacenados en `hashes_entregados[]`.
  */
-
-static int hashes_entregados[MAX_COMMITS];
-static int count = 0;
 
 int generar_hash(char *prompt)
 {
