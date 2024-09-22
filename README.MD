@@ -22,6 +22,21 @@ Para generar la documentación del proyecto, sigue estos pasos:
 
   - open html/index.html
 
+## Ejecutar el proyecto localmente
+
+Para ejecutar el proyecto localmente debera seguir los siguientes pasos:
+
+1. Asegurate de tener [gcc](https://gcc.gnu.org/onlinedocs/) instalado en tu dispositivo.
+
+2. Ejecuta: make folders
+
+3. Ahora ejecuta: make (con esto se crearan los ejecutables)
+
+4. Finalmente para correr el programa se debe hacer un: make run
+
+5. Para limpiar el proyecto se puede hacer un: make clean (si se hace el make clean se debera volver a hacer el make)
+
+
 
 Objetivos 🎯
 
