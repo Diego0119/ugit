@@ -106,7 +106,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Implementación de la función de hashing para el sistema uGit. </p>
-<p>Este archivo contiene la implementación de la función <code>hash</code>, que calcula un valor de hash para un string dado. El valor de hash se utiliza para identificar de manera única elementos como commits en el sistema de control de versiones uGit. La función también asegura que el hash generado sea único dentro de un rango limitado, ajustándolo si es necesario.</p>
+<p>Este archivo contiene la implementación de la función <code>hash</code>, que calcula un valor de hash para un string dado. El valor de hash se utiliza para identificar de manera única elementos como commits en el sistema de control de versiones uGit.</p>
 <dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>2024-09-17 </dd></dl>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -127,7 +127,7 @@ Functions</h2></td></tr>
 
 <p>Calcula un valor de hash para una cadena de caracteres. </p>
 <p>Calcula el hash de una cadena de caracteres.</p>
-<p>La función <code>hash</code> toma una cadena de caracteres como entrada y calcula un valor de hash utilizando la suma de los valores ASCII de los caracteres de la cadena, seguida de una operación de módulo para limitar el rango del hash. Si el hash generado ya ha sido entregado, se ajusta el valor de hash incrementándolo en uno para asegurar la unicidad.</p>
+<p>La función <code>hash</code> toma una cadena de caracteres como entrada y calcula un valor de hash utilizando la suma de los valores ASCII de los caracteres de la cadena, seguida de una operación de módulo para limitar el rango del hash.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prompt</td><td>Cadena de caracteres para la cual se calculará el valor de hash. </td></tr>
@@ -135,7 +135,34 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Un valor de hash único basado en la entrada proporcionada.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>La función mantiene un registro de los hashes generados en el array <code>hashes_entregados</code> para evitar duplicados dentro de un rango limitado de hashes. </dd></dl>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(<span class="keywordtype">char</span> *prompt)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> temp_hash = 0;</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_function" href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a> = 0;</div>
+<div class="line">    <span class="keywordtype">int</span> aux;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">while</span> ((aux = *prompt++))</div>
+<div class="line">    {</div>
+<div class="line">        temp_hash += aux;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a> = temp_hash % 100;</div>
+<div class="line"> </div>
+<div class="line">    hashes_entregados[count] = <a class="code hl_function" href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a>;</div>
+<div class="line">    count++;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i++)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (hashes_entregados[i] == <a class="code hl_function" href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a>)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordflow">return</span> <a class="code hl_function" href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a> + 1;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_function" href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a>;</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a4fa4739a855fbdd94d39373374c4a23b"><div class="ttname"><a href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a></div><div class="ttdeci">int hash(char *input)</div><div class="ttdoc">Calcula el hash de una cadena de caracteres.</div><div class="ttdef"><b>Definition</b> hash.c:60</div></div>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>La función da el hash respectivo dependiendo del prompt. </dd></dl>
 
 </div>
 </div>

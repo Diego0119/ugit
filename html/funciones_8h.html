@@ -102,6 +102,7 @@ $(function(){ initResizable(false); });
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;ctype.h&gt;</code><br />
 </div>
 <p><a href="funciones_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -181,15 +182,21 @@ Functions</h2></td></tr>
 <tr class="memitem:a281fc471db5bf4a7d9061a4f1f5dd2fd" id="r_a281fc471db5bf4a7d9061a4f1f5dd2fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a281fc471db5bf4a7d9061a4f1f5dd2fd">ugit_log</a> (<a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *<a class="el" href="structbranch.html">branch</a>, char *start_date, char *end_date)</td></tr>
 <tr class="memdesc:a281fc471db5bf4a7d9061a4f1f5dd2fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Muestra el historial de commits.  <br /></td></tr>
 <tr class="separator:a281fc471db5bf4a7d9061a4f1f5dd2fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab944edd958bf224e11ab96b8b3cfb164" id="r_ab944edd958bf224e11ab96b8b3cfb164"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab944edd958bf224e11ab96b8b3cfb164">ugit_checkout</a> (char *branch_name, <a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *<a class="el" href="structbranch.html">branch</a>, char *action)</td></tr>
-<tr class="memdesc:ab944edd958bf224e11ab96b8b3cfb164"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia a una rama específica.  <br /></td></tr>
-<tr class="separator:ab944edd958bf224e11ab96b8b3cfb164"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ae420ef18a4560412779cf11e44ddaa" id="r_a9ae420ef18a4560412779cf11e44ddaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a9ae420ef18a4560412779cf11e44ddaa">ugit_checkout</a> (char *branch_name, <a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *<a class="el" href="structbranch.html">branch</a>, char *action, char *actual_branch_name)</td></tr>
+<tr class="memdesc:a9ae420ef18a4560412779cf11e44ddaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cambia a una rama específica.  <br /></td></tr>
+<tr class="separator:a9ae420ef18a4560412779cf11e44ddaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a09ccf8afffab02354c1e2d40060f638b" id="r_a09ccf8afffab02354c1e2d40060f638b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a09ccf8afffab02354c1e2d40060f638b">ugit_init</a> (<a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *<a class="el" href="structbranch.html">branch</a>, char *repo_path, int *branch_count)</td></tr>
 <tr class="memdesc:a09ccf8afffab02354c1e2d40060f638b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Inicializa un nuevo repositorio.  <br /></td></tr>
 <tr class="separator:a09ccf8afffab02354c1e2d40060f638b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f501f30e352ed2bcecac7ccf87e9f4a" id="r_a2f501f30e352ed2bcecac7ccf87e9f4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f501f30e352ed2bcecac7ccf87e9f4a">manejar_archivos</a> (char *file_name, <a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *<a class="el" href="structbranch.html">branch</a>, char *file_content, int *file_size, int *action)</td></tr>
 <tr class="memdesc:a2f501f30e352ed2bcecac7ccf87e9f4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maneja archivos en el repositorio.  <br /></td></tr>
 <tr class="separator:a2f501f30e352ed2bcecac7ccf87e9f4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7334d4a2d5dcf61c573f730b5d8a9f1b" id="r_a7334d4a2d5dcf61c573f730b5d8a9f1b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7334d4a2d5dcf61c573f730b5d8a9f1b">ugit_checkout_commit</a> (int rama_hash, <a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *<a class="el" href="structbranch.html">branch</a>, char *commit_hash)</td></tr>
+<tr class="memdesc:a7334d4a2d5dcf61c573f730b5d8a9f1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maneja checkouts a commits.  <br /></td></tr>
+<tr class="separator:a7334d4a2d5dcf61c573f730b5d8a9f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a52b35fafc1c97e7916d7ad5dbfc58730" id="r_a52b35fafc1c97e7916d7ad5dbfc58730"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a52b35fafc1c97e7916d7ad5dbfc58730">generar_hash</a> (char *prompt)</td></tr>
+<tr class="memdesc:a52b35fafc1c97e7916d7ad5dbfc58730"><td class="mdescLeft">&#160;</td><td class="mdescRight">Genera los hash de los commits.  <br /></td></tr>
+<tr class="separator:a52b35fafc1c97e7916d7ad5dbfc58730"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>En este archivo se encuentran los prototipos de las funciones y estructuras de uGit. </p>
@@ -227,7 +234,22 @@ Functions</h2></td></tr>
 <li><code>checkout &lt;name&gt;</code> - Cambia a la rama especificada.</li>
 <li><code>--version</code> - Muestra la versión de uGit.</li>
 <li><code>vi &lt;nombre_archivo&gt;</code> - Permite crear archivos con el editor vi.</li>
-<li><code>help</code> - Muestra esta ayuda. </li>
+<li><code>help</code> - Muestra esta ayuda.</li>
+<li><div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="#a6109b0a539ffbffa9bcc8199388ffcfd">commands_prompt</a>(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    printf(<span class="stringliteral">&quot;Comandos disponibles:\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;  init        - Inicializa un nuevo repositorio.\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;  add &lt;file&gt;  - Añade un archivo al área de preparación.\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;  commit &lt;msg&gt; - Realiza un commit con el mensaje especificado.\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;  log         - Muestra el historial de commits.\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;  branch &lt;name&gt; - Crea una nueva rama con el nombre especificado.\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;  checkout &lt;name&gt; - Cambia a la rama especificada.\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;  --version        - Muestra la versión de uGit.\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;  vi &lt;nombre_archivo&gt;       - Puedes crear archivos con vi.\n&quot;</span>);</div>
+<div class="line">    printf(<span class="stringliteral">&quot;  help        - Muestra esta ayuda.\n&quot;</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a6109b0a539ffbffa9bcc8199388ffcfd"><div class="ttname"><a href="#a6109b0a539ffbffa9bcc8199388ffcfd">commands_prompt</a></div><div class="ttdeci">void commands_prompt(void)</div><div class="ttdoc">Muestra el menú de comandos del sistema uGit.</div><div class="ttdef"><b>Definition</b> commands_prompt.c:51</div></div>
+</div><!-- fragment --> </li>
 </ul>
 
 </div>
@@ -249,6 +271,32 @@ Functions</h2></td></tr>
 
 <p>Controla el flujo de operaciones en uGit. </p>
 <p>Esta función gestiona el flujo de operaciones y llamadas a otras funciones según las acciones solicitadas por el usuario. </p>
+
+</div>
+</div>
+<a id="a52b35fafc1c97e7916d7ad5dbfc58730" name="a52b35fafc1c97e7916d7ad5dbfc58730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52b35fafc1c97e7916d7ad5dbfc58730">&#9670;&#160;</a></span>generar_hash()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int generar_hash </td>
+          <td>(</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>prompt</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Genera los hash de los commits. </p>
+<p>Esta funcion genera los hash de los commits que se crean, maneja las colisiones.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prompt</td><td>Descripción del commit. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -277,7 +325,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Valor hash calculado.</dd></dl>
 <p>Calcula el hash de una cadena de caracteres.</p>
-<p>La función <code>hash</code> toma una cadena de caracteres como entrada y calcula un valor de hash utilizando la suma de los valores ASCII de los caracteres de la cadena, seguida de una operación de módulo para limitar el rango del hash. Si el hash generado ya ha sido entregado, se ajusta el valor de hash incrementándolo en uno para asegurar la unicidad.</p>
+<p>La función <code>hash</code> toma una cadena de caracteres como entrada y calcula un valor de hash utilizando la suma de los valores ASCII de los caracteres de la cadena, seguida de una operación de módulo para limitar el rango del hash.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prompt</td><td>Cadena de caracteres para la cual se calculará el valor de hash. </td></tr>
@@ -285,7 +333,34 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Un valor de hash único basado en la entrada proporcionada.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>La función mantiene un registro de los hashes generados en el array <code>hashes_entregados</code> para evitar duplicados dentro de un rango limitado de hashes. </dd></dl>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(<span class="keywordtype">char</span> *prompt)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> temp_hash = 0;</div>
+<div class="line">    <span class="keywordtype">int</span> <a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a> = 0;</div>
+<div class="line">    <span class="keywordtype">int</span> aux;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">while</span> ((aux = *prompt++))</div>
+<div class="line">    {</div>
+<div class="line">        temp_hash += aux;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a> = temp_hash % 100;</div>
+<div class="line"> </div>
+<div class="line">    hashes_entregados[count] = <a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>;</div>
+<div class="line">    count++;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; count; i++)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (hashes_entregados[i] == <a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>)</div>
+<div class="line">        {</div>
+<div class="line">            <span class="keywordflow">return</span> <a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a> + 1;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>;</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a4fa4739a855fbdd94d39373374c4a23b"><div class="ttname"><a href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a></div><div class="ttdeci">int hash(char *input)</div><div class="ttdoc">Calcula el hash de una cadena de caracteres.</div><div class="ttdef"><b>Definition</b> hash.c:60</div></div>
+</div><!-- fragment --><dl class="section note"><dt>Note</dt><dd>La función da el hash respectivo dependiendo del prompt. </dd></dl>
 
 </div>
 </div>
@@ -348,14 +423,132 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>La función:</p><ul>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="#a2f501f30e352ed2bcecac7ccf87e9f4a">manejar_archivos</a>(<span class="keywordtype">char</span> *prompt, <a class="code hl_struct" href="structbranch.html">Branch</a> *branches, <span class="keywordtype">char</span> *branch_name, <span class="keywordtype">int</span> *files_count, <span class="keywordtype">int</span> *modificacion_flag)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *filename = (<span class="keywordtype">char</span> *)malloc((strlen(prompt + 3) + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
+<div class="line">    <span class="keywordflow">if</span> (filename == NULL)</div>
+<div class="line">    {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;Error al asignar memoria para el nombre del archivo\n&quot;</span>);</div>
+<div class="line">        exit(1);</div>
+<div class="line">    }</div>
+<div class="line">    strcpy(filename, prompt + 3);</div>
+<div class="line">    <span class="keywordtype">int</span> hash_value = <a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name);</div>
+<div class="line">    <span class="keywordtype">int</span> commit_count = branches[hash_value].<a class="code hl_variable" href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">commit_count</a>;</div>
+<div class="line">    <span class="keywordtype">int</span> archivo_encontrado = 0;</div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; *files_count; i++)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (strncmp(branches[hash_value].<a class="code hl_struct" href="structcommit.html">commit</a>[commit_count].archivos_agregados, filename, <a class="code hl_define" href="#af43dedece15d018ffad8970492870bac">MAX_FILE_NAME</a>) == 0)</div>
+<div class="line">        {</div>
+<div class="line">            archivo_encontrado = 1;</div>
+<div class="line"> </div>
+<div class="line">            FILE *archivo = fopen(filename, <span class="stringliteral">&quot;r+&quot;</span>);</div>
+<div class="line">            <span class="keywordflow">if</span> (archivo)</div>
+<div class="line">            {</div>
+<div class="line">                printf(<span class="stringliteral">&quot;El archivo &#39;%s&#39; ya existe. Contenido actual:\n&quot;</span>, filename);</div>
+<div class="line"> </div>
+<div class="line">                <span class="keywordtype">char</span> buffer[256];</div>
+<div class="line">                <span class="keywordflow">while</span> (fgets(buffer, <span class="keyword">sizeof</span>(buffer), archivo) != NULL)</div>
+<div class="line">                {</div>
+<div class="line">                    printf(<span class="stringliteral">&quot;%s&quot;</span>, buffer);</div>
+<div class="line">                }</div>
+<div class="line"> </div>
+<div class="line">                printf(<span class="stringliteral">&quot;\nDesea agregar más contenido al archivo? (s/n): &quot;</span>);</div>
+<div class="line">                <span class="keywordtype">char</span> opcion;</div>
+<div class="line">                scanf(<span class="stringliteral">&quot; %c&quot;</span>, &amp;opcion);</div>
+<div class="line"> </div>
+<div class="line">                <span class="keywordflow">if</span> (opcion == <span class="charliteral">&#39;s&#39;</span> || opcion == <span class="charliteral">&#39;S&#39;</span>)</div>
+<div class="line">                {</div>
+<div class="line">                    <span class="keywordflow">while</span> (getchar() != <span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"> </div>
+<div class="line"> </div>
+<div class="line">                    printf(<span class="stringliteral">&quot;Ingrese el contenido adicional:\n&quot;</span>);</div>
+<div class="line">                    fseek(archivo, 0, SEEK_END);</div>
+<div class="line">                    <span class="keywordtype">char</span> *nuevo_contenido = (<span class="keywordtype">char</span> *)malloc(256 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
+<div class="line">                    <span class="keywordflow">if</span> (nuevo_contenido == NULL)</div>
+<div class="line">                    {</div>
+<div class="line">                        printf(<span class="stringliteral">&quot;Error al asignar memoria para el contenido adicional\n&quot;</span>);</div>
+<div class="line">                        exit(1);</div>
+<div class="line">                    }</div>
+<div class="line">                    fgets(nuevo_contenido, 256, stdin);</div>
+<div class="line"> </div>
+<div class="line">                    fprintf(archivo, <span class="stringliteral">&quot;%s&quot;</span>, nuevo_contenido);</div>
+<div class="line">                    free(nuevo_contenido);</div>
+<div class="line">                }</div>
+<div class="line"> </div>
+<div class="line">                fclose(archivo);</div>
+<div class="line">                *modificacion_flag = 1;</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">            {</div>
+<div class="line">                printf(<span class="stringliteral">&quot;No se pudo abrir el archivo &#39;%s&#39;.\n&quot;</span>, filename);</div>
+<div class="line">            }</div>
+<div class="line"> </div>
+<div class="line">            <span class="keywordflow">break</span>;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (!archivo_encontrado)</div>
+<div class="line">    {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;Archivo no encontrado\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">if</span> (*files_count &lt; <a class="code hl_define" href="#a2c5eecb22513a88c24ae5831a3265e54">MAX_FILES</a>)</div>
+<div class="line">        {</div>
+<div class="line">            FILE *archivo = fopen(filename, <span class="stringliteral">&quot;w&quot;</span>);</div>
+<div class="line">            <span class="keywordflow">if</span> (archivo)</div>
+<div class="line">            {</div>
+<div class="line">                printf(<span class="stringliteral">&quot;El archivo &#39;%s&#39; no existía, ha sido creado.\n&quot;</span>, filename);</div>
+<div class="line">                printf(<span class="stringliteral">&quot;Ingrese el contenido inicial del archivo:\n&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">                <span class="keywordtype">char</span> *contenido_inicial = (<span class="keywordtype">char</span> *)malloc(256 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
+<div class="line">                <span class="keywordflow">if</span> (contenido_inicial == NULL)</div>
+<div class="line">                {</div>
+<div class="line">                    printf(<span class="stringliteral">&quot;Error al asignar memoria para el contenido inicial\n&quot;</span>);</div>
+<div class="line">                    exit(1);</div>
+<div class="line">                }</div>
+<div class="line">                fgets(contenido_inicial, 256, stdin);</div>
+<div class="line"> </div>
+<div class="line">                fprintf(archivo, <span class="stringliteral">&quot;%s&quot;</span>, contenido_inicial);</div>
+<div class="line">                fclose(archivo);</div>
+<div class="line">                free(contenido_inicial);</div>
+<div class="line"> </div>
+<div class="line">                *branches[hash_value].<a class="code hl_variable" href="structbranch.html#a22691362767d3b8f966160af608a2ae2">commit</a>[commit_count].<a class="code hl_variable" href="structcommit.html#a5565fadc9f19e80ca68789255939d1e3">archivos_agregados</a> = *(<span class="keywordtype">char</span> *)malloc((strlen(filename) + 1) * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
+<div class="line">                <span class="keywordflow">if</span> (strcmp(branches[hash_value].<a class="code hl_struct" href="structcommit.html">commit</a>[commit_count].archivos_agregados, <span class="stringliteral">&quot; &quot;</span>) == 0)</div>
+<div class="line">                {</div>
+<div class="line">                    printf(<span class="stringliteral">&quot;Error al asignar memoria para archivos_agregados\n&quot;</span>);</div>
+<div class="line">                    exit(1);</div>
+<div class="line">                }</div>
+<div class="line">                strcpy(branches[hash_value].<a class="code hl_struct" href="structcommit.html">commit</a>[commit_count].archivos_agregados, filename);</div>
+<div class="line"> </div>
+<div class="line">                (*files_count)++;</div>
+<div class="line">                *modificacion_flag = 1;</div>
+<div class="line">            }</div>
+<div class="line">            <span class="keywordflow">else</span></div>
+<div class="line">            {</div>
+<div class="line">                printf(<span class="stringliteral">&quot;No se pudo crear el archivo &#39;%s&#39;.\n&quot;</span>, filename);</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;No se pueden añadir más archivos, límite alcanzado.\n&quot;</span>);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    free(filename);</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a2c5eecb22513a88c24ae5831a3265e54"><div class="ttname"><a href="#a2c5eecb22513a88c24ae5831a3265e54">MAX_FILES</a></div><div class="ttdeci">#define MAX_FILES</div><div class="ttdoc">Número máximo de archivos en el repositorio.</div><div class="ttdef"><b>Definition</b> funciones.h:23</div></div>
+<div class="ttc" id="afunciones_8h_html_a2f501f30e352ed2bcecac7ccf87e9f4a"><div class="ttname"><a href="#a2f501f30e352ed2bcecac7ccf87e9f4a">manejar_archivos</a></div><div class="ttdeci">void manejar_archivos(char *file_name, Branch *branch, char *file_content, int *file_size, int *action)</div><div class="ttdoc">Maneja archivos en el repositorio.</div><div class="ttdef"><b>Definition</b> manejar_archivos.c:153</div></div>
+<div class="ttc" id="afunciones_8h_html_af43dedece15d018ffad8970492870bac"><div class="ttname"><a href="#af43dedece15d018ffad8970492870bac">MAX_FILE_NAME</a></div><div class="ttdeci">#define MAX_FILE_NAME</div><div class="ttdoc">Tamaño máximo para nombres de archivo.</div><div class="ttdef"><b>Definition</b> funciones.h:25</div></div>
+<div class="ttc" id="astructbranch_html"><div class="ttname"><a href="structbranch.html">branch</a></div><div class="ttdoc">Estructura que representa una rama en uGit.</div><div class="ttdef"><b>Definition</b> funciones.h:51</div></div>
+<div class="ttc" id="astructbranch_html_a1bf60f1c9b45286756f8b0723b3fb400"><div class="ttname"><a href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">branch::commit_count</a></div><div class="ttdeci">int commit_count</div><div class="ttdoc">Número de commits en la rama.</div><div class="ttdef"><b>Definition</b> funciones.h:54</div></div>
+<div class="ttc" id="astructbranch_html_a22691362767d3b8f966160af608a2ae2"><div class="ttname"><a href="structbranch.html#a22691362767d3b8f966160af608a2ae2">branch::commit</a></div><div class="ttdeci">Commit commit[MAX_COMMITS]</div><div class="ttdoc">Lista de commits en la rama.</div><div class="ttdef"><b>Definition</b> funciones.h:53</div></div>
+<div class="ttc" id="astructcommit_html"><div class="ttname"><a href="structcommit.html">commit</a></div><div class="ttdoc">Estructura que representa un commit en uGit.</div><div class="ttdef"><b>Definition</b> funciones.h:35</div></div>
+<div class="ttc" id="astructcommit_html_a5565fadc9f19e80ca68789255939d1e3"><div class="ttname"><a href="structcommit.html#a5565fadc9f19e80ca68789255939d1e3">commit::archivos_agregados</a></div><div class="ttdeci">char archivos_agregados[MAX_FILE_NAME]</div><div class="ttdoc">Archivo(s) asociado(s) con el commit.</div><div class="ttdef"><b>Definition</b> funciones.h:38</div></div>
+</div><!-- fragment --><p>La función:</p><ul>
 <li>Asigna memoria para el nombre del archivo basado en el comando proporcionado.</li>
 <li>Verifica si el archivo ya existe en el repositorio.</li>
 <li>Si el archivo existe, permite al usuario agregar contenido adicional o modificar el existente.</li>
 <li>Si el archivo no existe, lo crea y agrega el contenido inicial proporcionado por el usuario.</li>
 <li>Actualiza la estructura de datos del commit y la bandera de modificación según corresponda.</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>La función utiliza memoria dinámica para almacenar el nombre del archivo y el contenido. Asegúrese de liberar esta memoria después de su uso para evitar fugas de memoria. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La función utiliza memoria dinámica para almacenar el nombre del archivo y el contenido. </dd></dl>
 
 </div>
 </div>
@@ -410,14 +603,54 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>La función:</p><ul>
+<p>/**</p>
+<p>Añade un archivo al área de "staging" o maneja el comando para añadir todos los archivos.</p>
+<p>La función <code>ugit_add</code> procesa un comando para añadir archivos al área de "staging". Si el archivo especificado en el comando está presente en la estructura de datos de commits, el archivo se marca como añadido. También maneja el caso especial donde el comando solicita añadir todos los archivos.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prompt</td><td>Cadena de caracteres que contiene el comando, incluyendo el nombre del archivo a añadir. </td></tr>
+    <tr><td class="paramname">branches</td><td>Array de estructuras <code>Branch</code> que representa el estado actual de las ramas y commits. </td></tr>
+    <tr><td class="paramname">branch_name</td><td>Nombre de la rama actual, utilizado para calcular el hash y determinar el commit correspondiente. </td></tr>
+    <tr><td class="paramname">modificacion_flag</td><td>Puntero a un entero que indica si hay modificaciones activas (1) o si todo está en "staging" (0).</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="#aa9cc744ebda3a8d2f63e0db84a0c443b">ugit_add</a>(<span class="keywordtype">char</span> *prompt, <a class="code hl_struct" href="structbranch.html">Branch</a> *branches, <span class="keywordtype">char</span> *branch_name, <span class="keywordtype">int</span> *modificacion_flag)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *filename = prompt + 9;</div>
+<div class="line">    <span class="keywordtype">int</span> commit_count = branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_variable" href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">commit_count</a>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (strncmp(branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_struct" href="structcommit.html">commit</a>[commit_count].archivos_agregados, filename, <a class="code hl_define" href="#af43dedece15d018ffad8970492870bac">MAX_FILE_NAME</a>) == 0)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (strcmp(filename, <span class="stringliteral">&quot;.&quot;</span>) == 0)</div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;Todos los archivos fueron añadidos\n&quot;</span>);</div>
+<div class="line">            *modificacion_flag = 0;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strlen(filename) &gt; 0)</div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;El archivo &#39;%s&#39; fue añadido.\n&quot;</span>, filename);</div>
+<div class="line">            *modificacion_flag = 0;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;No se proporcionó ningun archivo.\n&quot;</span>);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;El archivo &#39;%s&#39; no existe\n&quot;</span>, filename);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_aa9cc744ebda3a8d2f63e0db84a0c443b"><div class="ttname"><a href="#aa9cc744ebda3a8d2f63e0db84a0c443b">ugit_add</a></div><div class="ttdeci">void ugit_add(char *file_name, Branch *branch, char *file_content, int *file_size)</div><div class="ttdoc">Agrega un archivo al repositorio.</div><div class="ttdef"><b>Definition</b> ugit_add.c:79</div></div>
+</div><!-- fragment --><p>La función:</p><ul>
 <li>Extrae el nombre del archivo del comando proporcionado.</li>
 <li>Verifica si el archivo existe en el área de "staging".</li>
 <li>Si el archivo existe, actualiza el flag de modificaciones para indicar que los cambios han sido añadidos.</li>
 <li>Si el archivo no existe, muestra un mensaje de error.</li>
 <li>Si el comando es para añadir todos los archivos (especificado como "."), marca todos los archivos como añadidos.</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre del archivo está en una posición fija dentro del comando (<code>prompt + 9</code>). Asegúrese de que los comandos sean válidos y estén correctamente formateados. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre del archivo está en una posición fija dentro del comando (<code>prompt + 9</code>). </dd></dl>
 
 </div>
 </div>
@@ -459,13 +692,37 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>No retorna ningún valor. La nueva rama se agrega directamente a la estructura <code>branches</code>.</dd></dl>
-<p>La función:</p><ul>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="#aedf02cc3f92d1d8075f18b48e9c1c712">ugit_branch</a>(<span class="keywordtype">char</span> *prompt, <a class="code hl_struct" href="structbranch.html">Branch</a> *branches)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *branch_name;</div>
+<div class="line">    <span class="keywordflow">if</span> (strcmp(prompt, <span class="stringliteral">&quot;main&quot;</span>) == 0)</div>
+<div class="line">    {</div>
+<div class="line">        branch_name = <span class="stringliteral">&quot;main&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        branch_name = prompt + 12;</div>
+<div class="line">        <span class="keywordflow">if</span> (strcmp(branch_name, <span class="stringliteral">&quot;&quot;</span>) == 0)</div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;El nombre de la rama no puede ser vacio\n&quot;</span>);</div>
+<div class="line">            <span class="keywordflow">return</span>;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    strncpy(branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].nombre_rama, branch_name, <a class="code hl_define" href="#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a> - 1);</div>
+<div class="line">    branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_variable" href="structbranch.html#a3cd787da48830c5cc398350d6d694577">nombre_rama</a>[<a class="code hl_define" href="#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a> - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line">    branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_variable" href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">commit_count</a> = 0;</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a479e2087967dffd589c1b8b65c8e65e6"><div class="ttname"><a href="#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a></div><div class="ttdeci">#define MAX_INPUT_SIZE</div><div class="ttdoc">Tamaño máximo para entradas de texto.</div><div class="ttdef"><b>Definition</b> funciones.h:20</div></div>
+<div class="ttc" id="afunciones_8h_html_aedf02cc3f92d1d8075f18b48e9c1c712"><div class="ttname"><a href="#aedf02cc3f92d1d8075f18b48e9c1c712">ugit_branch</a></div><div class="ttdeci">void ugit_branch(char *prompt, Branch *branches)</div><div class="ttdoc">Controla la creación de nuevas ramas.</div><div class="ttdef"><b>Definition</b> ugit_branch.c:61</div></div>
+<div class="ttc" id="astructbranch_html_a3cd787da48830c5cc398350d6d694577"><div class="ttname"><a href="structbranch.html#a3cd787da48830c5cc398350d6d694577">branch::nombre_rama</a></div><div class="ttdeci">char nombre_rama[MAX_INPUT_SIZE]</div><div class="ttdoc">Nombre de la rama.</div><div class="ttdef"><b>Definition</b> funciones.h:52</div></div>
+</div><!-- fragment --><p>La función:</p><ul>
 <li>Compara el nombre de la rama con "main" y, si coincide, usa "main" como nombre de la rama.</li>
 <li>Si el nombre de la rama no es "main", extrae el nombre de la rama del comando <code>prompt</code> y verifica que no esté vacío.</li>
 <li>Usa <code>strncpy</code> para copiar el nombre de la nueva rama en la estructura de datos <code>branches</code>.</li>
 <li>Inicializa el contador de commits de la nueva rama en cero.</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre de la rama comienza en la posición <code>prompt + 12</code> para comandos distintos a "main". Asegúrese de que los comandos sean válidos y correctamente formateados. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre de la rama comienza en la posición <code>prompt + 12</code>. </dd></dl>
 
 </div>
 </div>
@@ -506,18 +763,32 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>La función:</p><ul>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="#a06830cd767546a72401df9df60d02fb4">ugit_branch_control</a>(<span class="keywordtype">char</span> *prompt, <span class="keywordtype">char</span> *actual_prompt)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *branch_name;</div>
+<div class="line">    <span class="keywordflow">if</span> (strcmp(prompt, <span class="stringliteral">&quot;main&quot;</span>) == 0)</div>
+<div class="line">    {</div>
+<div class="line">        branch_name = <span class="stringliteral">&quot;main&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        branch_name = prompt + 14;</div>
+<div class="line">    }</div>
+<div class="line">    snprintf(actual_prompt, <a class="code hl_define" href="#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a>, <span class="stringliteral">&quot;ugit(%s) &quot;</span>, branch_name);</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a06830cd767546a72401df9df60d02fb4"><div class="ttname"><a href="#a06830cd767546a72401df9df60d02fb4">ugit_branch_control</a></div><div class="ttdeci">void ugit_branch_control(char *branch_name, char *action)</div><div class="ttdoc">Controla las operaciones relacionadas con ramas.</div><div class="ttdef"><b>Definition</b> ugit_branch_control.c:49</div></div>
+</div><!-- fragment --><p>La función:</p><ul>
 <li>Compara el comando <code>prompt</code> con el nombre de la rama principal "main".</li>
 <li>Si el comando es "main", el nombre de la rama se establece como "main".</li>
 <li>Si el comando es otro, se extrae el nombre de la rama del comando <code>prompt</code>.</li>
 <li>Actualiza el <code>actual_prompt</code> con el formato "ugit(nombre_rama) ".</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre de la rama está en una posición fija dentro del comando (<code>prompt + 14</code>) para comandos distintos a "main". Asegúrese de que los comandos sean válidos y estén correctamente formateados. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre de la rama está en una posición fija dentro del comando (<code>prompt + 14</code>). </dd></dl>
 
 </div>
 </div>
-<a id="ab944edd958bf224e11ab96b8b3cfb164" name="ab944edd958bf224e11ab96b8b3cfb164"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab944edd958bf224e11ab96b8b3cfb164">&#9670;&#160;</a></span>ugit_checkout()</h2>
+<a id="a9ae420ef18a4560412779cf11e44ddaa" name="a9ae420ef18a4560412779cf11e44ddaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ae420ef18a4560412779cf11e44ddaa">&#9670;&#160;</a></span>ugit_checkout()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -535,7 +806,12 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>initial_prompt</em></span>&#160;)</td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>initial_prompt</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>actual_branch_name</em></span>&#160;)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -547,6 +823,7 @@ Functions</h2></td></tr>
     <tr><td class="paramname">branch_name</td><td>Nombre de la rama a la que se desea cambiar. </td></tr>
     <tr><td class="paramname">branch</td><td>Puntero a la rama activa actual. </td></tr>
     <tr><td class="paramname">action</td><td>Acción a realizar durante el cambio de rama. </td></tr>
+    <tr><td class="paramname">actual_branch_name</td><td>Nombre de la rama en la que se esta en ese momento. </td></tr>
   </table>
   </dd>
 </dl>
@@ -558,17 +835,119 @@ Functions</h2></td></tr>
     <tr><td class="paramname">prompt</td><td>Cadena de caracteres que contiene el nombre de la rama a la que se desea cambiar. El nombre de la rama se extrae del comando <code>prompt</code>, comenzando desde el índice 14. </td></tr>
     <tr><td class="paramname">branches</td><td>Estructura de datos que contiene todas las ramas. La función busca en esta estructura para verificar si la rama especificada existe. </td></tr>
     <tr><td class="paramname">initial_prompt</td><td>Cadena de caracteres que representa el prompt actual de la shell. Este prompt se actualiza para reflejar el nombre de la nueva rama si la rama existe.</td></tr>
+    <tr><td class="paramname">actual_branch_name</td><td>Nombre de la rama en la que esta actualmente el usuario.</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Retorna la estructura de datos de la rama a la cual se cambió. Si la rama no existe, retorna la estructura de datos de la rama actual.</dd></dl>
-<p>La función realiza las siguientes operaciones:</p><ul>
+<div class="fragment"><div class="line"><a class="code hl_struct" href="structbranch.html">Branch</a> <a class="code hl_function" href="#a9ae420ef18a4560412779cf11e44ddaa">ugit_checkout</a>(<span class="keywordtype">char</span> *prompt, <a class="code hl_struct" href="structbranch.html">Branch</a> *branches, <span class="keywordtype">char</span> *initial_prompt, <span class="keywordtype">char</span> *actual_branch_name)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *branch_or_hash = prompt + 14;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (isdigit(branch_or_hash[0]))</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (<a class="code hl_function" href="#a7334d4a2d5dcf61c573f730b5d8a9f1b">ugit_checkout_commit</a>(<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(actual_branch_name), branches, branch_or_hash) == 1)</div>
+<div class="line">        {</div>
+<div class="line">            snprintf(initial_prompt, <a class="code hl_define" href="#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a>, <span class="stringliteral">&quot;ugit(%s) &quot;</span>, branch_or_hash);</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">return</span> branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(actual_branch_name)];</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (strcmp(branch_or_hash, branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_or_hash)].nombre_rama) == 0)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (strcmp(prompt, <span class="stringliteral">&quot;main&quot;</span>) == 0)</div>
+<div class="line">        {</div>
+<div class="line">            branch_or_hash = <span class="stringliteral">&quot;main&quot;</span>;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(branch_or_hash, <span class="stringliteral">&quot;&quot;</span>) == 0)</div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;No existe una rama con ese nombre\n&quot;</span>);</div>
+<div class="line">            <span class="keywordflow">return</span> branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(actual_branch_name)];</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            branch_or_hash = prompt + 14;</div>
+<div class="line">        }</div>
+<div class="line">        snprintf(initial_prompt, <a class="code hl_define" href="#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a>, <span class="stringliteral">&quot;ugit(%s) &quot;</span>, branch_or_hash);</div>
+<div class="line">        <span class="keywordflow">return</span> branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_or_hash)];</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    printf(<span class="stringliteral">&quot;No existe una rama con ese nombre\n&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">return</span> branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(actual_branch_name)];</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a7334d4a2d5dcf61c573f730b5d8a9f1b"><div class="ttname"><a href="#a7334d4a2d5dcf61c573f730b5d8a9f1b">ugit_checkout_commit</a></div><div class="ttdeci">int ugit_checkout_commit(int rama_hash, Branch *branch, char *commit_hash)</div><div class="ttdoc">Maneja checkouts a commits.</div><div class="ttdef"><b>Definition</b> ugit_checkout_commit.c:50</div></div>
+<div class="ttc" id="afunciones_8h_html_a9ae420ef18a4560412779cf11e44ddaa"><div class="ttname"><a href="#a9ae420ef18a4560412779cf11e44ddaa">ugit_checkout</a></div><div class="ttdeci">Branch ugit_checkout(char *branch_name, Branch *branch, char *action, char *actual_branch_name)</div><div class="ttdoc">Cambia a una rama específica.</div><div class="ttdef"><b>Definition</b> ugit_checkout.c:83</div></div>
+</div><!-- fragment --><p>La función realiza las siguientes operaciones:</p><ul>
 <li>Extrae el nombre de la rama del comando <code>prompt</code> (comenzando en <code>prompt + 14</code>).</li>
 <li>Compara el nombre de la rama extraído con las ramas existentes en la estructura de datos <code>branches</code>.</li>
 <li>Si el nombre de la rama coincide con una rama existente, actualiza <code>initial_prompt</code> con el nuevo nombre de la rama y retorna la estructura de datos correspondiente a esa rama.</li>
 <li>Si el nombre de la rama no coincide con ninguna rama existente, muestra un mensaje de error y retorna la estructura de datos de la rama actual.</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>Asegúrese de que el comando <code>prompt</code> esté correctamente formateado y contenga el nombre de la rama en la posición correcta (a partir de <code>prompt + 14</code>). </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Se debe asegurar que la rama o el commit exista, en el caso de que no exista saldra un mensaje de error. </dd></dl>
+
+</div>
+</div>
+<a id="a7334d4a2d5dcf61c573f730b5d8a9f1b" name="a7334d4a2d5dcf61c573f730b5d8a9f1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7334d4a2d5dcf61c573f730b5d8a9f1b">&#9670;&#160;</a></span>ugit_checkout_commit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ugit_checkout_commit </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>rama_hash</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="#a14904de83c569b98fe99d48f8ad552db">Branch</a> *</td>          <td class="paramname"><span class="paramname"><em>branches</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *</td>          <td class="paramname"><span class="paramname"><em>commit_hash</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Maneja checkouts a commits. </p>
+<p>Esta funcion maneja el cambiarse de un commit a otro commit.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">rama_hash</td><td>Hash del commit de la rama actual. </td></tr>
+    <tr><td class="paramname">branch</td><td>Puntero a la rama actual. </td></tr>
+    <tr><td class="paramname">commit_hash</td><td>Hash del commit al que se desea ir.</td></tr>
+    <tr><td class="paramname">rama_hash</td><td>El hash de la rama en la que se buscará el commit. </td></tr>
+    <tr><td class="paramname">branches</td><td>Arreglo de estructuras <code>Branch</code> que contiene información de todas las ramas y sus commits. </td></tr>
+    <tr><td class="paramname">commit_hash</td><td>Cadena de caracteres que contiene el hash del commit que se desea buscar y hacer checkout.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Retorna 1 si el commit se encuentra en la rama y se realiza el cambio exitosamente, de lo contrario, retorna 0 si no se encuentra el commit con el hash especificado.</dd></dl>
+<div class="fragment"><div class="line"><span class="keywordtype">int</span> <a class="code hl_function" href="#a7334d4a2d5dcf61c573f730b5d8a9f1b">ugit_checkout_commit</a>(<span class="keywordtype">int</span> rama_hash, <a class="code hl_struct" href="structbranch.html">Branch</a> *branches, <span class="keywordtype">char</span> *commit_hash)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> hash_long = strtol(commit_hash, NULL, 10);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; branches[rama_hash].<a class="code hl_variable" href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">commit_count</a>; i++)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (branches[rama_hash].<a class="code hl_struct" href="structcommit.html">commit</a>[i].commit_hash == hash_long)</div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;Cambio al commit %ld en la rama %s.\n&quot;</span>, hash_long, branches[rama_hash].nombre_rama);</div>
+<div class="line">            <span class="keywordflow">return</span> 1;</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    printf(<span class="stringliteral">&quot;No se encontró un commit con el hash %ld en la rama.\n&quot;</span>, hash_long);</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>La función realiza las siguientes operaciones:</p><ul>
+<li>Convierte el hash del commit de cadena a número entero usando <code>strtol</code>.</li>
+<li>Itera a través de los commits en la rama correspondiente y compara el hash convertido con los hashes almacenados.</li>
+<li>Si encuentra el commit correspondiente, imprime un mensaje indicando el cambio de commit y retorna 1.</li>
+<li>Si no se encuentra el commit, muestra un mensaje de error y retorna 0.</li>
+</ul>
+<dl class="section note"><dt>Note</dt><dd>La conversión de la cadena <code>commit_hash</code> a número entero puede fallar si la entrada no es válida. </dd></dl>
 
 </div>
 </div>
@@ -624,7 +1003,36 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>No retorna ningún valor.</dd></dl>
-<p>La función realiza las siguientes operaciones:</p><ul>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="#a5bf5993921eb5ddfe7c322e3c163ab9d">ugit_commit</a>(<span class="keywordtype">char</span> *prompt, <span class="keywordtype">char</span> *branch_name, <a class="code hl_struct" href="structbranch.html">Branch</a> *branches, <span class="keywordtype">int</span> *modificacion_flag)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *commit_message = prompt + 11;</div>
+<div class="line">    <span class="keywordtype">int</span> commit_count = branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_variable" href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">commit_count</a>;</div>
+<div class="line">    <span class="keywordflow">if</span> (strcmp(branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_struct" href="structcommit.html">commit</a>[commit_count].archivos_agregados, <span class="stringliteral">&quot;&quot;</span>) == 0)</div>
+<div class="line">    {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;No se puede hacer un commit sin añadir archivos\n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strcmp(commit_message, <span class="stringliteral">&quot;&quot;</span>) == 0)</div>
+<div class="line">    {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;No se puede hacer un commit sin descripcion\n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (*modificacion_flag == 1)</div>
+<div class="line">    {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;Hay cambios que no se han añadido\n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        strncpy(branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_struct" href="structcommit.html">commit</a>[commit_count].descripcion_commit, commit_message, <a class="code hl_define" href="#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a> - 1);</div>
+<div class="line">        branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_variable" href="structbranch.html#a22691362767d3b8f966160af608a2ae2">commit</a>[commit_count].<a class="code hl_variable" href="structcommit.html#ad3770dc7fbf0647feb252563e865c47a">descripcion_commit</a>[<a class="code hl_define" href="#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a> - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line">        branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_variable" href="structbranch.html#a22691362767d3b8f966160af608a2ae2">commit</a>[commit_count].<a class="code hl_variable" href="structcommit.html#a001b1af1be04cab68e73d6a2845edd75">commit_hash</a> = <a class="code hl_function" href="#a52b35fafc1c97e7916d7ad5dbfc58730">generar_hash</a>(prompt);</div>
+<div class="line">        branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_variable" href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">commit_count</a>++;</div>
+<div class="line">        *modificacion_flag = 0;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a52b35fafc1c97e7916d7ad5dbfc58730"><div class="ttname"><a href="#a52b35fafc1c97e7916d7ad5dbfc58730">generar_hash</a></div><div class="ttdeci">int generar_hash(char *prompt)</div><div class="ttdoc">Genera los hash de los commits.</div><div class="ttdef"><b>Definition</b> generar_hash.c:36</div></div>
+<div class="ttc" id="afunciones_8h_html_a5bf5993921eb5ddfe7c322e3c163ab9d"><div class="ttname"><a href="#a5bf5993921eb5ddfe7c322e3c163ab9d">ugit_commit</a></div><div class="ttdeci">void ugit_commit(char *message, char *author, Branch *branch, int *commit_count)</div><div class="ttdoc">Crea un nuevo commit.</div><div class="ttdef"><b>Definition</b> ugit_commit.c:71</div></div>
+<div class="ttc" id="astructcommit_html_a001b1af1be04cab68e73d6a2845edd75"><div class="ttname"><a href="structcommit.html#a001b1af1be04cab68e73d6a2845edd75">commit::commit_hash</a></div><div class="ttdeci">long commit_hash</div><div class="ttdoc">Hash único del commit.</div><div class="ttdef"><b>Definition</b> funciones.h:37</div></div>
+<div class="ttc" id="astructcommit_html_ad3770dc7fbf0647feb252563e865c47a"><div class="ttname"><a href="structcommit.html#ad3770dc7fbf0647feb252563e865c47a">commit::descripcion_commit</a></div><div class="ttdeci">char descripcion_commit[MAX_INPUT_SIZE]</div><div class="ttdoc">Descripción del commit.</div><div class="ttdef"><b>Definition</b> funciones.h:36</div></div>
+</div><!-- fragment --><p>La función realiza las siguientes operaciones:</p><ul>
 <li>Extrae el mensaje del commit del comando <code>prompt</code> (comenzando en <code>prompt + 11</code>).</li>
 <li>Verifica si hay archivos añadidos y si el mensaje del commit no está vacío.</li>
 <li>Verifica si la bandera de modificaciones está activada (indicando que hay cambios no añadidos).</li>
@@ -680,7 +1088,41 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Cadena de caracteres que contiene el nombre del usuario ingresado. Retorna <code>NULL</code> si el repositorio ya ha sido inicializado previamente.</dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Cadena de caracteres que contiene el nombre del usuario ingresado. Retorna <code>NULL</code> si el repositorio ya ha sido inicializado previamente. <div class="fragment"><div class="line"><span class="keywordtype">char</span> *<a class="code hl_function" href="#a09ccf8afffab02354c1e2d40060f638b">ugit_init</a>(<a class="code hl_struct" href="structbranch.html">Branch</a> *branches, <span class="keywordtype">char</span> *initial_prompt, <span class="keywordtype">int</span> *repositorio_flag)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordflow">if</span> (*repositorio_flag == 0)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordtype">char</span> *user_name = (<span class="keywordtype">char</span> *)malloc(256 * <span class="keyword">sizeof</span>(<span class="keywordtype">char</span>));</div>
+<div class="line">        <span class="keywordflow">if</span> (user_name == NULL)</div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;Error al asignar memoria para el nombre del usuario.\n&quot;</span>);</div>
+<div class="line">            exit(1);</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        printf(<span class="stringliteral">&quot;Ingrese su nombre: &quot;</span>);</div>
+<div class="line">        fgets(user_name, 256, stdin);</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordtype">size_t</span> len = strlen(user_name);</div>
+<div class="line">        <span class="keywordflow">if</span> (len &gt; 0 &amp;&amp; user_name[len - 1] == <span class="charliteral">&#39;\n&#39;</span>)</div>
+<div class="line">        {</div>
+<div class="line">            user_name[len - 1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        printf(<span class="stringliteral">&quot;Repositorio de uGit inicializado\n&quot;</span>);</div>
+<div class="line">        <a class="code hl_function" href="#aedf02cc3f92d1d8075f18b48e9c1c712">ugit_branch</a>(<span class="stringliteral">&quot;main&quot;</span>, branches);</div>
+<div class="line">        <a class="code hl_function" href="#a06830cd767546a72401df9df60d02fb4">ugit_branch_control</a>(<span class="stringliteral">&quot;main&quot;</span>, initial_prompt);</div>
+<div class="line">        *repositorio_flag = 1;</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">return</span> user_name;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;Ya hay un repositorio inicializado\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span> NULL;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a09ccf8afffab02354c1e2d40060f638b"><div class="ttname"><a href="#a09ccf8afffab02354c1e2d40060f638b">ugit_init</a></div><div class="ttdeci">char * ugit_init(Branch *branch, char *repo_path, int *branch_count)</div><div class="ttdoc">Inicializa un nuevo repositorio.</div><div class="ttdef"><b>Definition</b> ugit_init.c:82</div></div>
+</div><!-- fragment --></dd></dl>
 <p>La función realiza las siguientes operaciones:</p><ul>
 <li>Verifica si el repositorio ha sido inicializado previamente usando la bandera <code>repositorio_flag</code>.</li>
 <li>Si el repositorio no está inicializado (<code>repositorio_flag == 0</code>), solicita el nombre del usuario y lo almacena en la variable <code>user_name</code>.</li>
@@ -692,7 +1134,7 @@ Functions</h2></td></tr>
 <li>Retorna el nombre del usuario ingresado.</li>
 <li>Si el repositorio ya ha sido inicializado, imprime un mensaje y retorna <code>NULL</code>.</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>Asegúrese de que el nombre del usuario ingresado no exceda el límite de 255 caracteres. La función utiliza <code>fgets</code> para leer la entrada del usuario y maneja el posible salto de línea al final de la cadena. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Asegúrese de que el nombre del usuario ingresado no exceda el límite de caracteres. La función utiliza <code>fgets</code> para leer la entrada del usuario y maneja el posible salto de línea al final de la cadena. </dd></dl>
 
 </div>
 </div>
@@ -741,7 +1183,28 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>No devuelve ningún valor. La función imprime el historial de commits en la salida estándar.</dd></dl>
-<p>La función realiza las siguientes operaciones:</p><ul>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="#a281fc471db5bf4a7d9061a4f1f5dd2fd">ugit_log</a>(<a class="code hl_struct" href="structbranch.html">Branch</a> *branches, <span class="keywordtype">char</span> *branch_name, <span class="keywordtype">char</span> *user_name)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">int</span> commit_count = branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_variable" href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">commit_count</a>;</div>
+<div class="line">    printf(<span class="stringliteral">&quot;----------------------------------------------------\n&quot;</span>);</div>
+<div class="line">    <span class="keywordflow">if</span> (commit_count &gt; 0)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; commit_count; i++)</div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;Author: %s\n&quot;</span>, user_name);</div>
+<div class="line">            printf(<span class="stringliteral">&quot;Commit: %ld\n&quot;</span>, branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_struct" href="structcommit.html">commit</a>[i].commit_hash);</div>
+<div class="line">            printf(<span class="stringliteral">&quot;Descripcion: %s\n&quot;</span>, branches[<a class="code hl_function" href="#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_struct" href="structcommit.html">commit</a>[i].descripcion_commit);</div>
+<div class="line">            printf(<span class="stringliteral">&quot;----------------------------------------------------\n&quot;</span>);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;No hay commits\n&quot;</span>);</div>
+<div class="line">        <span class="keywordflow">return</span>;</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a281fc471db5bf4a7d9061a4f1f5dd2fd"><div class="ttname"><a href="#a281fc471db5bf4a7d9061a4f1f5dd2fd">ugit_log</a></div><div class="ttdeci">void ugit_log(Branch *branch, char *start_date, char *end_date)</div><div class="ttdoc">Muestra el historial de commits.</div><div class="ttdef"><b>Definition</b> ugit_log.c:65</div></div>
+</div><!-- fragment --><p>La función realiza las siguientes operaciones:</p><ul>
 <li>Obtiene el número total de commits en la rama especificada utilizando el contador de commits en la estructura de datos <code>branches</code>.</li>
 <li>Imprime una línea separadora para mejorar la legibilidad de la salida.</li>
 <li>Si hay commits disponibles (<code>commit_count &gt; 0</code>), itera a través de cada commit e imprime:<ul>
@@ -753,7 +1216,7 @@ Functions</h2></td></tr>
 </li>
 <li>Si no hay commits disponibles, imprime un mensaje indicando que no hay commits.</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>Asegúrese de que el nombre del usuario (<code>user_name</code>) esté correctamente inicializado antes de llamar a esta función. La salida de la función está en formato de texto y es adecuada para la visualización en la consola. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Solo se mostraran los logs de la rama en la cual se haga el <code>ugit log</code>. </dd></dl>
 
 </div>
 </div>
@@ -777,7 +1240,12 @@ Functions</h2></td></tr>
 <p>Muestra la versión actual del sistema uGit.</p>
 <p>La función <code>ugit_version</code> muestra en la consola la versión actual del software <code>uGit</code>. Esto es útil para verificar qué versión del sistema se está utilizando y puede ser especialmente relevante durante el desarrollo y mantenimiento del software.</p>
 <dl class="section return"><dt>Returns</dt><dd>No devuelve ningún valor. La función imprime la versión en la salida estándar.</dd></dl>
-<p>Al llamar a esta función, se imprimirá un mensaje que incluye el número de versión del sistema de control de versiones <code>uGit</code>. La salida es un simple mensaje de texto con el formato <code>ugit version X.X.X</code>, donde <code>X.X.X</code> representa la versión actual del software. </p>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="#a820d6168e675a87bd1ab4c7ecd2e03d3">ugit_version</a>(<span class="keywordtype">void</span>)</div>
+<div class="line">{</div>
+<div class="line">    printf(<span class="stringliteral">&quot;ugit version 1.0.0\n&quot;</span>);</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a820d6168e675a87bd1ab4c7ecd2e03d3"><div class="ttname"><a href="#a820d6168e675a87bd1ab4c7ecd2e03d3">ugit_version</a></div><div class="ttdeci">void ugit_version(void)</div><div class="ttdoc">Muestra la versión actual del sistema uGit.</div><div class="ttdef"><b>Definition</b> ugit_version.c:34</div></div>
+</div><!-- fragment --><p>Al llamar a esta función, se imprimirá un mensaje que incluye el número de versión del sistema de control de versiones <code>uGit</code>. La salida es un simple mensaje de texto con el formato <code>ugit version X.X.X</code>, donde <code>X.X.X</code> representa la versión actual del software. </p>
 
 </div>
 </div>

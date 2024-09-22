@@ -28,6 +28,41 @@
  *
  * @return Cadena de caracteres que contiene el nombre del usuario ingresado. Retorna `NULL` si el repositorio ya
  *         ha sido inicializado previamente.
+ * @code
+ * char *ugit_init(Branch *branches, char *initial_prompt, int *repositorio_flag)
+ * {
+ *     if (*repositorio_flag == 0)
+ *     {
+ *         char *user_name = (char *)malloc(256 * sizeof(char));
+ *         if (user_name == NULL)
+ *         {
+ *             printf("Error al asignar memoria para el nombre del usuario.\n");
+ *             exit(1);
+ *         }
+ *
+ *         printf("Ingrese su nombre: ");
+ *         fgets(user_name, 256, stdin);
+ *
+ *         size_t len = strlen(user_name);
+ *         if (len > 0 && user_name[len - 1] == '\n')
+ *         {
+ *             user_name[len - 1] = '\0';
+ *         }
+ *
+ *         printf("Repositorio de uGit inicializado\n");
+ *         ugit_branch("main", branches);
+ *         ugit_branch_control("main", initial_prompt);
+ *         *repositorio_flag = 1;
+ *
+ *         return user_name;
+ *     }
+ *     else
+ *     {
+ *         printf("Ya hay un repositorio inicializado\n");
+ *         return NULL;
+ *     }
+ * }
+ * @endcode
  *
  * @details La función realiza las siguientes operaciones:
  * - Verifica si el repositorio ha sido inicializado previamente usando la bandera `repositorio_flag`.
@@ -41,14 +76,14 @@
  * - Retorna el nombre del usuario ingresado.
  * - Si el repositorio ya ha sido inicializado, imprime un mensaje y retorna `NULL`.
  *
- * @note Asegúrese de que el nombre del usuario ingresado no exceda el límite de 255 caracteres. La función
+ * @note Asegúrese de que el nombre del usuario ingresado no exceda el límite de caracteres. La función
  *       utiliza `fgets` para leer la entrada del usuario y maneja el posible salto de línea al final de la cadena.
  */
 char *ugit_init(Branch *branches, char *initial_prompt, int *repositorio_flag)
 {
     if (*repositorio_flag == 0)
     {
-        char *user_name = (char *)(256 * sizeof(char));
+        char *user_name = (char *)malloc(256 * sizeof(char));
         if (user_name == NULL)
         {
             printf("Error al asignar memoria para el nombre del usuario.\n");

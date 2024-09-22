@@ -15,6 +15,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #define MAX_INPUT_SIZE 100 ///< Tamaño máximo para entradas de texto.
 #define MAX_COMMITS 100    ///< Número máximo de commits por rama.
@@ -153,9 +154,10 @@ void ugit_log(Branch *branch, char *start_date, char *end_date);
  * @param branch_name Nombre de la rama a la que se desea cambiar.
  * @param branch Puntero a la rama activa actual.
  * @param action Acción a realizar durante el cambio de rama.
+ * @param actual_branch_name Nombre de la rama en la que se esta en ese momento.
  * @return Rama actualizada después del cambio.
  */
-Branch ugit_checkout(char *branch_name, Branch *branch, char *action);
+Branch ugit_checkout(char *branch_name, Branch *branch, char *action, char *actual_branch_name);
 
 /**
  * @brief Inicializa un nuevo repositorio.
@@ -184,3 +186,24 @@ char *ugit_init(Branch *branch, char *repo_path, int *branch_count);
  * @param status Código de estado de la operación.
  */
 void manejar_archivos(char *file_name, Branch *branch, char *file_content, int *file_size, int *action);
+
+/**
+ * @brief Maneja checkouts a commits
+ *
+ * Esta funcion maneja el cambiarse de un commit a otro commit.
+ *
+ * @param rama_hash Hash del commit de la rama actual.
+ * @param branch Puntero a la rama actual.
+ * @param commit_hash Hash del commit al que se desea ir.
+ */
+int ugit_checkout_commit(int rama_hash, Branch *branch, char *commit_hash);
+
+/**
+ * @brief Genera los hash de los commits
+ *
+ * Esta funcion genera los hash de los commits que se crean, maneja las colisiones.
+ *
+ * @param prompt Descripción del commit.
+ *
+ */
+int generar_hash(char *prompt);

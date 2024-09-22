@@ -20,6 +20,13 @@
  *
  * @return No devuelve ningún valor. La función imprime la versión en la salida estándar.
  *
+ * @code
+ * void ugit_version(void)
+ * {
+ *     printf("ugit version 1.0.0\n");
+ * }
+ * @endcode
+ *
  * @details Al llamar a esta función, se imprimirá un mensaje que incluye el número de versión del sistema de control
  *          de versiones `uGit`. La salida es un simple mensaje de texto con el formato `ugit version X.X.X`, donde
  *          `X.X.X` representa la versión actual del software.

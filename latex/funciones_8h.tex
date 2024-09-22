@@ -8,6 +8,7 @@ En este archivo se encuentran los prototipos de las funciones y estructuras de u
 {\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$ctype.\+h$>$}\newline
 \doxysubsubsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
@@ -66,12 +67,16 @@ void \mbox{\hyperlink{funciones_8h_a5bf5993921eb5ddfe7c322e3c163ab9d}{ugit\+\_\+
 \begin{DoxyCompactList}\small\item\em Crea un nuevo commit. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{funciones_8h_a281fc471db5bf4a7d9061a4f1f5dd2fd}{ugit\+\_\+log}} (\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structbranch}{branch}}, char \texorpdfstring{$\ast$}{*}start\+\_\+date, char \texorpdfstring{$\ast$}{*}end\+\_\+date)
 \begin{DoxyCompactList}\small\item\em Muestra el historial de commits. \end{DoxyCompactList}\item 
-\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \mbox{\hyperlink{funciones_8h_ab944edd958bf224e11ab96b8b3cfb164}{ugit\+\_\+checkout}} (char \texorpdfstring{$\ast$}{*}branch\+\_\+name, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structbranch}{branch}}, char \texorpdfstring{$\ast$}{*}action)
+\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \mbox{\hyperlink{funciones_8h_a9ae420ef18a4560412779cf11e44ddaa}{ugit\+\_\+checkout}} (char \texorpdfstring{$\ast$}{*}branch\+\_\+name, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structbranch}{branch}}, char \texorpdfstring{$\ast$}{*}action, char \texorpdfstring{$\ast$}{*}actual\+\_\+branch\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Cambia a una rama específica. \end{DoxyCompactList}\item 
 char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{funciones_8h_a09ccf8afffab02354c1e2d40060f638b}{ugit\+\_\+init}} (\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structbranch}{branch}}, char \texorpdfstring{$\ast$}{*}repo\+\_\+path, int \texorpdfstring{$\ast$}{*}branch\+\_\+count)
 \begin{DoxyCompactList}\small\item\em Inicializa un nuevo repositorio. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{funciones_8h_a2f501f30e352ed2bcecac7ccf87e9f4a}{manejar\+\_\+archivos}} (char \texorpdfstring{$\ast$}{*}file\+\_\+name, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structbranch}{branch}}, char \texorpdfstring{$\ast$}{*}file\+\_\+content, int \texorpdfstring{$\ast$}{*}file\+\_\+size, int \texorpdfstring{$\ast$}{*}action)
-\begin{DoxyCompactList}\small\item\em Maneja archivos en el repositorio. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Maneja archivos en el repositorio. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{funciones_8h_a7334d4a2d5dcf61c573f730b5d8a9f1b}{ugit\+\_\+checkout\+\_\+commit}} (int rama\+\_\+hash, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}\mbox{\hyperlink{structbranch}{branch}}, char \texorpdfstring{$\ast$}{*}commit\+\_\+hash)
+\begin{DoxyCompactList}\small\item\em Maneja checkouts a commits. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{funciones_8h_a52b35fafc1c97e7916d7ad5dbfc58730}{generar\+\_\+hash}} (char \texorpdfstring{$\ast$}{*}prompt)
+\begin{DoxyCompactList}\small\item\em Genera los hash de los commits. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -118,7 +123,25 @@ Comandos disponibles\+:
 \item {\ttfamily checkout \texorpdfstring{$<$}{<}name\texorpdfstring{$>$}{>}} -\/ Cambia a la rama especificada.
 \item {\ttfamily -\/-\/version} -\/ Muestra la versión de u\+Git.
 \item {\ttfamily vi \texorpdfstring{$<$}{<}nombre\+\_\+archivo\texorpdfstring{$>$}{>}} -\/ Permite crear archivos con el editor vi.
-\item {\ttfamily help} -\/ Muestra esta ayuda. 
+\item {\ttfamily help} -\/ Muestra esta ayuda.
+\item 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a6109b0a539ffbffa9bcc8199388ffcfd}{commands\_prompt}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Comandos\ disponibles:\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ init\ \ \ \ \ \ \ \ -\/\ Inicializa\ un\ nuevo\ repositorio.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ add\ <file>\ \ -\/\ Añade\ un\ archivo\ al\ área\ de\ preparación.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ commit\ <msg>\ -\/\ Realiza\ un\ commit\ con\ el\ mensaje\ especificado.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ log\ \ \ \ \ \ \ \ \ -\/\ Muestra\ el\ historial\ de\ commits.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ branch\ <name>\ -\/\ Crea\ una\ nueva\ rama\ con\ el\ nombre\ especificado.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ checkout\ <name>\ -\/\ Cambia\ a\ la\ rama\ especificada.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ -\/-\/version\ \ \ \ \ \ \ \ -\/\ Muestra\ la\ versión\ de\ uGit.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ vi\ <nombre\_archivo>\ \ \ \ \ \ \ -\/\ Puedes\ crear\ archivos\ con\ vi.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ help\ \ \ \ \ \ \ \ -\/\ Muestra\ esta\ ayuda.\(\backslash\)n"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
 \end{DoxyItemize}\Hypertarget{funciones_8h_a2f6ef867410d69ecae853596d56e3417}\index{funciones.h@{funciones.h}!flow\_control@{flow\_control}}
 \index{flow\_control@{flow\_control}!funciones.h@{funciones.h}}
 \doxysubsubsection{\texorpdfstring{flow\_control()}{flow\_control()}}
@@ -129,7 +152,24 @@ void flow\+\_\+control (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamC
 
 Controla el flujo de operaciones en u\+Git. 
 
-Esta función gestiona el flujo de operaciones y llamadas a otras funciones según las acciones solicitadas por el usuario. \Hypertarget{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}\index{funciones.h@{funciones.h}!hash@{hash}}
+Esta función gestiona el flujo de operaciones y llamadas a otras funciones según las acciones solicitadas por el usuario. \Hypertarget{funciones_8h_a52b35fafc1c97e7916d7ad5dbfc58730}\index{funciones.h@{funciones.h}!generar\_hash@{generar\_hash}}
+\index{generar\_hash@{generar\_hash}!funciones.h@{funciones.h}}
+\doxysubsubsection{\texorpdfstring{generar\_hash()}{generar\_hash()}}
+{\footnotesize\ttfamily \label{funciones_8h_a52b35fafc1c97e7916d7ad5dbfc58730} 
+int generar\+\_\+hash (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{}\end{DoxyParamCaption})}
+
+
+
+Genera los hash de los commits. 
+
+Esta funcion genera los hash de los commits que se crean, maneja las colisiones.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & Descripción del commit. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}\index{funciones.h@{funciones.h}!hash@{hash}}
 \index{hash@{hash}!funciones.h@{funciones.h}}
 \doxysubsubsection{\texorpdfstring{hash()}{hash()}}
 {\footnotesize\ttfamily \label{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b} 
@@ -151,7 +191,7 @@ Valor hash calculado.
 \end{DoxyReturn}
 Calcula el hash de una cadena de caracteres.
 
-La función {\ttfamily hash} toma una cadena de caracteres como entrada y calcula un valor de hash utilizando la suma de los valores ASCII de los caracteres de la cadena, seguida de una operación de módulo para limitar el rango del hash. Si el hash generado ya ha sido entregado, se ajusta el valor de hash incrementándolo en uno para asegurar la unicidad.
+La función {\ttfamily hash} toma una cadena de caracteres como entrada y calcula un valor de hash utilizando la suma de los valores ASCII de los caracteres de la cadena, seguida de una operación de módulo para limitar el rango del hash.
 
 
 \begin{DoxyParams}{Parameters}
@@ -161,8 +201,40 @@ La función {\ttfamily hash} toma una cadena de caracteres como entrada y calcul
 \begin{DoxyReturn}{Returns}
 Un valor de hash único basado en la entrada proporcionada.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(\textcolor{keywordtype}{char}\ *prompt)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ temp\_hash\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ aux;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ ((aux\ =\ *prompt++))}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ temp\_hash\ +=\ aux;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}\ =\ temp\_hash\ \%\ 100;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ hashes\_entregados[count]\ =\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}};}
+\DoxyCodeLine{\ \ \ \ count++;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ count;\ i++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hashes\_entregados[i]\ ==\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}\ +\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 \begin{DoxyNote}{Note}
-La función mantiene un registro de los hashes generados en el array {\ttfamily hashes\+\_\+entregados} para evitar duplicados dentro de un rango limitado de hashes. 
+La función da el hash respectivo dependiendo del prompt. 
 \end{DoxyNote}
 \Hypertarget{funciones_8h_a2f501f30e352ed2bcecac7ccf87e9f4a}\index{funciones.h@{funciones.h}!manejar\_archivos@{manejar\_archivos}}
 \index{manejar\_archivos@{manejar\_archivos}!funciones.h@{funciones.h}}
@@ -208,6 +280,122 @@ La función {\ttfamily manejar\+\_\+archivos} procesa un comando para manejar ar
 {\em modificacion\+\_\+flag} & Puntero a un entero que indica si hay modificaciones activas (1) o no (0).\\
 \hline
 \end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a2f501f30e352ed2bcecac7ccf87e9f4a}{manejar\_archivos}}(\textcolor{keywordtype}{char}\ *prompt,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *branch\_name,\ \textcolor{keywordtype}{int}\ *files\_count,\ \textcolor{keywordtype}{int}\ *modificacion\_flag)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *filename\ =\ (\textcolor{keywordtype}{char}\ *)malloc((strlen(prompt\ +\ 3)\ +\ 1)\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (filename\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ el\ nombre\ del\ archivo\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ strcpy(filename,\ prompt\ +\ 3);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ hash\_value\ =\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ commit\_count\ =\ branches[hash\_value].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ archivo\_encontrado\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ *files\_count;\ i++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strncmp(branches[hash\_value].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ filename,\ \mbox{\hyperlink{funciones_8h_af43dedece15d018ffad8970492870bac}{MAX\_FILE\_NAME}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ archivo\_encontrado\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ FILE\ *archivo\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}r+"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (archivo)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ archivo\ '\%s'\ ya\ existe.\ Contenido\ actual:\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[256];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ archivo)\ !=\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ buffer);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nDesea\ agregar\ más\ contenido\ al\ archivo?\ (s/n):\ "{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ opcion;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\ \%c"{}},\ \&opcion);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (opcion\ ==\ \textcolor{charliteral}{'s'}\ ||\ opcion\ ==\ \textcolor{charliteral}{'S'})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (getchar()\ !=\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Ingrese\ el\ contenido\ adicional:\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fseek(archivo,\ 0,\ SEEK\_END);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *nuevo\_contenido\ =\ (\textcolor{keywordtype}{char}\ *)malloc(256\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nuevo\_contenido\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ el\ contenido\ adicional\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fgets(nuevo\_contenido,\ 256,\ stdin);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%s"{}},\ nuevo\_contenido);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(nuevo\_contenido);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fclose(archivo);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ archivo\ '\%s'.\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!archivo\_encontrado)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Archivo\ no\ encontrado\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*files\_count\ <\ \mbox{\hyperlink{funciones_8h_a2c5eecb22513a88c24ae5831a3265e54}{MAX\_FILES}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ FILE\ *archivo\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (archivo)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ archivo\ '\%s'\ no\ existía,\ ha\ sido\ creado.\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Ingrese\ el\ contenido\ inicial\ del\ archivo:\(\backslash\)n"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *contenido\_inicial\ =\ (\textcolor{keywordtype}{char}\ *)malloc(256\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (contenido\_inicial\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ el\ contenido\ inicial\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fgets(contenido\_inicial,\ 256,\ stdin);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%s"{}},\ contenido\_inicial);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fclose(archivo);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(contenido\_inicial);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *branches[hash\_value].\mbox{\hyperlink{structbranch_a22691362767d3b8f966160af608a2ae2}{commit}}[commit\_count].\mbox{\hyperlink{structcommit_a5565fadc9f19e80ca68789255939d1e3}{archivos\_agregados}}\ =\ *(\textcolor{keywordtype}{char}\ *)malloc((strlen(filename)\ +\ 1)\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(branches[hash\_value].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ \textcolor{stringliteral}{"{}\ "{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ archivos\_agregados\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(branches[hash\_value].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ filename);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*files\_count)++;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ pudo\ crear\ el\ archivo\ '\%s'.\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ pueden\ añadir\ más\ archivos,\ límite\ alcanzado.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ free(filename);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función\+:
 \begin{DoxyItemize}
 \item Asigna memoria para el nombre del archivo basado en el comando proporcionado.
@@ -218,7 +406,7 @@ La función\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-La función utiliza memoria dinámica para almacenar el nombre del archivo y el contenido. Asegúrese de liberar esta memoria después de su uso para evitar fugas de memoria. 
+La función utiliza memoria dinámica para almacenar el nombre del archivo y el contenido. 
 \end{DoxyNote}
 \Hypertarget{funciones_8h_aa9cc744ebda3a8d2f63e0db84a0c443b}\index{funciones.h@{funciones.h}!ugit\_add@{ugit\_add}}
 \index{ugit\_add@{ugit\_add}!funciones.h@{funciones.h}}
@@ -258,6 +446,56 @@ La función {\ttfamily ugit\+\_\+add} procesa un comando para añadir archivos a
 {\em modificacion\+\_\+flag} & Puntero a un entero que indica si hay modificaciones activas (1) o si todo está en "{}staging"{} (0).\\
 \hline
 \end{DoxyParams}
+/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+Añade un archivo al área de "{}staging"{} o maneja el comando para añadir todos los archivos.
+
+La función {\ttfamily ugit\+\_\+add} procesa un comando para añadir archivos al área de "{}staging"{}. Si el archivo especificado en el comando está presente en la estructura de datos de commits, el archivo se marca como añadido. También maneja el caso especial donde el comando solicita añadir todos los archivos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & Cadena de caracteres que contiene el comando, incluyendo el nombre del archivo a añadir. \\
+\hline
+{\em branches} & Array de estructuras {\ttfamily Branch} que representa el estado actual de las ramas y commits. \\
+\hline
+{\em branch\+\_\+name} & Nombre de la rama actual, utilizado para calcular el hash y determinar el commit correspondiente. \\
+\hline
+{\em modificacion\+\_\+flag} & Puntero a un entero que indica si hay modificaciones activas (1) o si todo está en "{}staging"{} (0).\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_aa9cc744ebda3a8d2f63e0db84a0c443b}{ugit\_add}}(\textcolor{keywordtype}{char}\ *prompt,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *branch\_name,\ \textcolor{keywordtype}{int}\ *modificacion\_flag)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *filename\ =\ prompt\ +\ 9;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ commit\_count\ =\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strncmp(branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ filename,\ \mbox{\hyperlink{funciones_8h_af43dedece15d018ffad8970492870bac}{MAX\_FILE\_NAME}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(filename,\ \textcolor{stringliteral}{"{}."{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Todos\ los\ archivos\ fueron\ añadidos\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (strlen(filename)\ >\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ archivo\ '\%s'\ fue\ añadido.\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ proporcionó\ ningun\ archivo.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ archivo\ '\%s'\ no\ existe\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función\+:
 \begin{DoxyItemize}
 \item Extrae el nombre del archivo del comando proporcionado.
@@ -268,7 +506,7 @@ La función\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-La función asume que el nombre del archivo está en una posición fija dentro del comando ({\ttfamily prompt + 9}). Asegúrese de que los comandos sean válidos y estén correctamente formateados. 
+La función asume que el nombre del archivo está en una posición fija dentro del comando ({\ttfamily prompt + 9}). 
 \end{DoxyNote}
 \Hypertarget{funciones_8h_aedf02cc3f92d1d8075f18b48e9c1c712}\index{funciones.h@{funciones.h}!ugit\_branch@{ugit\_branch}}
 \index{ugit\_branch@{ugit\_branch}!funciones.h@{funciones.h}}
@@ -303,6 +541,33 @@ La función {\ttfamily ugit\+\_\+branch} agrega una nueva rama a la estructura d
 \begin{DoxyReturn}{Returns}
 No retorna ningún valor. La nueva rama se agrega directamente a la estructura {\ttfamily branches}.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_aedf02cc3f92d1d8075f18b48e9c1c712}{ugit\_branch}}(\textcolor{keywordtype}{char}\ *prompt,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *branch\_name;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(prompt,\ \textcolor{stringliteral}{"{}main"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branch\_name\ =\ \textcolor{stringliteral}{"{}main"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branch\_name\ =\ prompt\ +\ 12;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(branch\_name,\ \textcolor{stringliteral}{"{}"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ nombre\ de\ la\ rama\ no\ puede\ ser\ vacio\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ strncpy(branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].nombre\_rama,\ branch\_name,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}\ -\/\ 1);}
+\DoxyCodeLine{\ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a3cd787da48830c5cc398350d6d694577}{nombre\_rama}}[\mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}\ -\/\ 1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}}\ =\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función\+:
 \begin{DoxyItemize}
 \item Compara el nombre de la rama con "{}main"{} y, si coincide, usa "{}main"{} como nombre de la rama.
@@ -312,7 +577,7 @@ La función\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-La función asume que el nombre de la rama comienza en la posición {\ttfamily prompt + 12} para comandos distintos a "{}main"{}. Asegúrese de que los comandos sean válidos y correctamente formateados. 
+La función asume que el nombre de la rama comienza en la posición {\ttfamily prompt + 12}. 
 \end{DoxyNote}
 \Hypertarget{funciones_8h_a06830cd767546a72401df9df60d02fb4}\index{funciones.h@{funciones.h}!ugit\_branch\_control@{ugit\_branch\_control}}
 \index{ugit\_branch\_control@{ugit\_branch\_control}!funciones.h@{funciones.h}}
@@ -344,6 +609,25 @@ La función {\ttfamily ugit\+\_\+branch\+\_\+control} actualiza el prompt de la 
 {\em actual\+\_\+prompt} & Cadena de caracteres donde se almacenará el nuevo texto del prompt de la shell.\\
 \hline
 \end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a06830cd767546a72401df9df60d02fb4}{ugit\_branch\_control}}(\textcolor{keywordtype}{char}\ *prompt,\ \textcolor{keywordtype}{char}\ *actual\_prompt)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *branch\_name;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(prompt,\ \textcolor{stringliteral}{"{}main"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branch\_name\ =\ \textcolor{stringliteral}{"{}main"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branch\_name\ =\ prompt\ +\ 14;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ snprintf(actual\_prompt,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}},\ \textcolor{stringliteral}{"{}ugit(\%s)\ "{}},\ branch\_name);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función\+:
 \begin{DoxyItemize}
 \item Compara el comando {\ttfamily prompt} con el nombre de la rama principal "{}main"{}.
@@ -353,13 +637,13 @@ La función\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-La función asume que el nombre de la rama está en una posición fija dentro del comando ({\ttfamily prompt + 14}) para comandos distintos a "{}main"{}. Asegúrese de que los comandos sean válidos y estén correctamente formateados. 
+La función asume que el nombre de la rama está en una posición fija dentro del comando ({\ttfamily prompt + 14}). 
 \end{DoxyNote}
-\Hypertarget{funciones_8h_ab944edd958bf224e11ab96b8b3cfb164}\index{funciones.h@{funciones.h}!ugit\_checkout@{ugit\_checkout}}
+\Hypertarget{funciones_8h_a9ae420ef18a4560412779cf11e44ddaa}\index{funciones.h@{funciones.h}!ugit\_checkout@{ugit\_checkout}}
 \index{ugit\_checkout@{ugit\_checkout}!funciones.h@{funciones.h}}
 \doxysubsubsection{\texorpdfstring{ugit\_checkout()}{ugit\_checkout()}}
-{\footnotesize\ttfamily \label{funciones_8h_ab944edd958bf224e11ab96b8b3cfb164} 
-\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} ugit\+\_\+checkout (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{initial\+\_\+prompt}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{funciones_8h_a9ae420ef18a4560412779cf11e44ddaa} 
+\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} ugit\+\_\+checkout (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{initial\+\_\+prompt}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{actual\+\_\+branch\+\_\+name}{}\end{DoxyParamCaption})}
 
 
 
@@ -374,6 +658,8 @@ Esta función cambia la rama activa al nombre de rama especificado.
 {\em branch} & Puntero a la rama activa actual. \\
 \hline
 {\em action} & Acción a realizar durante el cambio de rama. \\
+\hline
+{\em actual\+\_\+branch\+\_\+name} & Nombre de la rama en la que se esta en ese momento. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -391,10 +677,53 @@ La función {\ttfamily ugit\+\_\+checkout} verifica si la rama especificada exis
 \hline
 {\em initial\+\_\+prompt} & Cadena de caracteres que representa el prompt actual de la shell. Este prompt se actualiza para reflejar el nombre de la nueva rama si la rama existe.\\
 \hline
+{\em actual\+\_\+branch\+\_\+name} & Nombre de la rama en la que esta actualmente el usuario.\\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Retorna la estructura de datos de la rama a la cual se cambió. Si la rama no existe, retorna la estructura de datos de la rama actual.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structbranch}{Branch}}\ \mbox{\hyperlink{funciones_8h_a9ae420ef18a4560412779cf11e44ddaa}{ugit\_checkout}}(\textcolor{keywordtype}{char}\ *prompt,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *initial\_prompt,\ \textcolor{keywordtype}{char}\ *actual\_branch\_name)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *branch\_or\_hash\ =\ prompt\ +\ 14;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (isdigit(branch\_or\_hash[0]))}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{funciones_8h_a7334d4a2d5dcf61c573f730b5d8a9f1b}{ugit\_checkout\_commit}}(\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(actual\_branch\_name),\ branches,\ branch\_or\_hash)\ ==\ 1)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ snprintf(initial\_prompt,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}},\ \textcolor{stringliteral}{"{}ugit(\%s)\ "{}},\ branch\_or\_hash);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(actual\_branch\_name)];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(branch\_or\_hash,\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_or\_hash)].nombre\_rama)\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(prompt,\ \textcolor{stringliteral}{"{}main"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ branch\_or\_hash\ =\ \textcolor{stringliteral}{"{}main"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (strcmp(branch\_or\_hash,\ \textcolor{stringliteral}{"{}"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ existe\ una\ rama\ con\ ese\ nombre\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(actual\_branch\_name)];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ branch\_or\_hash\ =\ prompt\ +\ 14;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ snprintf(initial\_prompt,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}},\ \textcolor{stringliteral}{"{}ugit(\%s)\ "{}},\ branch\_or\_hash);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_or\_hash)];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}No\ existe\ una\ rama\ con\ ese\ nombre\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(actual\_branch\_name)];}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función realiza las siguientes operaciones\+:
 \begin{DoxyItemize}
 \item Extrae el nombre de la rama del comando {\ttfamily prompt} (comenzando en {\ttfamily prompt + 14}).
@@ -404,7 +733,70 @@ La función realiza las siguientes operaciones\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-Asegúrese de que el comando {\ttfamily prompt} esté correctamente formateado y contenga el nombre de la rama en la posición correcta (a partir de {\ttfamily prompt + 14}). 
+Se debe asegurar que la rama o el commit exista, en el caso de que no exista saldra un mensaje de error. 
+\end{DoxyNote}
+\Hypertarget{funciones_8h_a7334d4a2d5dcf61c573f730b5d8a9f1b}\index{funciones.h@{funciones.h}!ugit\_checkout\_commit@{ugit\_checkout\_commit}}
+\index{ugit\_checkout\_commit@{ugit\_checkout\_commit}!funciones.h@{funciones.h}}
+\doxysubsubsection{\texorpdfstring{ugit\_checkout\_commit()}{ugit\_checkout\_commit()}}
+{\footnotesize\ttfamily \label{funciones_8h_a7334d4a2d5dcf61c573f730b5d8a9f1b} 
+int ugit\+\_\+checkout\+\_\+commit (\begin{DoxyParamCaption}\item[{int}]{rama\+\_\+hash}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{commit\+\_\+hash}{}\end{DoxyParamCaption})}
+
+
+
+Maneja checkouts a commits. 
+
+Esta funcion maneja el cambiarse de un commit a otro commit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em rama\+\_\+hash} & Hash del commit de la rama actual. \\
+\hline
+{\em branch} & Puntero a la rama actual. \\
+\hline
+{\em commit\+\_\+hash} & Hash del commit al que se desea ir.\\
+\hline
+{\em rama\+\_\+hash} & El hash de la rama en la que se buscará el commit. \\
+\hline
+{\em branches} & Arreglo de estructuras {\ttfamily Branch} que contiene información de todas las ramas y sus commits. \\
+\hline
+{\em commit\+\_\+hash} & Cadena de caracteres que contiene el hash del commit que se desea buscar y hacer checkout.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna 1 si el commit se encuentra en la rama y se realiza el cambio exitosamente, de lo contrario, retorna 0 si no se encuentra el commit con el hash especificado.
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{funciones_8h_a7334d4a2d5dcf61c573f730b5d8a9f1b}{ugit\_checkout\_commit}}(\textcolor{keywordtype}{int}\ rama\_hash,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *commit\_hash)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ hash\_long\ =\ strtol(commit\_hash,\ NULL,\ 10);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ branches[rama\_hash].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};\ i++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (branches[rama\_hash].\mbox{\hyperlink{structcommit}{commit}}[i].commit\_hash\ ==\ hash\_long)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Cambio\ al\ commit\ \%ld\ en\ la\ rama\ \%s.\(\backslash\)n"{}},\ hash\_long,\ branches[rama\_hash].nombre\_rama);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ encontró\ un\ commit\ con\ el\ hash\ \%ld\ en\ la\ rama.\(\backslash\)n"{}},\ hash\_long);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+La función realiza las siguientes operaciones\+:
+\begin{DoxyItemize}
+\item Convierte el hash del commit de cadena a número entero usando {\ttfamily strtol}.
+\item Itera a través de los commits en la rama correspondiente y compara el hash convertido con los hashes almacenados.
+\item Si encuentra el commit correspondiente, imprime un mensaje indicando el cambio de commit y retorna 1.
+\item Si no se encuentra el commit, muestra un mensaje de error y retorna 0.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+La conversión de la cadena {\ttfamily commit\+\_\+hash} a número entero puede fallar si la entrada no es válida. 
 \end{DoxyNote}
 \Hypertarget{funciones_8h_a5bf5993921eb5ddfe7c322e3c163ab9d}\index{funciones.h@{funciones.h}!ugit\_commit@{ugit\_commit}}
 \index{ugit\_commit@{ugit\_commit}!funciones.h@{funciones.h}}
@@ -447,6 +839,37 @@ La función {\ttfamily ugit\+\_\+commit} agrega un nuevo commit al historial de 
 \begin{DoxyReturn}{Returns}
 No retorna ningún valor.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a5bf5993921eb5ddfe7c322e3c163ab9d}{ugit\_commit}}(\textcolor{keywordtype}{char}\ *prompt,\ \textcolor{keywordtype}{char}\ *branch\_name,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{int}\ *modificacion\_flag)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *commit\_message\ =\ prompt\ +\ 11;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ commit\_count\ =\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ \textcolor{stringliteral}{"{}"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ puede\ hacer\ un\ commit\ sin\ añadir\ archivos\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (strcmp(commit\_message,\ \textcolor{stringliteral}{"{}"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ puede\ hacer\ un\ commit\ sin\ descripcion\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*modificacion\_flag\ ==\ 1)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Hay\ cambios\ que\ no\ se\ han\ añadido\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ strncpy(branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].descripcion\_commit,\ commit\_message,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}\ -\/\ 1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a22691362767d3b8f966160af608a2ae2}{commit}}[commit\_count].\mbox{\hyperlink{structcommit_ad3770dc7fbf0647feb252563e865c47a}{descripcion\_commit}}[\mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}\ -\/\ 1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a22691362767d3b8f966160af608a2ae2}{commit}}[commit\_count].\mbox{\hyperlink{structcommit_a001b1af1be04cab68e73d6a2845edd75}{commit\_hash}}\ =\ \mbox{\hyperlink{funciones_8h_a52b35fafc1c97e7916d7ad5dbfc58730}{generar\_hash}}(prompt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}}++;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función realiza las siguientes operaciones\+:
 \begin{DoxyItemize}
 \item Extrae el mensaje del commit del comando {\ttfamily prompt} (comenzando en {\ttfamily prompt + 11}).
@@ -497,7 +920,44 @@ La función {\ttfamily ugit\+\_\+init} configura el repositorio inicial del sist
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Cadena de caracteres que contiene el nombre del usuario ingresado. Retorna {\ttfamily NULL} si el repositorio ya ha sido inicializado previamente.
+Cadena de caracteres que contiene el nombre del usuario ingresado. Retorna {\ttfamily NULL} si el repositorio ya ha sido inicializado previamente. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ *\mbox{\hyperlink{funciones_8h_a09ccf8afffab02354c1e2d40060f638b}{ugit\_init}}(\mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *initial\_prompt,\ \textcolor{keywordtype}{int}\ *repositorio\_flag)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (*repositorio\_flag\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *user\_name\ =\ (\textcolor{keywordtype}{char}\ *)malloc(256\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\_name\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ el\ nombre\ del\ usuario.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Ingrese\ su\ nombre:\ "{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fgets(user\_name,\ 256,\ stdin);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ len\ =\ strlen(user\_name);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (len\ >\ 0\ \&\&\ user\_name[len\ -\/\ 1]\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ user\_name[len\ -\/\ 1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Repositorio\ de\ uGit\ inicializado\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{funciones_8h_aedf02cc3f92d1d8075f18b48e9c1c712}{ugit\_branch}}(\textcolor{stringliteral}{"{}main"{}},\ branches);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{funciones_8h_a06830cd767546a72401df9df60d02fb4}{ugit\_branch\_control}}(\textcolor{stringliteral}{"{}main"{}},\ initial\_prompt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ *repositorio\_flag\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ user\_name;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Ya\ hay\ un\ repositorio\ inicializado\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
 \end{DoxyReturn}
 La función realiza las siguientes operaciones\+:
 \begin{DoxyItemize}
@@ -513,7 +973,7 @@ La función realiza las siguientes operaciones\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-Asegúrese de que el nombre del usuario ingresado no exceda el límite de 255 caracteres. La función utiliza {\ttfamily fgets} para leer la entrada del usuario y maneja el posible salto de línea al final de la cadena. 
+Asegúrese de que el nombre del usuario ingresado no exceda el límite de caracteres. La función utiliza {\ttfamily fgets} para leer la entrada del usuario y maneja el posible salto de línea al final de la cadena. 
 \end{DoxyNote}
 \Hypertarget{funciones_8h_a281fc471db5bf4a7d9061a4f1f5dd2fd}\index{funciones.h@{funciones.h}!ugit\_log@{ugit\_log}}
 \index{ugit\_log@{ugit\_log}!funciones.h@{funciones.h}}
@@ -552,6 +1012,32 @@ La función {\ttfamily ugit\+\_\+log} imprime el historial de commits de la rama
 \begin{DoxyReturn}{Returns}
 No devuelve ningún valor. La función imprime el historial de commits en la salida estándar.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a281fc471db5bf4a7d9061a4f1f5dd2fd}{ugit\_log}}(\mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *branch\_name,\ \textcolor{keywordtype}{char}\ *user\_name)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ commit\_count\ =\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (commit\_count\ >\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ commit\_count;\ i++)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Author:\ \%s\(\backslash\)n"{}},\ user\_name);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Commit:\ \%ld\(\backslash\)n"{}},\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structcommit}{commit}}[i].commit\_hash);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Descripcion:\ \%s\(\backslash\)n"{}},\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structcommit}{commit}}[i].descripcion\_commit);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ hay\ commits\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función realiza las siguientes operaciones\+:
 \begin{DoxyItemize}
 \item Obtiene el número total de commits en la rama especificada utilizando el contador de commits en la estructura de datos {\ttfamily branches}.
@@ -567,7 +1053,7 @@ La función realiza las siguientes operaciones\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-Asegúrese de que el nombre del usuario ({\ttfamily user\+\_\+name}) esté correctamente inicializado antes de llamar a esta función. La salida de la función está en formato de texto y es adecuada para la visualización en la consola. 
+Solo se mostraran los logs de la rama en la cual se haga el {\ttfamily ugit log}. 
 \end{DoxyNote}
 \Hypertarget{funciones_8h_a820d6168e675a87bd1ab4c7ecd2e03d3}\index{funciones.h@{funciones.h}!ugit\_version@{ugit\_version}}
 \index{ugit\_version@{ugit\_version}!funciones.h@{funciones.h}}
@@ -588,4 +1074,14 @@ La función {\ttfamily ugit\+\_\+version} muestra en la consola la versión actu
 \begin{DoxyReturn}{Returns}
 No devuelve ningún valor. La función imprime la versión en la salida estándar.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a820d6168e675a87bd1ab4c7ecd2e03d3}{ugit\_version}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}ugit\ version\ 1.0.0\(\backslash\)n"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 Al llamar a esta función, se imprimirá un mensaje que incluye el número de versión del sistema de control de versiones {\ttfamily u\+Git}. La salida es un simple mensaje de texto con el formato {\ttfamily ugit version X.\+X.\+X}, donde {\ttfamily X.\+X.\+X} representa la versión actual del software. 

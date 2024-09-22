@@ -26,6 +26,29 @@
  *
  * @return No devuelve ningún valor. La función imprime el historial de commits en la salida estándar.
  *
+ * @code
+ * void ugit_log(Branch *branches, char *branch_name, char *user_name)
+ * {
+ *     int commit_count = branches[hash(branch_name)].commit_count;
+ *     printf("----------------------------------------------------\n");
+ *     if (commit_count > 0)
+ *     {
+ *         for (int i = 0; i < commit_count; i++)
+ *         {
+ *             printf("Author: %s\n", user_name);
+ *             printf("Commit: %ld\n", branches[hash(branch_name)].commit[i].commit_hash);
+ *             printf("Descripcion: %s\n", branches[hash(branch_name)].commit[i].descripcion_commit);
+ *             printf("----------------------------------------------------\n");
+ *         }
+ *     }
+ *     else
+ *     {
+ *         printf("No hay commits\n");
+ *         return;
+ *     }
+ * }
+ * @endcode
+ *
  * @details La función realiza las siguientes operaciones:
  * - Obtiene el número total de commits en la rama especificada utilizando el contador de commits en la estructura
  *   de datos `branches`.
@@ -37,8 +60,7 @@
  *   - Una línea separadora después de cada commit para facilitar la lectura.
  * - Si no hay commits disponibles, imprime un mensaje indicando que no hay commits.
  *
- * @note Asegúrese de que el nombre del usuario (`user_name`) esté correctamente inicializado antes de llamar a esta
- *       función. La salida de la función está en formato de texto y es adecuada para la visualización en la consola.
+ * @note Solo se mostraran los logs de la rama en la cual se haga el `ugit log`.
  */
 void ugit_log(Branch *branches, char *branch_name, char *user_name)
 {

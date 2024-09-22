@@ -51,7 +51,44 @@ La función {\ttfamily ugit\+\_\+init} configura el repositorio inicial del sist
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Cadena de caracteres que contiene el nombre del usuario ingresado. Retorna {\ttfamily NULL} si el repositorio ya ha sido inicializado previamente.
+Cadena de caracteres que contiene el nombre del usuario ingresado. Retorna {\ttfamily NULL} si el repositorio ya ha sido inicializado previamente. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}\ *\mbox{\hyperlink{funciones_8h_a09ccf8afffab02354c1e2d40060f638b}{ugit\_init}}(\mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *initial\_prompt,\ \textcolor{keywordtype}{int}\ *repositorio\_flag)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (*repositorio\_flag\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *user\_name\ =\ (\textcolor{keywordtype}{char}\ *)malloc(256\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (user\_name\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ el\ nombre\ del\ usuario.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Ingrese\ su\ nombre:\ "{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ fgets(user\_name,\ 256,\ stdin);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ len\ =\ strlen(user\_name);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (len\ >\ 0\ \&\&\ user\_name[len\ -\/\ 1]\ ==\ \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ user\_name[len\ -\/\ 1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Repositorio\ de\ uGit\ inicializado\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{funciones_8h_aedf02cc3f92d1d8075f18b48e9c1c712}{ugit\_branch}}(\textcolor{stringliteral}{"{}main"{}},\ branches);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \mbox{\hyperlink{funciones_8h_a06830cd767546a72401df9df60d02fb4}{ugit\_branch\_control}}(\textcolor{stringliteral}{"{}main"{}},\ initial\_prompt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ *repositorio\_flag\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ user\_name;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Ya\ hay\ un\ repositorio\ inicializado\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
 \end{DoxyReturn}
 La función realiza las siguientes operaciones\+:
 \begin{DoxyItemize}
@@ -67,5 +104,5 @@ La función realiza las siguientes operaciones\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-Asegúrese de que el nombre del usuario ingresado no exceda el límite de 255 caracteres. La función utiliza {\ttfamily fgets} para leer la entrada del usuario y maneja el posible salto de línea al final de la cadena. 
+Asegúrese de que el nombre del usuario ingresado no exceda el límite de caracteres. La función utiliza {\ttfamily fgets} para leer la entrada del usuario y maneja el posible salto de línea al final de la cadena. 
 \end{DoxyNote}

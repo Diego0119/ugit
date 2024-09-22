@@ -48,6 +48,25 @@ La función {\ttfamily ugit\+\_\+branch\+\_\+control} actualiza el prompt de la 
 {\em actual\+\_\+prompt} & Cadena de caracteres donde se almacenará el nuevo texto del prompt de la shell.\\
 \hline
 \end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a06830cd767546a72401df9df60d02fb4}{ugit\_branch\_control}}(\textcolor{keywordtype}{char}\ *prompt,\ \textcolor{keywordtype}{char}\ *actual\_prompt)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *branch\_name;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(prompt,\ \textcolor{stringliteral}{"{}main"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branch\_name\ =\ \textcolor{stringliteral}{"{}main"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branch\_name\ =\ prompt\ +\ 14;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ snprintf(actual\_prompt,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}},\ \textcolor{stringliteral}{"{}ugit(\%s)\ "{}},\ branch\_name);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función\+:
 \begin{DoxyItemize}
 \item Compara el comando {\ttfamily prompt} con el nombre de la rama principal "{}main"{}.
@@ -57,5 +76,5 @@ La función\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-La función asume que el nombre de la rama está en una posición fija dentro del comando ({\ttfamily prompt + 14}) para comandos distintos a "{}main"{}. Asegúrese de que los comandos sean válidos y estén correctamente formateados. 
+La función asume que el nombre de la rama está en una posición fija dentro del comando ({\ttfamily prompt + 14}). 
 \end{DoxyNote}

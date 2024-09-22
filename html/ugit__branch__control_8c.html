@@ -139,13 +139,28 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>La función:</p><ul>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="funciones_8h.html#a06830cd767546a72401df9df60d02fb4">ugit_branch_control</a>(<span class="keywordtype">char</span> *prompt, <span class="keywordtype">char</span> *actual_prompt)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *branch_name;</div>
+<div class="line">    <span class="keywordflow">if</span> (strcmp(prompt, <span class="stringliteral">&quot;main&quot;</span>) == 0)</div>
+<div class="line">    {</div>
+<div class="line">        branch_name = <span class="stringliteral">&quot;main&quot;</span>;</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        branch_name = prompt + 14;</div>
+<div class="line">    }</div>
+<div class="line">    snprintf(actual_prompt, <a class="code hl_define" href="funciones_8h.html#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a>, <span class="stringliteral">&quot;ugit(%s) &quot;</span>, branch_name);</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a06830cd767546a72401df9df60d02fb4"><div class="ttname"><a href="funciones_8h.html#a06830cd767546a72401df9df60d02fb4">ugit_branch_control</a></div><div class="ttdeci">void ugit_branch_control(char *branch_name, char *action)</div><div class="ttdoc">Controla las operaciones relacionadas con ramas.</div><div class="ttdef"><b>Definition</b> ugit_branch_control.c:49</div></div>
+<div class="ttc" id="afunciones_8h_html_a479e2087967dffd589c1b8b65c8e65e6"><div class="ttname"><a href="funciones_8h.html#a479e2087967dffd589c1b8b65c8e65e6">MAX_INPUT_SIZE</a></div><div class="ttdeci">#define MAX_INPUT_SIZE</div><div class="ttdoc">Tamaño máximo para entradas de texto.</div><div class="ttdef"><b>Definition</b> funciones.h:20</div></div>
+</div><!-- fragment --><p>La función:</p><ul>
 <li>Compara el comando <code>prompt</code> con el nombre de la rama principal "main".</li>
 <li>Si el comando es "main", el nombre de la rama se establece como "main".</li>
 <li>Si el comando es otro, se extrae el nombre de la rama del comando <code>prompt</code>.</li>
 <li>Actualiza el <code>actual_prompt</code> con el formato "ugit(nombre_rama) ".</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre de la rama está en una posición fija dentro del comando (<code>prompt + 14</code>) para comandos distintos a "main". Asegúrese de que los comandos sean válidos y estén correctamente formateados. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre de la rama está en una posición fija dentro del comando (<code>prompt + 14</code>). </dd></dl>
 
 </div>
 </div>

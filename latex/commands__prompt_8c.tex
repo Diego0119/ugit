@@ -51,5 +51,23 @@ Comandos disponibles\+:
 \item {\ttfamily checkout \texorpdfstring{$<$}{<}name\texorpdfstring{$>$}{>}} -\/ Cambia a la rama especificada.
 \item {\ttfamily -\/-\/version} -\/ Muestra la versión de u\+Git.
 \item {\ttfamily vi \texorpdfstring{$<$}{<}nombre\+\_\+archivo\texorpdfstring{$>$}{>}} -\/ Permite crear archivos con el editor vi.
-\item {\ttfamily help} -\/ Muestra esta ayuda. 
+\item {\ttfamily help} -\/ Muestra esta ayuda.
+\item 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a6109b0a539ffbffa9bcc8199388ffcfd}{commands\_prompt}}(\textcolor{keywordtype}{void})}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}Comandos\ disponibles:\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ init\ \ \ \ \ \ \ \ -\/\ Inicializa\ un\ nuevo\ repositorio.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ add\ <file>\ \ -\/\ Añade\ un\ archivo\ al\ área\ de\ preparación.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ commit\ <msg>\ -\/\ Realiza\ un\ commit\ con\ el\ mensaje\ especificado.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ log\ \ \ \ \ \ \ \ \ -\/\ Muestra\ el\ historial\ de\ commits.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ branch\ <name>\ -\/\ Crea\ una\ nueva\ rama\ con\ el\ nombre\ especificado.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ checkout\ <name>\ -\/\ Cambia\ a\ la\ rama\ especificada.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ -\/-\/version\ \ \ \ \ \ \ \ -\/\ Muestra\ la\ versión\ de\ uGit.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ vi\ <nombre\_archivo>\ \ \ \ \ \ \ -\/\ Puedes\ crear\ archivos\ con\ vi.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}\ \ help\ \ \ \ \ \ \ \ -\/\ Muestra\ esta\ ayuda.\(\backslash\)n"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
 \end{DoxyItemize}

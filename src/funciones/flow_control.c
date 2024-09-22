@@ -101,8 +101,10 @@ void flow_control(void)
         {
             if (repositorio_flag == 1)
             {
+                char branch_name_temp[MAX_INPUT_SIZE];
+                strcpy(branch_name_temp, branch_name);
                 *branch_name = *(prompt + 14);
-                branches[hash(branch_name)] = ugit_checkout(prompt, branches, initial_prompt);
+                branches[hash(branch_name)] = ugit_checkout(prompt, branches, initial_prompt, branch_name_temp);
             }
             else
             {

@@ -1,0 +1,84 @@
+\doxysection{src/funciones/ugit\+\_\+checkout\+\_\+commit.c File Reference}
+\hypertarget{ugit__checkout__commit_8c}{}\label{ugit__checkout__commit_8c}\index{src/funciones/ugit\_checkout\_commit.c@{src/funciones/ugit\_checkout\_commit.c}}
+
+
+Permite realizar el checkout de un commit específico en una rama.  
+
+
+{\ttfamily \#include "{}../definicion\+\_\+funciones/funciones.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{ugit__checkout__commit_8c_aba63fd56843fa65aec0a031e89d2e41c}{ugit\+\_\+checkout\+\_\+commit}} (int rama\+\_\+hash, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}commit\+\_\+hash)
+\begin{DoxyCompactList}\small\item\em Maneja checkouts a commits. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Permite realizar el checkout de un commit específico en una rama. 
+
+Esta función permite al usuario cambiar al commit especificado en una rama determinada. Se busca el commit en la rama basándose en el hash del commit proporcionado como cadena de caracteres y se compara con los commits almacenados en la rama.
+
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2024-\/09-\/17 
+\end{DoxyDate}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{ugit__checkout__commit_8c_aba63fd56843fa65aec0a031e89d2e41c}\index{ugit\_checkout\_commit.c@{ugit\_checkout\_commit.c}!ugit\_checkout\_commit@{ugit\_checkout\_commit}}
+\index{ugit\_checkout\_commit@{ugit\_checkout\_commit}!ugit\_checkout\_commit.c@{ugit\_checkout\_commit.c}}
+\doxysubsubsection{\texorpdfstring{ugit\_checkout\_commit()}{ugit\_checkout\_commit()}}
+{\footnotesize\ttfamily \label{ugit__checkout__commit_8c_aba63fd56843fa65aec0a031e89d2e41c} 
+int ugit\+\_\+checkout\+\_\+commit (\begin{DoxyParamCaption}\item[{int}]{rama\+\_\+hash}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{commit\+\_\+hash}{}\end{DoxyParamCaption})}
+
+
+
+Maneja checkouts a commits. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rama\+\_\+hash} & El hash de la rama en la que se buscará el commit. \\
+\hline
+{\em branches} & Arreglo de estructuras {\ttfamily Branch} que contiene información de todas las ramas y sus commits. \\
+\hline
+{\em commit\+\_\+hash} & Cadena de caracteres que contiene el hash del commit que se desea buscar y hacer checkout.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Retorna 1 si el commit se encuentra en la rama y se realiza el cambio exitosamente, de lo contrario, retorna 0 si no se encuentra el commit con el hash especificado.
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{funciones_8h_a7334d4a2d5dcf61c573f730b5d8a9f1b}{ugit\_checkout\_commit}}(\textcolor{keywordtype}{int}\ rama\_hash,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *commit\_hash)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ hash\_long\ =\ strtol(commit\_hash,\ NULL,\ 10);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ branches[rama\_hash].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};\ i++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (branches[rama\_hash].\mbox{\hyperlink{structcommit}{commit}}[i].commit\_hash\ ==\ hash\_long)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Cambio\ al\ commit\ \%ld\ en\ la\ rama\ \%s.\(\backslash\)n"{}},\ hash\_long,\ branches[rama\_hash].nombre\_rama);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ encontró\ un\ commit\ con\ el\ hash\ \%ld\ en\ la\ rama.\(\backslash\)n"{}},\ hash\_long);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+La función realiza las siguientes operaciones\+:
+\begin{DoxyItemize}
+\item Convierte el hash del commit de cadena a número entero usando {\ttfamily strtol}.
+\item Itera a través de los commits en la rama correspondiente y compara el hash convertido con los hashes almacenados.
+\item Si encuentra el commit correspondiente, imprime un mensaje indicando el cambio de commit y retorna 1.
+\item Si no se encuentra el commit, muestra un mensaje de error y retorna 0.
+\end{DoxyItemize}
+
+\begin{DoxyNote}{Note}
+La conversión de la cadena {\ttfamily commit\+\_\+hash} a número entero puede fallar si la entrada no es válida. 
+\end{DoxyNote}

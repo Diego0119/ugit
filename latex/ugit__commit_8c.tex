@@ -55,6 +55,37 @@ La función {\ttfamily ugit\+\_\+commit} agrega un nuevo commit al historial de 
 \begin{DoxyReturn}{Returns}
 No retorna ningún valor.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a5bf5993921eb5ddfe7c322e3c163ab9d}{ugit\_commit}}(\textcolor{keywordtype}{char}\ *prompt,\ \textcolor{keywordtype}{char}\ *branch\_name,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{int}\ *modificacion\_flag)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *commit\_message\ =\ prompt\ +\ 11;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ commit\_count\ =\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ \textcolor{stringliteral}{"{}"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ puede\ hacer\ un\ commit\ sin\ añadir\ archivos\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (strcmp(commit\_message,\ \textcolor{stringliteral}{"{}"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ puede\ hacer\ un\ commit\ sin\ descripcion\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (*modificacion\_flag\ ==\ 1)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Hay\ cambios\ que\ no\ se\ han\ añadido\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ strncpy(branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].descripcion\_commit,\ commit\_message,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}\ -\/\ 1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a22691362767d3b8f966160af608a2ae2}{commit}}[commit\_count].\mbox{\hyperlink{structcommit_ad3770dc7fbf0647feb252563e865c47a}{descripcion\_commit}}[\mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}\ -\/\ 1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a22691362767d3b8f966160af608a2ae2}{commit}}[commit\_count].\mbox{\hyperlink{structcommit_a001b1af1be04cab68e73d6a2845edd75}{commit\_hash}}\ =\ \mbox{\hyperlink{funciones_8h_a52b35fafc1c97e7916d7ad5dbfc58730}{generar\_hash}}(prompt);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}}++;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función realiza las siguientes operaciones\+:
 \begin{DoxyItemize}
 \item Extrae el mensaje del commit del comando {\ttfamily prompt} (comenzando en {\ttfamily prompt + 11}).

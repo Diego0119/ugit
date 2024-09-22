@@ -31,6 +31,22 @@
  * - `--version`   - Muestra la versión de uGit.
  * - `vi <nombre_archivo>` - Permite crear archivos con el editor vi.
  * - `help`        - Muestra esta ayuda.
+ *
+ * * @code
+ * void commands_prompt(void)
+ * {
+ *     printf("Comandos disponibles:\n");
+ *     printf("  init        - Inicializa un nuevo repositorio.\n");
+ *     printf("  add <file>  - Añade un archivo al área de preparación.\n");
+ *     printf("  commit <msg> - Realiza un commit con el mensaje especificado.\n");
+ *     printf("  log         - Muestra el historial de commits.\n");
+ *     printf("  branch <name> - Crea una nueva rama con el nombre especificado.\n");
+ *     printf("  checkout <name> - Cambia a la rama especificada.\n");
+ *     printf("  --version        - Muestra la versión de uGit.\n");
+ *     printf("  vi <nombre_archivo>       - Puedes crear archivos con vi.\n");
+ *     printf("  help        - Muestra esta ayuda.\n");
+ * }
+ * @endcode
  */
 void commands_prompt(void)
 {

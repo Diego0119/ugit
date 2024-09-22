@@ -54,6 +54,122 @@ La función {\ttfamily manejar\+\_\+archivos} procesa un comando para manejar ar
 {\em modificacion\+\_\+flag} & Puntero a un entero que indica si hay modificaciones activas (1) o no (0).\\
 \hline
 \end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_a2f501f30e352ed2bcecac7ccf87e9f4a}{manejar\_archivos}}(\textcolor{keywordtype}{char}\ *prompt,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *branch\_name,\ \textcolor{keywordtype}{int}\ *files\_count,\ \textcolor{keywordtype}{int}\ *modificacion\_flag)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *filename\ =\ (\textcolor{keywordtype}{char}\ *)malloc((strlen(prompt\ +\ 3)\ +\ 1)\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (filename\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ el\ nombre\ del\ archivo\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ strcpy(filename,\ prompt\ +\ 3);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ hash\_value\ =\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ commit\_count\ =\ branches[hash\_value].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ archivo\_encontrado\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ *files\_count;\ i++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strncmp(branches[hash\_value].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ filename,\ \mbox{\hyperlink{funciones_8h_af43dedece15d018ffad8970492870bac}{MAX\_FILE\_NAME}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ archivo\_encontrado\ =\ 1;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ FILE\ *archivo\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}r+"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (archivo)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ archivo\ '\%s'\ ya\ existe.\ Contenido\ actual:\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[256];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (fgets(buffer,\ \textcolor{keyword}{sizeof}(buffer),\ archivo)\ !=\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\%s"{}},\ buffer);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}\(\backslash\)nDesea\ agregar\ más\ contenido\ al\ archivo?\ (s/n):\ "{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ opcion;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ scanf(\textcolor{stringliteral}{"{}\ \%c"{}},\ \&opcion);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (opcion\ ==\ \textcolor{charliteral}{'s'}\ ||\ opcion\ ==\ \textcolor{charliteral}{'S'})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (getchar()\ !=\ \textcolor{charliteral}{'\(\backslash\)n'});}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Ingrese\ el\ contenido\ adicional:\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fseek(archivo,\ 0,\ SEEK\_END);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *nuevo\_contenido\ =\ (\textcolor{keywordtype}{char}\ *)malloc(256\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nuevo\_contenido\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ el\ contenido\ adicional\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fgets(nuevo\_contenido,\ 256,\ stdin);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%s"{}},\ nuevo\_contenido);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(nuevo\_contenido);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fclose(archivo);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ pudo\ abrir\ el\ archivo\ '\%s'.\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (!archivo\_encontrado)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Archivo\ no\ encontrado\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (*files\_count\ <\ \mbox{\hyperlink{funciones_8h_a2c5eecb22513a88c24ae5831a3265e54}{MAX\_FILES}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ FILE\ *archivo\ =\ fopen(filename,\ \textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (archivo)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ archivo\ '\%s'\ no\ existía,\ ha\ sido\ creado.\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Ingrese\ el\ contenido\ inicial\ del\ archivo:\(\backslash\)n"{}});}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ *contenido\_inicial\ =\ (\textcolor{keywordtype}{char}\ *)malloc(256\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (contenido\_inicial\ ==\ NULL)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ el\ contenido\ inicial\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fgets(contenido\_inicial,\ 256,\ stdin);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(archivo,\ \textcolor{stringliteral}{"{}\%s"{}},\ contenido\_inicial);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ fclose(archivo);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ free(contenido\_inicial);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *branches[hash\_value].\mbox{\hyperlink{structbranch_a22691362767d3b8f966160af608a2ae2}{commit}}[commit\_count].\mbox{\hyperlink{structcommit_a5565fadc9f19e80ca68789255939d1e3}{archivos\_agregados}}\ =\ *(\textcolor{keywordtype}{char}\ *)malloc((strlen(filename)\ +\ 1)\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{char}));}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(branches[hash\_value].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ \textcolor{stringliteral}{"{}\ "{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Error\ al\ asignar\ memoria\ para\ archivos\_agregados\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ strcpy(branches[hash\_value].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ filename);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (*files\_count)++;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ pudo\ crear\ el\ archivo\ '\%s'.\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ pueden\ añadir\ más\ archivos,\ límite\ alcanzado.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ free(filename);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función\+:
 \begin{DoxyItemize}
 \item Asigna memoria para el nombre del archivo basado en el comando proporcionado.
@@ -64,5 +180,5 @@ La función\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-La función utiliza memoria dinámica para almacenar el nombre del archivo y el contenido. Asegúrese de liberar esta memoria después de su uso para evitar fugas de memoria. 
+La función utiliza memoria dinámica para almacenar el nombre del archivo y el contenido. 
 \end{DoxyNote}

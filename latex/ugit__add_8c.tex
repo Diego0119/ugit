@@ -52,6 +52,56 @@ La función {\ttfamily ugit\+\_\+add} procesa un comando para añadir archivos a
 {\em modificacion\+\_\+flag} & Puntero a un entero que indica si hay modificaciones activas (1) o si todo está en "{}staging"{} (0).\\
 \hline
 \end{DoxyParams}
+/\texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}
+
+Añade un archivo al área de "{}staging"{} o maneja el comando para añadir todos los archivos.
+
+La función {\ttfamily ugit\+\_\+add} procesa un comando para añadir archivos al área de "{}staging"{}. Si el archivo especificado en el comando está presente en la estructura de datos de commits, el archivo se marca como añadido. También maneja el caso especial donde el comando solicita añadir todos los archivos.
+
+
+\begin{DoxyParams}{Parameters}
+{\em prompt} & Cadena de caracteres que contiene el comando, incluyendo el nombre del archivo a añadir. \\
+\hline
+{\em branches} & Array de estructuras {\ttfamily Branch} que representa el estado actual de las ramas y commits. \\
+\hline
+{\em branch\+\_\+name} & Nombre de la rama actual, utilizado para calcular el hash y determinar el commit correspondiente. \\
+\hline
+{\em modificacion\+\_\+flag} & Puntero a un entero que indica si hay modificaciones activas (1) o si todo está en "{}staging"{} (0).\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_aa9cc744ebda3a8d2f63e0db84a0c443b}{ugit\_add}}(\textcolor{keywordtype}{char}\ *prompt,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *branch\_name,\ \textcolor{keywordtype}{int}\ *modificacion\_flag)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *filename\ =\ prompt\ +\ 9;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ commit\_count\ =\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}};}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strncmp(branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structcommit}{commit}}[commit\_count].archivos\_agregados,\ filename,\ \mbox{\hyperlink{funciones_8h_af43dedece15d018ffad8970492870bac}{MAX\_FILE\_NAME}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(filename,\ \textcolor{stringliteral}{"{}."{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}Todos\ los\ archivos\ fueron\ añadidos\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (strlen(filename)\ >\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ archivo\ '\%s'\ fue\ añadido.\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ *modificacion\_flag\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ se\ proporcionó\ ningun\ archivo.\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ archivo\ '\%s'\ no\ existe\(\backslash\)n"{}},\ filename);}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función\+:
 \begin{DoxyItemize}
 \item Extrae el nombre del archivo del comando proporcionado.
@@ -62,5 +112,5 @@ La función\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-La función asume que el nombre del archivo está en una posición fija dentro del comando ({\ttfamily prompt + 9}). Asegúrese de que los comandos sean válidos y estén correctamente formateados. 
+La función asume que el nombre del archivo está en una posición fija dentro del comando ({\ttfamily prompt + 9}). 
 \end{DoxyNote}

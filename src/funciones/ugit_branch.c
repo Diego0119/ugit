@@ -26,14 +26,37 @@
  *
  * @return No retorna ningún valor. La nueva rama se agrega directamente a la estructura `branches`.
  *
+ * @code
+ * void ugit_branch(char *prompt, Branch *branches)
+ * {
+ *     char *branch_name;
+ *     if (strcmp(prompt, "main") == 0)
+ *     {
+ *         branch_name = "main";
+ *     }
+ *     else
+ *     {
+ *         branch_name = prompt + 12;
+ *         if (strcmp(branch_name, "") == 0)
+ *         {
+ *             printf("El nombre de la rama no puede ser vacio\n");
+ *             return;
+ *         }
+ *     }
+ *
+ *     strncpy(branches[hash(branch_name)].nombre_rama, branch_name, MAX_INPUT_SIZE - 1);
+ *     branches[hash(branch_name)].nombre_rama[MAX_INPUT_SIZE - 1] = '\0';
+ *     branches[hash(branch_name)].commit_count = 0;
+ * }
+ * @endcode
+ *
  * @details La función:
  * - Compara el nombre de la rama con "main" y, si coincide, usa "main" como nombre de la rama.
  * - Si el nombre de la rama no es "main", extrae el nombre de la rama del comando `prompt` y verifica que no esté vacío.
  * - Usa `strncpy` para copiar el nombre de la nueva rama en la estructura de datos `branches`.
  * - Inicializa el contador de commits de la nueva rama en cero.
  *
- * @note La función asume que el nombre de la rama comienza en la posición `prompt + 12` para comandos distintos
- *       a "main". Asegúrese de que los comandos sean válidos y correctamente formateados.
+ * @note La función asume que el nombre de la rama comienza en la posición `prompt + 12`.
  */
 void ugit_branch(char *prompt, Branch *branches)
 {

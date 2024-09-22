@@ -9,7 +9,7 @@ Permite cambiar de una rama a otra en el sistema de control de versiones.
 \doxysubsubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \mbox{\hyperlink{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9}{ugit\+\_\+checkout}} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}initial\+\_\+prompt)
+\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \mbox{\hyperlink{ugit__checkout_8c_a51b5dc981a6b26139b90bc3a22dc38a1}{ugit\+\_\+checkout}} (char \texorpdfstring{$\ast$}{*}prompt, \mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}branches, char \texorpdfstring{$\ast$}{*}initial\+\_\+prompt, char \texorpdfstring{$\ast$}{*}actual\+\_\+branch\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Cambia la rama actual a la rama especificada en el comando {\ttfamily prompt}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -27,11 +27,11 @@ Esta función cambia la rama actual a la rama especificada en el comando {\ttfam
 
 
 \doxysubsection{Function Documentation}
-\Hypertarget{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9}\index{ugit\_checkout.c@{ugit\_checkout.c}!ugit\_checkout@{ugit\_checkout}}
+\Hypertarget{ugit__checkout_8c_a51b5dc981a6b26139b90bc3a22dc38a1}\index{ugit\_checkout.c@{ugit\_checkout.c}!ugit\_checkout@{ugit\_checkout}}
 \index{ugit\_checkout@{ugit\_checkout}!ugit\_checkout.c@{ugit\_checkout.c}}
 \doxysubsubsection{\texorpdfstring{ugit\_checkout()}{ugit\_checkout()}}
-{\footnotesize\ttfamily \label{ugit__checkout_8c_a4d2476cb833f822aa73fc8eaacc4d4a9} 
-\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} ugit\+\_\+checkout (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{initial\+\_\+prompt}{}\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \label{ugit__checkout_8c_a51b5dc981a6b26139b90bc3a22dc38a1} 
+\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} ugit\+\_\+checkout (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}}]{prompt}{, }\item[{\mbox{\hyperlink{funciones_8h_a14904de83c569b98fe99d48f8ad552db}{Branch}} \texorpdfstring{$\ast$}{*}}]{branches}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{initial\+\_\+prompt}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{actual\+\_\+branch\+\_\+name}{}\end{DoxyParamCaption})}
 
 
 
@@ -49,10 +49,53 @@ La función {\ttfamily ugit\+\_\+checkout} verifica si la rama especificada exis
 \hline
 {\em initial\+\_\+prompt} & Cadena de caracteres que representa el prompt actual de la shell. Este prompt se actualiza para reflejar el nombre de la nueva rama si la rama existe.\\
 \hline
+{\em actual\+\_\+branch\+\_\+name} & Nombre de la rama en la que esta actualmente el usuario.\\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Retorna la estructura de datos de la rama a la cual se cambió. Si la rama no existe, retorna la estructura de datos de la rama actual.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\mbox{\hyperlink{structbranch}{Branch}}\ \mbox{\hyperlink{funciones_8h_a9ae420ef18a4560412779cf11e44ddaa}{ugit\_checkout}}(\textcolor{keywordtype}{char}\ *prompt,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches,\ \textcolor{keywordtype}{char}\ *initial\_prompt,\ \textcolor{keywordtype}{char}\ *actual\_branch\_name)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *branch\_or\_hash\ =\ prompt\ +\ 14;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (isdigit(branch\_or\_hash[0]))}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{funciones_8h_a7334d4a2d5dcf61c573f730b5d8a9f1b}{ugit\_checkout\_commit}}(\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(actual\_branch\_name),\ branches,\ branch\_or\_hash)\ ==\ 1)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ snprintf(initial\_prompt,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}},\ \textcolor{stringliteral}{"{}ugit(\%s)\ "{}},\ branch\_or\_hash);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(actual\_branch\_name)];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(branch\_or\_hash,\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_or\_hash)].nombre\_rama)\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(prompt,\ \textcolor{stringliteral}{"{}main"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ branch\_or\_hash\ =\ \textcolor{stringliteral}{"{}main"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (strcmp(branch\_or\_hash,\ \textcolor{stringliteral}{"{}"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}No\ existe\ una\ rama\ con\ ese\ nombre\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(actual\_branch\_name)];}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ branch\_or\_hash\ =\ prompt\ +\ 14;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ snprintf(initial\_prompt,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}},\ \textcolor{stringliteral}{"{}ugit(\%s)\ "{}},\ branch\_or\_hash);}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_or\_hash)];}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ printf(\textcolor{stringliteral}{"{}No\ existe\ una\ rama\ con\ ese\ nombre\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(actual\_branch\_name)];}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función realiza las siguientes operaciones\+:
 \begin{DoxyItemize}
 \item Extrae el nombre de la rama del comando {\ttfamily prompt} (comenzando en {\ttfamily prompt + 14}).
@@ -62,5 +105,5 @@ La función realiza las siguientes operaciones\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-Asegúrese de que el comando {\ttfamily prompt} esté correctamente formateado y contenga el nombre de la rama en la posición correcta (a partir de {\ttfamily prompt + 14}). 
+Se debe asegurar que la rama o el commit exista, en el caso de que no exista saldra un mensaje de error. 
 \end{DoxyNote}

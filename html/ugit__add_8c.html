@@ -151,14 +151,59 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<p>La función:</p><ul>
+<p>/**</p>
+<p>Añade un archivo al área de "staging" o maneja el comando para añadir todos los archivos.</p>
+<p>La función <code>ugit_add</code> procesa un comando para añadir archivos al área de "staging". Si el archivo especificado en el comando está presente en la estructura de datos de commits, el archivo se marca como añadido. También maneja el caso especial donde el comando solicita añadir todos los archivos.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prompt</td><td>Cadena de caracteres que contiene el comando, incluyendo el nombre del archivo a añadir. </td></tr>
+    <tr><td class="paramname">branches</td><td>Array de estructuras <code>Branch</code> que representa el estado actual de las ramas y commits. </td></tr>
+    <tr><td class="paramname">branch_name</td><td>Nombre de la rama actual, utilizado para calcular el hash y determinar el commit correspondiente. </td></tr>
+    <tr><td class="paramname">modificacion_flag</td><td>Puntero a un entero que indica si hay modificaciones activas (1) o si todo está en "staging" (0).</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="keywordtype">void</span> <a class="code hl_function" href="funciones_8h.html#aa9cc744ebda3a8d2f63e0db84a0c443b">ugit_add</a>(<span class="keywordtype">char</span> *prompt, <a class="code hl_struct" href="structbranch.html">Branch</a> *branches, <span class="keywordtype">char</span> *branch_name, <span class="keywordtype">int</span> *modificacion_flag)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keywordtype">char</span> *filename = prompt + 9;</div>
+<div class="line">    <span class="keywordtype">int</span> commit_count = branches[<a class="code hl_function" href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_variable" href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">commit_count</a>;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (strncmp(branches[<a class="code hl_function" href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a>(branch_name)].<a class="code hl_struct" href="structcommit.html">commit</a>[commit_count].archivos_agregados, filename, <a class="code hl_define" href="funciones_8h.html#af43dedece15d018ffad8970492870bac">MAX_FILE_NAME</a>) == 0)</div>
+<div class="line">    {</div>
+<div class="line">        <span class="keywordflow">if</span> (strcmp(filename, <span class="stringliteral">&quot;.&quot;</span>) == 0)</div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;Todos los archivos fueron añadidos\n&quot;</span>);</div>
+<div class="line">            *modificacion_flag = 0;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (strlen(filename) &gt; 0)</div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;El archivo &#39;%s&#39; fue añadido.\n&quot;</span>, filename);</div>
+<div class="line">            *modificacion_flag = 0;</div>
+<div class="line">        }</div>
+<div class="line">        <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">            printf(<span class="stringliteral">&quot;No se proporcionó ningun archivo.\n&quot;</span>);</div>
+<div class="line">        }</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">        printf(<span class="stringliteral">&quot;El archivo &#39;%s&#39; no existe\n&quot;</span>, filename);</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="ttc" id="afunciones_8h_html_a4fa4739a855fbdd94d39373374c4a23b"><div class="ttname"><a href="funciones_8h.html#a4fa4739a855fbdd94d39373374c4a23b">hash</a></div><div class="ttdeci">int hash(char *input)</div><div class="ttdoc">Calcula el hash de una cadena de caracteres.</div><div class="ttdef"><b>Definition</b> hash.c:60</div></div>
+<div class="ttc" id="afunciones_8h_html_aa9cc744ebda3a8d2f63e0db84a0c443b"><div class="ttname"><a href="funciones_8h.html#aa9cc744ebda3a8d2f63e0db84a0c443b">ugit_add</a></div><div class="ttdeci">void ugit_add(char *file_name, Branch *branch, char *file_content, int *file_size)</div><div class="ttdoc">Agrega un archivo al repositorio.</div><div class="ttdef"><b>Definition</b> ugit_add.c:79</div></div>
+<div class="ttc" id="afunciones_8h_html_af43dedece15d018ffad8970492870bac"><div class="ttname"><a href="funciones_8h.html#af43dedece15d018ffad8970492870bac">MAX_FILE_NAME</a></div><div class="ttdeci">#define MAX_FILE_NAME</div><div class="ttdoc">Tamaño máximo para nombres de archivo.</div><div class="ttdef"><b>Definition</b> funciones.h:25</div></div>
+<div class="ttc" id="astructbranch_html"><div class="ttname"><a href="structbranch.html">branch</a></div><div class="ttdoc">Estructura que representa una rama en uGit.</div><div class="ttdef"><b>Definition</b> funciones.h:51</div></div>
+<div class="ttc" id="astructbranch_html_a1bf60f1c9b45286756f8b0723b3fb400"><div class="ttname"><a href="structbranch.html#a1bf60f1c9b45286756f8b0723b3fb400">branch::commit_count</a></div><div class="ttdeci">int commit_count</div><div class="ttdoc">Número de commits en la rama.</div><div class="ttdef"><b>Definition</b> funciones.h:54</div></div>
+<div class="ttc" id="astructcommit_html"><div class="ttname"><a href="structcommit.html">commit</a></div><div class="ttdoc">Estructura que representa un commit en uGit.</div><div class="ttdef"><b>Definition</b> funciones.h:35</div></div>
+</div><!-- fragment --><p>La función:</p><ul>
 <li>Extrae el nombre del archivo del comando proporcionado.</li>
 <li>Verifica si el archivo existe en el área de "staging".</li>
 <li>Si el archivo existe, actualiza el flag de modificaciones para indicar que los cambios han sido añadidos.</li>
 <li>Si el archivo no existe, muestra un mensaje de error.</li>
 <li>Si el comando es para añadir todos los archivos (especificado como "."), marca todos los archivos como añadidos.</li>
 </ul>
-<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre del archivo está en una posición fija dentro del comando (<code>prompt + 9</code>). Asegúrese de que los comandos sean válidos y estén correctamente formateados. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>La función asume que el nombre del archivo está en una posición fija dentro del comando (<code>prompt + 9</code>). </dd></dl>
 
 </div>
 </div>

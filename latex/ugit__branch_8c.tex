@@ -51,6 +51,33 @@ La función {\ttfamily ugit\+\_\+branch} agrega una nueva rama a la estructura d
 \begin{DoxyReturn}{Returns}
 No retorna ningún valor. La nueva rama se agrega directamente a la estructura {\ttfamily branches}.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{funciones_8h_aedf02cc3f92d1d8075f18b48e9c1c712}{ugit\_branch}}(\textcolor{keywordtype}{char}\ *prompt,\ \mbox{\hyperlink{structbranch}{Branch}}\ *branches)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{char}\ *branch\_name;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(prompt,\ \textcolor{stringliteral}{"{}main"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branch\_name\ =\ \textcolor{stringliteral}{"{}main"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ branch\_name\ =\ prompt\ +\ 12;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (strcmp(branch\_name,\ \textcolor{stringliteral}{"{}"{}})\ ==\ 0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ printf(\textcolor{stringliteral}{"{}El\ nombre\ de\ la\ rama\ no\ puede\ ser\ vacio\(\backslash\)n"{}});}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ strncpy(branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].nombre\_rama,\ branch\_name,\ \mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}\ -\/\ 1);}
+\DoxyCodeLine{\ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a3cd787da48830c5cc398350d6d694577}{nombre\_rama}}[\mbox{\hyperlink{funciones_8h_a479e2087967dffd589c1b8b65c8e65e6}{MAX\_INPUT\_SIZE}}\ -\/\ 1]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\ \ \ \ branches[\mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(branch\_name)].\mbox{\hyperlink{structbranch_a1bf60f1c9b45286756f8b0723b3fb400}{commit\_count}}\ =\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 La función\+:
 \begin{DoxyItemize}
 \item Compara el nombre de la rama con "{}main"{} y, si coincide, usa "{}main"{} como nombre de la rama.
@@ -60,5 +87,5 @@ La función\+:
 \end{DoxyItemize}
 
 \begin{DoxyNote}{Note}
-La función asume que el nombre de la rama comienza en la posición {\ttfamily prompt + 12} para comandos distintos a "{}main"{}. Asegúrese de que los comandos sean válidos y correctamente formateados. 
+La función asume que el nombre de la rama comienza en la posición {\ttfamily prompt + 12}. 
 \end{DoxyNote}

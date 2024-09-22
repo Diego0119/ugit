@@ -16,7 +16,7 @@ int \mbox{\hyperlink{hash_8c_a03b2a76165f5aac286d559c9658615b8}{hash}} (char \te
 \doxysubsection{Detailed Description}
 Implementación de la función de hashing para el sistema u\+Git. 
 
-Este archivo contiene la implementación de la función {\ttfamily hash}, que calcula un valor de hash para un string dado. El valor de hash se utiliza para identificar de manera única elementos como commits en el sistema de control de versiones u\+Git. La función también asegura que el hash generado sea único dentro de un rango limitado, ajustándolo si es necesario.
+Este archivo contiene la implementación de la función {\ttfamily hash}, que calcula un valor de hash para un string dado. El valor de hash se utiliza para identificar de manera única elementos como commits en el sistema de control de versiones u\+Git.
 
 \begin{DoxyVersion}{Version}
 0.\+1 
@@ -39,7 +39,7 @@ Calcula un valor de hash para una cadena de caracteres.
 
 Calcula el hash de una cadena de caracteres.
 
-La función {\ttfamily hash} toma una cadena de caracteres como entrada y calcula un valor de hash utilizando la suma de los valores ASCII de los caracteres de la cadena, seguida de una operación de módulo para limitar el rango del hash. Si el hash generado ya ha sido entregado, se ajusta el valor de hash incrementándolo en uno para asegurar la unicidad.
+La función {\ttfamily hash} toma una cadena de caracteres como entrada y calcula un valor de hash utilizando la suma de los valores ASCII de los caracteres de la cadena, seguida de una operación de módulo para limitar el rango del hash.
 
 
 \begin{DoxyParams}{Parameters}
@@ -49,6 +49,38 @@ La función {\ttfamily hash} toma una cadena de caracteres como entrada y calcul
 \begin{DoxyReturn}{Returns}
 Un valor de hash único basado en la entrada proporcionada.
 \end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}(\textcolor{keywordtype}{char}\ *prompt)}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ temp\_hash\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}\ =\ 0;}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordtype}{int}\ aux;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{while}\ ((aux\ =\ *prompt++))}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ temp\_hash\ +=\ aux;}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}\ =\ temp\_hash\ \%\ 100;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ hashes\_entregados[count]\ =\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}};}
+\DoxyCodeLine{\ \ \ \ count++;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ count;\ i++)}
+\DoxyCodeLine{\ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hashes\_entregados[i]\ ==\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}}\ +\ 1;}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{funciones_8h_a4fa4739a855fbdd94d39373374c4a23b}{hash}};}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
 \begin{DoxyNote}{Note}
-La función mantiene un registro de los hashes generados en el array {\ttfamily hashes\+\_\+entregados} para evitar duplicados dentro de un rango limitado de hashes. 
+La función da el hash respectivo dependiendo del prompt. 
 \end{DoxyNote}
