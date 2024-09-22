@@ -2,7 +2,6 @@ uGit (ugit) 🛠️
 
 uGit (ugit) es un simulador de un sistema de control de versiones que emula funcionalidades básicas de Git. Este proyecto está diseñado para proporcionar una experiencia práctica en la manipulación de estructuras de datos como arreglos y tablas hash en el lenguaje C.
 
-#IMPORTANTE
 ## Generar documentación con Doxygen
 
 Para generar la documentación del proyecto, sigue estos pasos:
