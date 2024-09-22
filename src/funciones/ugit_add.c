@@ -24,7 +24,7 @@
  * @param branch_name Nombre de la rama actual, utilizado para calcular el hash y determinar el commit correspondiente.
  * @param modificacion_flag Puntero a un entero que indica si hay modificaciones activas (1) o si todo está en "staging" (0).
  *
- /**
+ *
  * @brief Añade un archivo al área de "staging" o maneja el comando para añadir todos los archivos.
  *
  * La función `ugit_add` procesa un comando para añadir archivos al área de "staging". Si el archivo

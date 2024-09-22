@@ -5,3 +5,5 @@
 test/
 .DS_STORE
 obj/
+html/
+latex/

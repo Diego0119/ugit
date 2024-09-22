@@ -55,11 +55,11 @@ int ugit_checkout_commit(int rama_hash, Branch *branches, char *commit_hash)
     {
         if (branches[rama_hash].commit[i].commit_hash == hash_long)
         {
-            printf("Cambio al commit %ld en la rama %s.\n", hash_long, branches[rama_hash].nombre_rama);
+            printf("Cambio al commit %d en la rama %s.\n", hash_long, branches[rama_hash].nombre_rama);
             return 1;
         }
     }
 
-    printf("No se encontró un commit con el hash %ld en la rama.\n", hash_long);
+    printf("No se encontró un commit con el hash %d en la rama.\n", hash_long);
     return 0;
 }
