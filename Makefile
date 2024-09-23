@@ -1,7 +1,7 @@
 
 CC=gcc
 EXEC=program.out
-GRUPO=G1
+GRUPO=11
 NTAR=1
 
 SRC_DIR=src/funciones

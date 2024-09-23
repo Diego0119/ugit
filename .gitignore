@@ -3,7 +3,7 @@
 *.out
 *.exe
 test/
-.DS_STORE
+.DS_Store
 obj/
 html/
 latex/
