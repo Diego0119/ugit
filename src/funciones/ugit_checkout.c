@@ -3,7 +3,7 @@
 /**
  * @file ugit_checkout.c
  * @brief Permite cambiar de una rama a otra en el sistema de control de versiones.
- *
+ * @authors Diego Sanhueza y Manuel Gonzalez
  * Esta función cambia la rama actual a la rama especificada en el comando `prompt`. Si la rama existe,
  * actualiza el prompt actual para reflejar el cambio. Si la rama no existe, muestra un mensaje de error.
  *

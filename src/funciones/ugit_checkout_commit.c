@@ -3,7 +3,7 @@
 /**
  * @file ugit_checkout_commit.c
  * @brief Permite realizar el checkout de un commit específico en una rama.
- *
+ * @authors Diego Sanhueza y Manuel Gonzalez
  * Esta función permite al usuario cambiar al commit especificado en una rama determinada.
  * Se busca el commit en la rama basándose en el hash del commit proporcionado como cadena
  * de caracteres y se compara con los commits almacenados en la rama.

@@ -3,7 +3,7 @@
 /**
  * @file ugit_version.c
  * @brief Proporciona la versión del sistema de control de versiones uGit.
- *
+ * @authors Diego Sanhueza y Manuel Gonzalez
  * Este archivo contiene la implementación de la función `ugit_version`, que imprime la versión actual del sistema
  * de control de versiones `uGit` en la salida estándar.
  *

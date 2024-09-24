@@ -3,7 +3,7 @@
 /**
  * @file ugit_add.c
  * @brief Permite añadir un archivo al área de "staging" de uGit.
- *
+ * @authors Diego Sanhueza y Manuel Gonzalez
  * Esta función maneja la adición de archivos al área de "staging" en el sistema de control
  * de versiones uGit. Dependiendo del comando proporcionado, la función puede añadir un archivo
  * específico al área de "staging" o añadir todos los archivos si se usa el comando correspondiente.

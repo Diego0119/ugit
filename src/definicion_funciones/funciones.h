@@ -1,6 +1,6 @@
 /**
  * @file funciones.h
- * @author Diego Sanhueza y Manuel Gonzalez
+ * @authors Diego Sanhueza y Manuel Gonzalez
  * @brief En este archivo se encuentran los prototipos de las funciones y estructuras de uGit.
  * @version 0.1
  * @date 2024-09-17

@@ -3,7 +3,7 @@
 /**
  * @file ugit_branch.c
  * @brief Permite crear nuevas ramas en el sistema de control de versiones.
- *
+ * @authors Diego Sanhueza y Manuel Gonzalez
  * Esta función se encarga de crear una nueva rama en el sistema, utilizando el nombre proporcionado en
  * el comando `prompt`. Si el nombre de la rama es vacío, se muestra un mensaje de error. La nueva rama
  * se inicializa con un contador de commits en cero.

@@ -2,7 +2,7 @@
 /**
  * @file main.c
  * @brief Esta funcion contiene la inicialización de ugit
- *
+ * @authors Diego Sanhueza y Manuel Gonzalez
  */
 
 int main(void)

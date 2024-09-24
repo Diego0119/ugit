@@ -3,7 +3,7 @@
 /**
  * @file ugit_commit.c
  * @brief Permite realizar un commit para manejar el historial de versiones en el sistema de control de versiones.
- *
+ * @authors Diego Sanhueza y Manuel Gonzalez
  * Esta función realiza un commit en la rama actual del sistema de control de versiones. Un commit registra
  * los cambios en el historial de versiones con un mensaje descriptivo. La función verifica que se hayan añadido
  * archivos y que el mensaje de commit no esté vacío antes de proceder con el commit.

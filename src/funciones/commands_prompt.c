@@ -3,7 +3,7 @@
 /**
  * @file commands_prompt.c
  * @brief Implementación de la función que muestra los comandos disponibles para uGit.
- *
+ * @authors Diego Sanhueza y Manuel Gonzalez
  * Este archivo contiene la implementación de la función `commands_prompt`, que imprime
  * una lista de comandos disponibles en el sistema de control de versiones uGit.
  * Los comandos incluyen operaciones básicas como inicializar un repositorio, añadir archivos,
