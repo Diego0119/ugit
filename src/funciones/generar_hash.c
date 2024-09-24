@@ -5,8 +5,8 @@ static int count = 0;
 
 /**
  * @file generar_hash.c
- * @brief Implementación de la función de generación de hash única.
  * @authors Diego Sanhueza y Manuel Gonzalez
+ * @brief Implementación de la función de generación de hash única.
  * Este archivo contiene la implementación de la función `generar_hash`,
  * que calcula un valor de hash único basado en una cadena de entrada.
  * Se asegura que el hash sea único dentro de un rango limitado de valores

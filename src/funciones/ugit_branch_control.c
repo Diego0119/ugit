@@ -2,8 +2,8 @@
 
 /**
  * @file ugit_branch_control.c
- * @brief Permite cambiar el prompt de la shell basado en la rama actual.
  * @authors Diego Sanhueza y Manuel Gonzalez
+ * @brief Permite cambiar el prompt de la shell basado en la rama actual.
  * Esta función actualiza el prompt de la shell para reflejar la rama en la que se encuentra el usuario.
  * El prompt se ajusta para mostrar el nombre de la rama actual como parte del texto del prompt.
  *

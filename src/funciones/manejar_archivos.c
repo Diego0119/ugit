@@ -2,8 +2,8 @@
 
 /**
  * @file manejar_archivos.c
- * @brief Permite modificar y crear archivos desde la shell de uGit.
  * @authors Diego Sanhueza y Manuel Gonzalez
+ * @brief Permite modificar y crear archivos desde la shell de uGit.
  * Este archivo contiene la implementación de la función `manejar_archivos`, que gestiona
  * la creación y modificación de archivos dentro del sistema de control de versiones uGit.
  * Dependiendo del comando proporcionado, la función puede agregar contenido a un archivo existente

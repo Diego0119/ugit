@@ -5,8 +5,8 @@ static int count = 0;
 
 /**
  * @file hash.c
- * @brief Implementación de la función de hashing para el sistema uGit.
  * @authors Diego Sanhueza y Manuel Gonzalez
+ * @brief Implementación de la función de hashing para el sistema uGit.
  * Este archivo contiene la implementación de la función `hash`, que calcula un valor de hash
  * para un string dado. El valor de hash se utiliza para identificar de manera única elementos
  * como commits en el sistema de control de versiones uGit.

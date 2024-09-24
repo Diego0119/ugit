@@ -2,8 +2,8 @@
 
 /**
  * @file ugit_init.c
- * @brief Permite inicializar el repositorio del sistema de control de versiones.
  * @authors Diego Sanhueza y Manuel Gonzalez
+ * @brief Permite inicializar el repositorio del sistema de control de versiones.
  * Esta función se encarga de inicializar un nuevo repositorio para el sistema de control de versiones `uGit`.
  * Si el repositorio no ha sido inicializado previamente, solicita el nombre del usuario y configura la rama principal
  * (`main`) junto con el prompt inicial. También establece la bandera de repositorio como inicializada.

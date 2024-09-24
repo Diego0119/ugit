@@ -1,8 +1,8 @@
 #include "src/definicion_funciones/funciones.h"
 /**
  * @file main.c
- * @brief Esta funcion contiene la inicialización de ugit
  * @authors Diego Sanhueza y Manuel Gonzalez
+ * @brief Esta funcion contiene la inicialización de ugit
  */
 
 int main(void)

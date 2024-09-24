@@ -1,8 +1,8 @@
 #include "../definicion_funciones/funciones.h"
 /**
  * @file flow_control.c
- * @brief Implementación de la función de control de flujo para la interacción del usuario con uGit.
  * @authors Diego Sanhueza y Manuel Gonzalez
+ * @brief Implementación de la función de control de flujo para la interacción del usuario con uGit.
  * Este archivo contiene la implementación de la función `flow_control`, que permite al usuario
  * interactuar con el sistema de control de versiones uGit a través de una interfaz de línea de comandos.
  * La función lee comandos del usuario, los interpreta y ejecuta las funciones correspondientes según

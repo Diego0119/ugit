@@ -1,8 +1,8 @@
 #include "../definicion_funciones/funciones.h"
 /**
  * @file ugit_log.c
- * @brief Permite visualizar el historial de commits realizados en una rama específica.
  * @authors Diego Sanhueza y Manuel Gonzalez
+ * @brief Permite visualizar el historial de commits realizados en una rama específica.
  * Esta función muestra el historial de commits realizados en la rama actual del sistema de control de versiones `uGit`.
  * Imprime detalles de cada commit, incluyendo el autor, el hash del commit y la descripción asociada.
  *
