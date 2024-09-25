@@ -1,4 +1,3 @@
-
 CC=gcc
 EXEC=program.out
 GRUPO=11
@@ -14,8 +13,8 @@ LIBS=
 CFLAGS=-Wall -Wextra -Wpedantic -O3
 LDFLAGS= -Wall -lm 
 
-all: $(OBJ_FILES)
-	$(CC) $(CFLAGS) -o $(EXEC) main.c $(OBJ_FILES) $(INCLUDE) $(LIBS)
+all: folders incs_files $(OBJ_FILES)
+	$(CC) $(CFLAGS) -o build/$(EXEC) main.c $(OBJ_FILES) $(INCLUDE) $(LIBS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c -o $@ $^ $(INCLUDE)
@@ -23,13 +22,16 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 .PHONY: clean folders send
 clean:
 	rm -f $(OBJ_FILES)
-	rm -f $(EXEC)
+	rm -f build/$(EXEC)
 
 folders:
-	mkdir -p $(OBJ_DIR) build
+	mkdir -p src obj incs build docs
+
+incs_files:
+	cp src/definicion_funciones/*.h incs/
 
 send:
-	tar czf $(GRUPO)-$(NTAR).tgz --transform 's,^,$(GRUPO)-$(NTAR)/,' MAKEFILE src test README.MD
+	tar czf $(GRUPO)-$(NTAR).tgz --transform 's,^,$(GRUPO)-$(NTAR)/,' MAKEFILE src test README.MD incs
 
-run: $(EXEC)
-	./$(EXEC)
+run: build/$(EXEC)
+	./build/$(EXEC)
